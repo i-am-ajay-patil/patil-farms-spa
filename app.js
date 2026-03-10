@@ -85,10 +85,12 @@ function toast(message, type = 'success') {
 
 // ─── Metrics Engine ──────────────────────────────────────────
 function getMetrics() {
-  // Current egg inventory (sum of good eggs minus sold)
-  const totalGoodEggs = productionData.reduce((s, d) => s + (parseInt(d.goodEggs) || 0), 0);
-  const totalEggsSold = eggSales.reduce((s, e) => s + (parseInt(e.qty) || 0), 0);
-  const currentEggInventory = Math.max(0, totalGoodEggs - totalEggsSold);
+  // Current egg inventory (good + damaged eggs minus sold)
+  const totalGoodEggs    = productionData.reduce((s, d) => s + (parseInt(d.goodEggs)    || 0), 0);
+  const totalDamagedEggs = productionData.reduce((s, d) => s + (parseInt(d.damagedEggs) || 0), 0);
+  const totalAllEggs     = totalGoodEggs + totalDamagedEggs;
+  const totalEggsSold    = eggSales.reduce((s, e) => s + (parseInt(e.qty) || 0), 0);
+  const currentEggInventory = Math.max(0, totalAllEggs - totalEggsSold);
 
   // Total Sales (egg sales + other sales)
   const totalEggSalesRevenue  = eggSales.reduce((s, e) => s + (parseFloat(e.total) || 0), 0);
@@ -225,7 +227,7 @@ function renderHome() {
         <div class="metric-icon">🥚</div>
         <div class="metric-label">Egg Inventory</div>
         <div class="metric-value">${m.currentEggInventory.toLocaleString()}</div>
-        <div class="metric-sub">eggs in stock</div>
+        <div class="metric-sub">eggs · ${(m.currentEggInventory / 30).toFixed(1)} trays</div>
       </div>
 
       <div class="metric-card yolk">
@@ -426,12 +428,128 @@ function drawProductionChart() {
 }
 
 // ═══════════════════════════════════════════════════════════════
+// MONTHLY AGGREGATION ENGINE
+// ═══════════════════════════════════════════════════════════════
+/*
+  getMonthlyProductionSummary()
+  ─────────────────────────────
+  Groups productionData by YYYY-MM, then for each month computes:
+  - totalGoodEggs:    Sum of all goodEggs in that month
+  - totalDamagedEggs: Sum of all damagedEggs in that month
+  - totalEggs:        goodEggs + damagedEggs
+  - trays:            totalGoodEggs / 30  (standard tray = 30 eggs)
+  - daysLogged:       Number of daily entries recorded in that month
+  - avgDailyOutput:   totalGoodEggs / daysLogged
+                      (average of daily production values actually recorded,
+                       NOT divided by calendar days — reflects real output days)
+  - avgLiveBirds:     Average live bird count across logged days
+  Returns array sorted newest month first.
+*/
+function getMonthlyProductionSummary() {
+  if (productionData.length === 0) return [];
+
+  const monthMap = {};
+
+  productionData.forEach(d => {
+    const monthKey = d.date.slice(0, 7); // 'YYYY-MM'
+    if (!monthMap[monthKey]) {
+      monthMap[monthKey] = {
+        monthKey,
+        entries: []
+      };
+    }
+    monthMap[monthKey].entries.push(d);
+  });
+
+  return Object.values(monthMap)
+    .sort((a, b) => b.monthKey.localeCompare(a.monthKey))
+    .map(({ monthKey, entries }) => {
+      const totalGoodEggs    = entries.reduce((s, e) => s + (parseInt(e.goodEggs)    || 0), 0);
+      const totalDamagedEggs = entries.reduce((s, e) => s + (parseInt(e.damagedEggs) || 0), 0);
+      const totalEggs        = totalGoodEggs + totalDamagedEggs;
+      const daysLogged       = entries.length;
+      const trays            = totalEggs / 30;
+      // Average daily output = mean of each day's goodEggs (only days with data)
+      const avgDailyOutput   = daysLogged > 0 ? totalEggs / daysLogged : 0;
+      const avgLiveBirds     = daysLogged > 0
+        ? entries.reduce((s, e) => s + (parseInt(e.liveBirds) || 0), 0) / daysLogged
+        : 0;
+
+      // Human-readable month label e.g. "Jun 2025"
+      const [year, month] = monthKey.split('-');
+      const label = new Date(parseInt(year), parseInt(month) - 1, 1)
+        .toLocaleDateString('en-IN', { month: 'long', year: 'numeric' });
+
+      return { monthKey, label, totalGoodEggs, totalDamagedEggs, totalEggs, trays, daysLogged, avgDailyOutput, avgLiveBirds };
+    });
+}
+
+// Render the monthly summary table HTML
+function renderMonthlyTable() {
+  const rows = getMonthlyProductionSummary();
+
+  if (rows.length === 0) {
+    return `<div class="empty-state"><div class="empty-state-icon">📅</div><div class="empty-state-text">No production data yet. Start logging daily entries.</div></div>`;
+  }
+
+  // Totals row
+  const grandGood    = rows.reduce((s, r) => s + r.totalGoodEggs, 0);
+  const grandDamaged = rows.reduce((s, r) => s + r.totalDamagedEggs, 0);
+  const grandTotal   = rows.reduce((s, r) => s + r.totalEggs, 0);
+  const grandTrays   = grandTotal / 30;
+
+  return `
+    <div class="monthly-table-wrapper">
+      <table class="monthly-table">
+        <thead>
+          <tr>
+            <th>Month</th>
+            <th class="num-col">Good 🥚</th>
+            <th class="num-col">Dmg 🩹</th>
+            <th class="num-col">Trays</th>
+            <th class="num-col">Avg/Day</th>
+            <th class="num-col">Days</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${rows.map((r, i) => `
+            <tr class="${i % 2 === 0 ? 'row-even' : 'row-odd'}">
+              <td class="month-label-cell">${r.label}</td>
+              <td class="num-col good-col">${r.totalGoodEggs.toLocaleString('en-IN')}</td>
+              <td class="num-col damaged-col">${r.totalDamagedEggs.toLocaleString('en-IN')}</td>
+              <td class="num-col tray-col">${r.trays.toFixed(1)}</td>
+              <td class="num-col avg-col">${r.avgDailyOutput.toFixed(0)}</td>
+              <td class="num-col days-col">${r.daysLogged}</td>
+            </tr>`).join('')}
+        </tbody>
+        <tfoot>
+          <tr class="totals-row">
+            <td class="month-label-cell">Grand Total</td>
+            <td class="num-col good-col">${grandGood.toLocaleString('en-IN')}</td>
+            <td class="num-col damaged-col">${grandDamaged.toLocaleString('en-IN')}</td>
+            <td class="num-col tray-col">${grandTrays.toFixed(1)}</td>
+            <td class="num-col avg-col">—</td>
+            <td class="num-col days-col">${rows.reduce((s,r) => s + r.daysLogged, 0)}</td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+    <div class="monthly-table-legend">
+      <span>Trays = Total Eggs (Good + Damaged) ÷ 30</span>
+      <span>·</span>
+      <span>Avg/Day = Total Eggs (Good + Damaged) ÷ Days Logged</span>
+    </div>
+  `;
+}
+
+// ═══════════════════════════════════════════════════════════════
 // VIEW: PRODUCTION LOG
 // ═══════════════════════════════════════════════════════════════
 function renderProduction() {
   const sorted = [...productionData].sort((a, b) => b.date.localeCompare(a.date));
   const todayStr = today();
   const todayEntry = productionData.find(d => d.date === todayStr);
+  const activeTab = window._prodTab || 'monthly';
 
   return `
     <h2 class="section-title">Production Log</h2>
@@ -473,28 +591,47 @@ function renderProduction() {
       </button>
     </div>
 
-    <!-- Records -->
-    <h3 class="section-title" style="font-size:16px;">All Records (${productionData.length})</h3>
-    <div class="card">
-      ${sorted.length === 0
-        ? `<div class="empty-state"><div class="empty-state-icon">📋</div><div class="empty-state-text">No entries yet.</div></div>`
-        : sorted.map(d => `
-          <div class="data-row">
-            <div>
-              <div class="data-row-label">${formatDate(d.date)}</div>
-              <div class="data-row-sub">🐔 ${parseInt(d.liveBirds)||0} live · ${d.medicine ? '💊 ' + d.medicine : 'no meds'}</div>
-            </div>
-            <div style="text-align:right;display:flex;align-items:center;gap:10px;">
-              <div>
-                <div class="data-row-amount">${parseInt(d.goodEggs)||0} 🥚</div>
-                <div style="font-size:11px;color:var(--rust);font-family:'DM Mono',monospace;">${parseInt(d.damagedEggs)||0} dmg</div>
-              </div>
-              <button class="btn btn-danger" onclick="deleteProduction('${d.date}')">✕</button>
-            </div>
-          </div>`).join('')
-      }
+    <!-- View Toggle Tabs -->
+    <div class="tab-group">
+      <button class="tab-btn ${activeTab === 'monthly' ? 'active' : ''}" onclick="setProdTab('monthly')">📅 Monthly Summary</button>
+      <button class="tab-btn ${activeTab === 'daily' ? 'active' : ''}" onclick="setProdTab('daily')">📋 Daily Records</button>
     </div>
+
+    <!-- Daily Records Tab -->
+    ${activeTab === 'daily' ? `
+      <h3 class="section-title" style="font-size:16px;">All Records (${productionData.length})</h3>
+      <div class="card">
+        ${sorted.length === 0
+          ? `<div class="empty-state"><div class="empty-state-icon">📋</div><div class="empty-state-text">No entries yet.</div></div>`
+          : sorted.map(d => `
+            <div class="data-row">
+              <div>
+                <div class="data-row-label">${formatDate(d.date)}</div>
+                <div class="data-row-sub">🐔 ${parseInt(d.liveBirds)||0} live · ${d.medicine ? '💊 ' + d.medicine : 'no meds'}</div>
+              </div>
+              <div style="text-align:right;display:flex;align-items:center;gap:10px;">
+                <div>
+                  <div class="data-row-amount">${parseInt(d.goodEggs)||0} 🥚</div>
+                  <div style="font-size:11px;color:var(--rust);font-family:'DM Mono',monospace;">${parseInt(d.damagedEggs)||0} dmg</div>
+                </div>
+                <button class="btn btn-danger" onclick="deleteProduction('${d.date}')">✕</button>
+              </div>
+            </div>`).join('')
+        }
+      </div>` : ''}
+
+    <!-- Monthly Summary Tab -->
+    ${activeTab === 'monthly' ? `
+      <h3 class="section-title" style="font-size:16px;">Monthly Summary</h3>
+      <div class="card" style="overflow:hidden;">
+        ${renderMonthlyTable()}
+      </div>` : ''}
   `;
+}
+
+function setProdTab(tab) {
+  window._prodTab = tab;
+  render();
 }
 
 function saveProduction() {
@@ -534,10 +671,230 @@ function deleteProduction(date) {
 // ═══════════════════════════════════════════════════════════════
 // VIEW: SALES
 // ═══════════════════════════════════════════════════════════════
-function renderSales() {
-  const activeTab = window._salesTab || 'egg';
 
-  const totalEgg   = eggSales.reduce((s, e) => s + (parseFloat(e.total)||0), 0);
+// ── Aggregation helpers ──────────────────────────────────────
+
+/*
+  getEggMonthlySummary(): groups eggSales by YYYY-MM.
+  Per month: totalSales (₹), totalQty (eggs), totalTrays (qty/30),
+  avgPricePerEgg (weighted), txCount.
+*/
+function getEggMonthlySummary() {
+  if (eggSales.length === 0) return [];
+  const map = {};
+  eggSales.forEach(e => {
+    const k = e.date.slice(0, 7);
+    if (!map[k]) map[k] = { k, entries: [] };
+    map[k].entries.push(e);
+  });
+  return Object.values(map)
+    .sort((a, b) => b.k.localeCompare(a.k))
+    .map(({ k, entries }) => {
+      const totalSales     = entries.reduce((s, e) => s + (parseFloat(e.total) || 0), 0);
+      const totalQty       = entries.reduce((s, e) => s + (parseInt(e.qty)     || 0), 0);
+      const avgPricePerEgg = totalQty > 0 ? totalSales / totalQty : 0;
+      const [yr, mo]       = k.split('-');
+      const label          = new Date(parseInt(yr), parseInt(mo) - 1, 1)
+        .toLocaleDateString('en-IN', { month: 'long', year: 'numeric' });
+      return { k, label, totalSales, totalQty, totalTrays: totalQty / 30, avgPricePerEgg };
+    });
+}
+
+/*
+  getOtherMonthlySummary(): groups otherSales by YYYY-MM.
+  Per month: totalSales (₹), totalQty (units), txCount.
+*/
+function getOtherMonthlySummary() {
+  if (otherSales.length === 0) return [];
+  const map = {};
+  otherSales.forEach(e => {
+    const k = e.date.slice(0, 7);
+    if (!map[k]) map[k] = { k, entries: [] };
+    map[k].entries.push(e);
+  });
+  return Object.values(map)
+    .sort((a, b) => b.k.localeCompare(a.k))
+    .map(({ k, entries }) => {
+      const totalSales = entries.reduce((s, e) => s + (parseFloat(e.total) || 0), 0);
+      const totalQty   = entries.reduce((s, e) => s + (parseFloat(e.qty)   || 0), 0);
+      const txCount    = entries.length;
+      const [yr, mo]   = k.split('-');
+      const label      = new Date(parseInt(yr), parseInt(mo) - 1, 1)
+        .toLocaleDateString('en-IN', { month: 'long', year: 'numeric' });
+      return { k, label, totalSales, totalQty, txCount };
+    });
+}
+
+// ── Combined monthly summary (egg + other) for top-level tab ──
+function renderCombinedMonthlySummary() {
+  const totalEgg   = eggSales.reduce((s, e)  => s + (parseFloat(e.total) || 0), 0);
+  const totalOther = otherSales.reduce((s, e) => s + (parseFloat(e.total) || 0), 0);
+  const grandTotal = totalEgg + totalOther;
+
+  // Merge all months from both sources
+  const monthSet = new Set([
+    ...eggSales.map(e => e.date.slice(0, 7)),
+    ...otherSales.map(e => e.date.slice(0, 7))
+  ]);
+
+  if (monthSet.size === 0) {
+    return `<div class="empty-state"><div class="empty-state-icon">📅</div><div class="empty-state-text">No sales recorded yet.</div></div>`;
+  }
+
+  const eggMap   = {};
+  eggSales.forEach(e   => { const k = e.date.slice(0,7);   eggMap[k]   = (eggMap[k]   || 0) + (parseFloat(e.total) || 0); });
+  const otherMap = {};
+  otherSales.forEach(e => { const k = e.date.slice(0,7); otherMap[k] = (otherMap[k] || 0) + (parseFloat(e.total) || 0); });
+
+  const rows = [...monthSet].sort((a, b) => b.localeCompare(a)).map(k => {
+    const [yr, mo] = k.split('-');
+    const label    = new Date(parseInt(yr), parseInt(mo) - 1, 1)
+      .toLocaleDateString('en-IN', { month: 'long', year: 'numeric' });
+    const egg   = eggMap[k]   || 0;
+    const other = otherMap[k] || 0;
+    return { label, egg, other, total: egg + other };
+  });
+
+  const grandEgg   = rows.reduce((s, r) => s + r.egg,   0);
+  const grandOther = rows.reduce((s, r) => s + r.other, 0);
+
+  return `
+    <div class="monthly-table-wrapper">
+      <table class="monthly-table">
+        <thead>
+          <tr>
+            <th>Month</th>
+            <th class="num-col">Egg Sales</th>
+            <th class="num-col">Other Sales</th>
+            <th class="num-col">Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${rows.map((r, i) => `
+            <tr class="${i % 2 === 0 ? 'row-even' : 'row-odd'}">
+              <td class="month-label-cell">${r.label}</td>
+              <td class="num-col good-col">${formatINR(r.egg)}</td>
+              <td class="num-col tray-col">${formatINR(r.other)}</td>
+              <td class="num-col" style="color:var(--bark);font-weight:700;">${formatINR(r.total)}</td>
+            </tr>`).join('')}
+        </tbody>
+        <tfoot>
+          <tr class="totals-row">
+            <td class="month-label-cell">Grand Total</td>
+            <td class="num-col good-col">${formatINR(grandEgg)}</td>
+            <td class="num-col tray-col">${formatINR(grandOther)}</td>
+            <td class="num-col" style="color:var(--grove);font-weight:700;">${formatINR(grandEgg + grandOther)}</td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+    <div class="monthly-table-legend">
+      <span>Egg Sales + Other Sales = Monthly Total</span>
+    </div>
+  `;
+}
+
+// ── Egg sales monthly summary table ──
+function renderEggMonthlySummaryTable() {
+  const rows = getEggMonthlySummary();
+  if (rows.length === 0) {
+    return `<div class="empty-state"><div class="empty-state-icon">🥚</div><div class="empty-state-text">No egg sales recorded yet.</div></div>`;
+  }
+  const grandSales = rows.reduce((s, r) => s + r.totalSales, 0);
+  const grandQty   = rows.reduce((s, r) => s + r.totalQty,   0);
+  const grandAvg   = grandQty > 0 ? grandSales / grandQty : 0;
+  return `
+    <div class="monthly-table-wrapper">
+      <table class="monthly-table">
+        <thead>
+          <tr>
+            <th>Month</th>
+            <th class="num-col">Qty 🥚</th>
+            <th class="num-col">Trays</th>
+            <th class="num-col">Revenue</th>
+            <th class="num-col">Avg ₹/Egg</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${rows.map((r, i) => `
+            <tr class="${i % 2 === 0 ? 'row-even' : 'row-odd'}">
+              <td class="month-label-cell">${r.label}</td>
+              <td class="num-col good-col">${r.totalQty.toLocaleString('en-IN')}</td>
+              <td class="num-col tray-col">${r.totalTrays.toFixed(1)}</td>
+              <td class="num-col" style="color:var(--grove);font-weight:600;">${formatINR(r.totalSales)}</td>
+              <td class="num-col avg-col">₹${r.avgPricePerEgg.toFixed(2)}</td>
+            </tr>`).join('')}
+        </tbody>
+        <tfoot>
+          <tr class="totals-row">
+            <td class="month-label-cell">Grand Total</td>
+            <td class="num-col good-col">${grandQty.toLocaleString('en-IN')}</td>
+            <td class="num-col tray-col">${(grandQty / 30).toFixed(1)}</td>
+            <td class="num-col" style="color:var(--grove);font-weight:700;">${formatINR(grandSales)}</td>
+            <td class="num-col avg-col">₹${grandAvg.toFixed(2)}</td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+    <div class="monthly-table-legend">
+      <span>Trays = Qty ÷ 30</span><span>·</span>
+      <span>Avg ₹/Egg = Revenue ÷ Qty (weighted)</span>
+    </div>
+  `;
+}
+
+// ── Other sales monthly summary table ──
+function renderOtherMonthlySummaryTable() {
+  const rows = getOtherMonthlySummary();
+  if (rows.length === 0) {
+    return `<div class="empty-state"><div class="empty-state-icon">📦</div><div class="empty-state-text">No other sales recorded yet.</div></div>`;
+  }
+  const grandSales = rows.reduce((s, r) => s + r.totalSales, 0);
+  const grandQty   = rows.reduce((s, r) => s + r.totalQty,   0);
+  const grandTx    = rows.reduce((s, r) => s + r.txCount,    0);
+  return `
+    <div class="monthly-table-wrapper">
+      <table class="monthly-table">
+        <thead>
+          <tr>
+            <th>Month</th>
+            <th class="num-col">Qty (Units)</th>
+            <th class="num-col">Transactions</th>
+            <th class="num-col">Revenue</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${rows.map((r, i) => `
+            <tr class="${i % 2 === 0 ? 'row-even' : 'row-odd'}">
+              <td class="month-label-cell">${r.label}</td>
+              <td class="num-col good-col">${r.totalQty.toLocaleString('en-IN')}</td>
+              <td class="num-col days-col">${r.txCount}</td>
+              <td class="num-col" style="color:var(--grove);font-weight:600;">${formatINR(r.totalSales)}</td>
+            </tr>`).join('')}
+        </tbody>
+        <tfoot>
+          <tr class="totals-row">
+            <td class="month-label-cell">Grand Total</td>
+            <td class="num-col good-col">${grandQty.toLocaleString('en-IN')}</td>
+            <td class="num-col days-col">${grandTx}</td>
+            <td class="num-col" style="color:var(--grove);font-weight:700;">${formatINR(grandSales)}</td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+    <div class="monthly-table-legend">
+      <span>Qty = sum of units sold across all other sale entries</span>
+    </div>
+  `;
+}
+
+// ── Top-level renderSales ────────────────────────────────────
+function renderSales() {
+  const activeTab  = window._salesTab  || 'monthly';
+  const activeEgg  = window._eggTab    || 'summary';
+  const activeOther = window._otherTab || 'summary';
+
+  const totalEgg   = eggSales.reduce((s, e)  => s + (parseFloat(e.total)||0), 0);
   const totalOther = otherSales.reduce((s, e) => s + (parseFloat(e.total)||0), 0);
 
   return `
@@ -557,20 +914,50 @@ function renderSales() {
       </div>
     </div>
 
+    <!-- Top-level tabs -->
     <div class="tab-group">
-      <button class="tab-btn ${activeTab==='egg'?'active':''}" onclick="setSalesTab('egg')">🥚 Egg Sales</button>
-      <button class="tab-btn ${activeTab==='other'?'active':''}" onclick="setSalesTab('other')">📦 Other Sales</button>
+      <button class="tab-btn compact ${activeTab==='monthly'?'active':''}" onclick="setSalesTab('monthly')">📅 Monthly Summary</button>
+      <button class="tab-btn compact ${activeTab==='egg'    ?'active':''}" onclick="setSalesTab('egg')">🥚 Egg Sales</button>
+      <button class="tab-btn compact ${activeTab==='other'  ?'active':''}" onclick="setSalesTab('other')">📦 Other Sales</button>
     </div>
 
-    ${activeTab === 'egg' ? renderEggSalesForm() + renderEggSalesList() : renderOtherSalesForm() + renderOtherSalesList()}
+    <!-- MONTHLY SUMMARY (combined) -->
+    ${activeTab === 'monthly' ? `
+      <h3 class="section-title" style="font-size:16px;">Monthly Sales Summary</h3>
+      <div class="card" style="overflow:hidden;">${renderCombinedMonthlySummary()}</div>
+    ` : ''}
+
+    <!-- EGG SALES: add form + nested sub-tabs -->
+    ${activeTab === 'egg' ? `
+      ${renderEggSalesForm()}
+      <div class="tab-group" style="margin-top:4px;">
+        <button class="tab-btn ${activeEgg==='summary'?'active':''}" onclick="setEggTab('summary')">📅 Monthly Summary</button>
+        <button class="tab-btn ${activeEgg==='records'?'active':''}" onclick="setEggTab('records')">📋 Sales Records</button>
+      </div>
+      ${activeEgg === 'summary' ? `
+        <div class="card" style="overflow:hidden;">${renderEggMonthlySummaryTable()}</div>
+      ` : renderEggSalesRecordsList()}
+    ` : ''}
+
+    <!-- OTHER SALES: add form + nested sub-tabs -->
+    ${activeTab === 'other' ? `
+      ${renderOtherSalesForm()}
+      <div class="tab-group" style="margin-top:4px;">
+        <button class="tab-btn ${activeOther==='summary'?'active':''}" onclick="setOtherTab('summary')">📅 Monthly Summary</button>
+        <button class="tab-btn ${activeOther==='records'?'active':''}" onclick="setOtherTab('records')">📋 Sales Records</button>
+      </div>
+      ${activeOther === 'summary' ? `
+        <div class="card" style="overflow:hidden;">${renderOtherMonthlySummaryTable()}</div>
+      ` : renderOtherSalesRecordsList()}
+    ` : ''}
   `;
 }
 
-function setSalesTab(tab) {
-  window._salesTab = tab;
-  render();
-}
+function setSalesTab(tab) { window._salesTab  = tab; render(); }
+function setEggTab(tab)   { window._eggTab    = tab; render(); }
+function setOtherTab(tab) { window._otherTab  = tab; render(); }
 
+// ── Egg Sales form / save / delete ──────────────────────────
 function renderEggSalesForm() {
   return `
     <div class="form-card">
@@ -585,7 +972,7 @@ function renderEggSalesForm() {
           <input type="number" id="es-qty" class="field-input" placeholder="0" min="0" oninput="calcEggTotal()" />
         </div>
         <div class="field-group">
-          <label class="field-label">Price / Dozen (₹)</label>
+          <label class="field-label">Price / Egg (₹)</label>
           <input type="number" id="es-price" class="field-input" placeholder="0.00" min="0" step="0.01" oninput="calcEggTotal()" />
         </div>
         <div class="field-group">
@@ -603,11 +990,10 @@ function renderEggSalesForm() {
 }
 
 function calcEggTotal() {
-  const qty   = parseFloat(document.getElementById('es-qty')?.value) || 0;
+  const qty   = parseFloat(document.getElementById('es-qty')?.value)   || 0;
   const price = parseFloat(document.getElementById('es-price')?.value) || 0;
-  const total = (qty / 12) * price;
   const el    = document.getElementById('es-total');
-  if (el) el.value = total.toFixed(2);
+  if (el) el.value = (qty * price).toFixed(2);
 }
 
 function saveEggSale() {
@@ -616,10 +1002,8 @@ function saveEggSale() {
   const price = document.getElementById('es-price')?.value;
   const buyer = document.getElementById('es-buyer')?.value?.trim();
   const total = parseFloat(document.getElementById('es-total')?.value) || 0;
-
   if (!date || !qty || !price) { toast('Fill in Date, Qty, and Price.', 'error'); return; }
-
-  eggSales.push({ id: uid(), date, qty: parseInt(qty)||0, pricePerDozen: parseFloat(price)||0, buyer: buyer||'', total });
+  eggSales.push({ id: uid(), date, qty: parseInt(qty)||0, pricePerEgg: parseFloat(price)||0, buyer: buyer||'', total });
   save();
   toast('Egg sale recorded!', 'success');
   render();
@@ -632,10 +1016,9 @@ function deleteEggSale(id) {
   render();
 }
 
-function renderEggSalesList() {
+function renderEggSalesRecordsList() {
   const sorted = [...eggSales].sort((a, b) => b.date.localeCompare(a.date));
   return `
-    <h3 class="section-title" style="font-size:16px;">Egg Sale Records (${eggSales.length})</h3>
     <div class="card">
       ${sorted.length === 0
         ? `<div class="empty-state"><div class="empty-state-icon">🥚</div><div class="empty-state-text">No egg sales recorded.</div></div>`
@@ -643,18 +1026,18 @@ function renderEggSalesList() {
           <div class="data-row">
             <div>
               <div class="data-row-label">${e.buyer || 'Unknown Buyer'}</div>
-              <div class="data-row-sub">${formatDate(e.date)} · ${e.qty} eggs · ₹${e.pricePerDozen}/dz</div>
+              <div class="data-row-sub">${formatDate(e.date)} · ${e.qty} eggs · ₹${e.pricePerEgg}/egg</div>
             </div>
             <div style="display:flex;align-items:center;gap:8px;">
               <div class="data-row-amount">${formatINR(e.total)}</div>
               <button class="btn btn-danger" onclick="deleteEggSale('${e.id}')">✕</button>
             </div>
-          </div>`).join('')
-      }
+          </div>`).join('')}
     </div>
   `;
 }
 
+// ── Other Sales form / save / delete ────────────────────────
 function renderOtherSalesForm() {
   return `
     <div class="form-card">
@@ -665,27 +1048,47 @@ function renderOtherSalesForm() {
           <input type="date" id="os-date" class="field-input" value="${today()}" />
         </div>
         <div class="field-group">
-          <label class="field-label">Amount (₹)</label>
-          <input type="number" id="os-amount" class="field-input" placeholder="0.00" min="0" step="0.01" />
+          <label class="field-label">Description</label>
+          <input type="text" id="os-desc" class="field-input" placeholder="e.g. Manure, spent hen..." />
         </div>
-      </div>
-      <div class="field-group">
-        <label class="field-label">Description</label>
-        <input type="text" id="os-desc" class="field-input" placeholder="e.g. Manure sale, spent hen sale..." />
+        <div class="field-group">
+          <label class="field-label">Quantity</label>
+          <input type="number" id="os-qty" class="field-input" placeholder="0" min="0" oninput="calcOtherTotal()" />
+        </div>
+        <div class="field-group">
+          <label class="field-label">Price / Unit (₹)</label>
+          <input type="number" id="os-unitprice" class="field-input" placeholder="0.00" min="0" step="0.01" oninput="calcOtherTotal()" />
+        </div>
+        <div class="field-group">
+          <label class="field-label">Amount (₹)</label>
+          <input type="number" id="os-amount" class="field-input" placeholder="Auto-calc" readonly style="background:var(--parchment);" />
+        </div>
+        <div class="field-group">
+          <label class="field-label">Remarks</label>
+          <input type="text" id="os-remarks" class="field-input" placeholder="Optional notes..." />
+        </div>
       </div>
       <button class="btn btn-primary btn-full" onclick="saveOtherSale()">💾 Save Other Sale</button>
     </div>
   `;
 }
 
+function calcOtherTotal() {
+  const qty       = parseFloat(document.getElementById('os-qty')?.value)       || 0;
+  const unitPrice = parseFloat(document.getElementById('os-unitprice')?.value) || 0;
+  const el        = document.getElementById('os-amount');
+  if (el) el.value = (qty * unitPrice).toFixed(2);
+}
+
 function saveOtherSale() {
-  const date   = document.getElementById('os-date')?.value;
-  const amount = document.getElementById('os-amount')?.value;
-  const desc   = document.getElementById('os-desc')?.value?.trim();
-
-  if (!date || !amount || !desc) { toast('All fields are required.', 'error'); return; }
-
-  otherSales.push({ id: uid(), date, description: desc, amount: parseFloat(amount)||0, total: parseFloat(amount)||0 });
+  const date      = document.getElementById('os-date')?.value;
+  const desc      = document.getElementById('os-desc')?.value?.trim();
+  const qty       = document.getElementById('os-qty')?.value;
+  const unitPrice = document.getElementById('os-unitprice')?.value;
+  const remarks   = document.getElementById('os-remarks')?.value?.trim();
+  const amount    = parseFloat(document.getElementById('os-amount')?.value) || 0;
+  if (!date || !desc || !qty || !unitPrice) { toast('Date, Description, Qty and Price are required.', 'error'); return; }
+  otherSales.push({ id: uid(), date, description: desc, qty: parseFloat(qty)||0, unitPrice: parseFloat(unitPrice)||0, remarks: remarks||'', amount, total: amount });
   save();
   toast('Other sale recorded!', 'success');
   render();
@@ -698,10 +1101,9 @@ function deleteOtherSale(id) {
   render();
 }
 
-function renderOtherSalesList() {
+function renderOtherSalesRecordsList() {
   const sorted = [...otherSales].sort((a, b) => b.date.localeCompare(a.date));
   return `
-    <h3 class="section-title" style="font-size:16px;">Other Sale Records (${otherSales.length})</h3>
     <div class="card">
       ${sorted.length === 0
         ? `<div class="empty-state"><div class="empty-state-icon">📦</div><div class="empty-state-text">No other sales recorded.</div></div>`
@@ -709,14 +1111,16 @@ function renderOtherSalesList() {
           <div class="data-row">
             <div>
               <div class="data-row-label">${e.description}</div>
-              <div class="data-row-sub">${formatDate(e.date)}</div>
+              <div class="data-row-sub">
+                ${formatDate(e.date)} · ${e.qty || '—'} units · ₹${e.unitPrice || '—'}/unit
+                ${e.remarks ? `· <em>${e.remarks}</em>` : ''}
+              </div>
             </div>
             <div style="display:flex;align-items:center;gap:8px;">
               <div class="data-row-amount">${formatINR(e.total)}</div>
               <button class="btn btn-danger" onclick="deleteOtherSale('${e.id}')">✕</button>
             </div>
-          </div>`).join('')
-      }
+          </div>`).join('')}
     </div>
   `;
 }
@@ -725,17 +1129,25 @@ function renderOtherSalesList() {
 // VIEW: EXPENSES
 // ═══════════════════════════════════════════════════════════════
 const EXPENSE_CATEGORIES = ['Feed', 'Medicine', 'Labour', 'Electricity', 'Transport', 'Equipment', 'Veterinary', 'Other'];
+const EXPENSE_PAYERS     = ['Sales', 'Ajay', 'Shivu'];
 
 function renderExpenses() {
   const totalExpenses = expenses.reduce((s, e) => s + (parseFloat(e.total)||0), 0);
-  const sorted = [...expenses].sort((a, b) => b.date.localeCompare(a.date));
+  const activeTab = window._expTab || 'payer';
 
-  // Category breakdown
+  // Payer summary: total paid per payer
+  const byPayer = {};
+  EXPENSE_PAYERS.forEach(p => byPayer[p] = 0);
+  expenses.forEach(e => {
+    const p = e.paidBy || 'Sales';
+    byPayer[p] = (byPayer[p] || 0) + (parseFloat(e.total) || 0);
+  });
+
+  // Top category chips for header summary
   const byCategory = {};
   EXPENSE_CATEGORIES.forEach(c => byCategory[c] = 0);
   expenses.forEach(e => { byCategory[e.category] = (byCategory[e.category]||0) + (parseFloat(e.total)||0); });
-
-  const topCats = Object.entries(byCategory).filter(([,v]) => v > 0).sort((a,b) => b[1]-a[1]).slice(0,3);
+  const topCats = Object.entries(byCategory).filter(([,v]) => v > 0).sort((a,b) => b[1]-a[1]).slice(0,2);
 
   return `
     <h2 class="section-title">Expenses</h2>
@@ -765,11 +1177,19 @@ function renderExpenses() {
           <input type="number" id="exp-amount" class="field-input" placeholder="0.00" min="0" step="0.01" />
         </div>
       </div>
-      <div class="field-group">
-        <label class="field-label">Category</label>
-        <select id="exp-category" class="field-input">
-          ${EXPENSE_CATEGORIES.map(c => `<option value="${c}">${c}</option>`).join('')}
-        </select>
+      <div class="grid grid-cols-2 gap-3">
+        <div class="field-group">
+          <label class="field-label">Category</label>
+          <select id="exp-category" class="field-input">
+            ${EXPENSE_CATEGORIES.map(c => `<option value="${c}">${c}</option>`).join('')}
+          </select>
+        </div>
+        <div class="field-group">
+          <label class="field-label">Paid By</label>
+          <select id="exp-paidby" class="field-input">
+            ${EXPENSE_PAYERS.map(p => `<option value="${p}">${p}</option>`).join('')}
+          </select>
+        </div>
       </div>
       <div class="field-group">
         <label class="field-label">Description</label>
@@ -778,36 +1198,128 @@ function renderExpenses() {
       <button class="btn btn-primary btn-full" onclick="saveExpense()">💾 Save Expense</button>
     </div>
 
-    <!-- Expense List -->
-    <h3 class="section-title" style="font-size:16px;">All Expenses (${expenses.length})</h3>
-    <div class="card">
-      ${sorted.length === 0
-        ? `<div class="empty-state"><div class="empty-state-icon">📋</div><div class="empty-state-text">No expenses recorded yet.</div></div>`
-        : sorted.map(e => `
-          <div class="data-row">
-            <div>
-              <div class="data-row-label">${e.description || e.category}</div>
-              <div class="data-row-sub">${formatDate(e.date)} · <span style="background:rgba(139,99,64,0.1);padding:1px 7px;border-radius:20px;">${e.category}</span></div>
-            </div>
-            <div style="display:flex;align-items:center;gap:8px;">
-              <div class="data-row-amount expense">${formatINR(e.total)}</div>
-              <button class="btn btn-danger" onclick="deleteExpense('${e.id}')">✕</button>
-            </div>
-          </div>`).join('')
-      }
+    <!-- View Tabs -->
+    <div class="tab-group">
+      <button class="tab-btn ${activeTab === 'payer' ? 'active' : ''}" onclick="setExpTab('payer')">👤 Payer Summary</button>
+      <button class="tab-btn ${activeTab === 'records' ? 'active' : ''}" onclick="setExpTab('records')">📋 Expense Records</button>
+    </div>
+
+    <!-- Payer Summary Tab -->
+    ${activeTab === 'payer' ? `
+      <h3 class="section-title" style="font-size:16px;">Payer Summary</h3>
+      <div class="card" style="overflow:hidden;">
+        ${renderPayerSummaryTable(byPayer, totalExpenses)}
+      </div>` : ''}
+
+    <!-- Expense Records Tab -->
+    ${activeTab === 'records' ? `
+      <h3 class="section-title" style="font-size:16px;">All Expenses (${expenses.length})</h3>
+      <div class="card">
+        ${renderExpenseRecordsList()}
+      </div>` : ''}
+  `;
+}
+
+// Payer summary table — who paid how much, count of transactions, % share
+function renderPayerSummaryTable(byPayer, totalExpenses) {
+  if (expenses.length === 0) {
+    return `<div class="empty-state"><div class="empty-state-icon">👤</div><div class="empty-state-text">No expenses recorded yet.</div></div>`;
+  }
+
+  // Count transactions per payer
+  const countByPayer = {};
+  EXPENSE_PAYERS.forEach(p => countByPayer[p] = 0);
+  expenses.forEach(e => { const p = e.paidBy || 'Sales'; countByPayer[p] = (countByPayer[p]||0) + 1; });
+
+  const rows = EXPENSE_PAYERS.map(p => ({
+    payer: p,
+    total: byPayer[p] || 0,
+    count: countByPayer[p] || 0,
+    pct:   totalExpenses > 0 ? ((byPayer[p] || 0) / totalExpenses * 100) : 0
+  }));
+
+  return `
+    <div class="monthly-table-wrapper">
+      <table class="monthly-table">
+        <thead>
+          <tr>
+            <th>Paid By</th>
+            <th class="num-col">Transactions</th>
+            <th class="num-col">Amount (₹)</th>
+            <th class="num-col">Share %</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${rows.map((r, i) => `
+            <tr class="${i % 2 === 0 ? 'row-even' : 'row-odd'}">
+              <td class="month-label-cell">
+                <span class="payer-badge payer-${r.payer.toLowerCase()}">${r.payer}</span>
+              </td>
+              <td class="num-col days-col">${r.count}</td>
+              <td class="num-col good-col">${formatINR(r.total)}</td>
+              <td class="num-col avg-col">
+                <div style="display:flex;align-items:center;gap:6px;justify-content:flex-end;">
+                  <div class="pct-bar-wrap">
+                    <div class="pct-bar" style="width:${r.pct.toFixed(1)}%;"></div>
+                  </div>
+                  <span>${r.pct.toFixed(1)}%</span>
+                </div>
+              </td>
+            </tr>`).join('')}
+        </tbody>
+        <tfoot>
+          <tr class="totals-row">
+            <td class="month-label-cell">Grand Total</td>
+            <td class="num-col days-col">${expenses.length}</td>
+            <td class="num-col good-col">${formatINR(totalExpenses)}</td>
+            <td class="num-col avg-col">100%</td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+    <div class="monthly-table-legend">
+      <span>Share % = Payer Amount ÷ Total Expenses × 100</span>
     </div>
   `;
+}
+
+function renderExpenseRecordsList() {
+  const sorted = [...expenses].sort((a, b) => b.date.localeCompare(a.date));
+  if (sorted.length === 0) {
+    return `<div class="empty-state"><div class="empty-state-icon">📋</div><div class="empty-state-text">No expenses recorded yet.</div></div>`;
+  }
+  return sorted.map(e => `
+    <div class="data-row">
+      <div>
+        <div class="data-row-label">${e.description || e.category}</div>
+        <div class="data-row-sub">
+          ${formatDate(e.date)} ·
+          <span style="background:rgba(139,99,64,0.1);padding:1px 7px;border-radius:20px;">${e.category}</span> ·
+          <span class="payer-badge payer-${(e.paidBy||'sales').toLowerCase()}">${e.paidBy || 'Sales'}</span>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;">
+        <div class="data-row-amount expense">${formatINR(e.total)}</div>
+        <button class="btn btn-danger" onclick="deleteExpense('${e.id}')">✕</button>
+      </div>
+    </div>`).join('');
+}
+
+function setExpTab(tab) {
+  window._expTab = tab;
+  render();
 }
 
 function saveExpense() {
   const date     = document.getElementById('exp-date')?.value;
   const amount   = document.getElementById('exp-amount')?.value;
   const category = document.getElementById('exp-category')?.value;
+  const paidBy   = document.getElementById('exp-paidby')?.value;
   const desc     = document.getElementById('exp-desc')?.value?.trim();
 
   if (!date || !amount) { toast('Date and Amount are required.', 'error'); return; }
 
-  expenses.push({ id: uid(), date, category: category||'Other', description: desc||'', amount: parseFloat(amount)||0, total: parseFloat(amount)||0 });
+  expenses.push({ id: uid(), date, category: category||'Other', paidBy: paidBy||'Sales', description: desc||'', amount: parseFloat(amount)||0, total: parseFloat(amount)||0 });
   save();
   toast('Expense recorded!', 'success');
   render();

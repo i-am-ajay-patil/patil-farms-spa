@@ -220,6 +220,9 @@ function getMetrics() {
     ? totalExpenses / (currentLiveBirds * daysElapsed)
     : 0;
 
+  // Average per-egg sale rate = total egg sales revenue / total eggs sold
+  const avgEggRate = totalEggsSold > 0 ? totalEggSalesRevenue / totalEggsSold : 0;
+
   return {
     currentEggInventory,
     totalSalesRevenue,
@@ -227,7 +230,9 @@ function getMetrics() {
     costPerBird,
     currentLiveBirds,
     totalExpenses,
-    daysElapsed
+    daysElapsed,
+    avgEggRate,
+    totalEggsSold
   };
 }
 
@@ -316,15 +321,8 @@ function renderHome() {
         : 'Configure your farm to begin tracking'}
     </p>
 
-    <!-- Metrics Grid -->
-    <div class="grid grid-cols-2 gap-3 mb-4">
-      <div class="metric-card green">
-        <div class="metric-icon">🥚</div>
-        <div class="metric-label">Egg Inventory</div>
-        <div class="metric-value">${m.currentEggInventory.toLocaleString()}</div>
-        <div class="metric-sub">eggs · ${(m.currentEggInventory / 30).toFixed(1)} trays</div>
-      </div>
-
+    <!-- Metrics Row 1: Total Sales + Cash in Hand -->
+    <div class="grid grid-cols-2 gap-3 mb-3">
       <div class="metric-card yolk">
         <div class="metric-icon">💰</div>
         <div class="metric-label">Total Sales</div>
@@ -340,12 +338,29 @@ function renderHome() {
         </div>
         <div class="metric-sub">revenue – expenses</div>
       </div>
+    </div>
 
-      <div class="metric-card earth">
-        <div class="metric-icon">🐔</div>
-        <div class="metric-label">Cost / Bird</div>
-        <div class="metric-value" style="font-size:20px;">${formatINR(m.costPerBird)}</div>
-        <div class="metric-sub">per bird per day</div>
+    <!-- Metrics Row 2: Egg Inventory + Avg Egg Rate + Cost/Bird/Day -->
+    <div class="grid grid-cols-3 gap-3 mb-4">
+      <div class="metric-card green" style="padding:14px 12px;">
+        <div class="metric-icon" style="font-size:22px;">🥚</div>
+        <div class="metric-label">Inventory</div>
+        <div class="metric-value" style="font-size:18px;">${m.currentEggInventory.toLocaleString()}</div>
+        <div class="metric-sub">${(m.currentEggInventory / 30).toFixed(1)} trays</div>
+      </div>
+
+      <div class="metric-card sprout" style="padding:14px 12px;">
+        <div class="metric-icon" style="font-size:22px;">📈</div>
+        <div class="metric-label">Avg/Egg</div>
+        <div class="metric-value" style="font-size:18px;">${formatINR(m.avgEggRate)}</div>
+        <div class="metric-sub">${m.totalEggsSold.toLocaleString()} sold</div>
+      </div>
+
+      <div class="metric-card earth" style="padding:14px 12px;">
+        <div class="metric-icon" style="font-size:22px;">🐔</div>
+        <div class="metric-label">Cost/Bird</div>
+        <div class="metric-value" style="font-size:18px;">${formatINR(m.costPerBird)}</div>
+        <div class="metric-sub">per day</div>
       </div>
     </div>
 

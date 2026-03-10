@@ -495,9 +495,165 @@ body {
   animation: fadeSlideUp 0.3s ease forwards;
 }
 
+/* --- Payer Badges --- */
+.payer-badge {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 2px 8px;
+  border-radius: 20px;
+  text-transform: uppercase;
+}
+
+.payer-badge.payer-sales  { background: rgba(45,106,79,0.12);  color: var(--grove); }
+.payer-badge.payer-ajay   { background: rgba(244,162,97,0.18); color: #b05a10; }
+.payer-badge.payer-shivu  { background: rgba(92,61,30,0.12);   color: var(--bark); }
+
+/* --- Percentage Bar (Payer Summary) --- */
+.pct-bar-wrap {
+  width: 48px;
+  height: 6px;
+  background: var(--parchment);
+  border-radius: 4px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.pct-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--grove), var(--sprout));
+  border-radius: 4px;
+  transition: width 0.4s ease;
+  min-width: 2px;
+}
+
+.tab-btn.compact { font-size: 11px; padding: 9px 8px; }
+
+/* --- Monthly Production Table --- */
+.monthly-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.monthly-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  min-width: 340px;
+}
+
+.monthly-table thead tr {
+  background: linear-gradient(135deg, var(--grove), var(--leaf));
+}
+
+.monthly-table thead th {
+  padding: 11px 10px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: white;
+  white-space: nowrap;
+}
+
+.monthly-table thead th:first-child {
+  text-align: left;
+  padding-left: 16px;
+  border-radius: 0;
+}
+
+.monthly-table .num-col {
+  text-align: right;
+  padding-right: 12px;
+}
+
+.monthly-table tbody td {
+  padding: 11px 10px;
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  vertical-align: middle;
+  border-bottom: 1px solid rgba(237,228,211,0.5);
+}
+
+.monthly-table tbody td:first-child {
+  padding-left: 16px;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--bark);
+}
+
+.monthly-table .row-even { background: white; }
+.monthly-table .row-odd  { background: rgba(249,244,236,0.6); }
+
+.monthly-table .row-even:hover,
+.monthly-table .row-odd:hover {
+  background: rgba(116,198,157,0.08);
+  transition: background 0.15s;
+}
+
+.monthly-table .month-label-cell {
+  white-space: nowrap;
+}
+
+.monthly-table .good-col    { color: var(--grove);  font-weight: 600; }
+.monthly-table .damaged-col { color: var(--rust);   font-weight: 500; }
+.monthly-table .tray-col    { color: var(--earth);  font-weight: 600; }
+.monthly-table .avg-col     { color: var(--bark);   font-weight: 500; }
+.monthly-table .days-col    { color: var(--earth);  }
+
+/* Grand Total / Tfoot Row */
+.monthly-table tfoot .totals-row {
+  background: linear-gradient(135deg, rgba(45,106,79,0.08), rgba(64,145,108,0.05));
+  border-top: 2px solid var(--leaf);
+}
+
+.monthly-table tfoot .totals-row td {
+  padding: 12px 10px;
+  font-weight: 700;
+  font-size: 13px;
+  border-bottom: none;
+  color: var(--bark);
+}
+
+.monthly-table tfoot .totals-row td:first-child {
+  padding-left: 16px;
+  font-family: 'Playfair Display', serif;
+  font-size: 13px;
+  color: var(--bark);
+}
+
+.monthly-table tfoot .totals-row .good-col    { color: var(--grove); }
+.monthly-table tfoot .totals-row .damaged-col { color: var(--rust);  }
+.monthly-table tfoot .totals-row .tray-col    { color: var(--earth); }
+
+/* Legend below table */
+.monthly-table-legend {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  font-size: 10px;
+  color: var(--earth);
+  font-family: 'DM Mono', monospace;
+  background: rgba(237,228,211,0.3);
+  border-top: 1px solid rgba(237,228,211,0.6);
+  flex-wrap: wrap;
+}
+
 /* --- Responsive --- */
 @media (max-width: 360px) {
   .metric-value { font-size: 22px; }
   .nav-label { display: none; }
   .nav-btn { min-width: 44px; }
+}
+
+@media (max-width: 400px) {
+  .monthly-table { min-width: 300px; }
+  .monthly-table thead th,
+  .monthly-table tbody td { padding: 9px 7px; font-size: 11px; }
+  .monthly-table tbody td:first-child { font-size: 12px; }
 }

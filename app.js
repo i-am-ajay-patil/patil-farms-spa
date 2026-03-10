@@ -1467,6 +1467,7 @@ function confirmClearData() {
     otherSales     = [];
     expenses       = [];
     save();
+    DB.set('dataVersion', '');
     toast('All data cleared.', 'error');
     render();
   }

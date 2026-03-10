@@ -1,5 +1,5 @@
 {
-"dataVersion": "2025-06-01.1",
+"dataVersion": "2026-03-11.1",
 "exportedAt": "2026-03-10T16:54:46.284Z",
   "farmConfig": {
     "arrivalDate": "2025-10-12",
@@ -154,6 +154,9 @@
 "expenses": [
   { "category": "Feed", "date": "2025-10-15", "amount": 92750, "total": 92750, "description": "Feed", "paidBy": "Ajay" },
   { "category": "Transport", "date": "2025-10-15", "amount": 3500, "total": 3500, "description": "Feed transport", "paidBy": "Shivu" },
+  { "category": "Other", "date": "2025-10-18", "amount": 160000, "total": 160000, "description": "Birds cost (240*2700)", "paidBy": "Ajay" },
+  { "category": "Other", "date": "2025-10-18", "amount": 488000, "total": 488000, "description": "Birds cost (240*2700)", "paidBy": "Shivu" },
+  { "category": "Transport", "date": "2025-10-18", "amount": 17500, "total": 17500, "description": "Birds transport", "paidBy": "Shivu" },
   { "category": "Medicine", "date": "2025-10-18", "amount": 6250, "total": 6250, "description": "Medicine", "paidBy": "Shivu" },
   { "category": "Feed", "date": "2025-11-03", "amount": 50000, "total": 50000, "description": "Feed", "paidBy": "Ajay" },
   { "category": "Feed", "date": "2025-11-03", "amount": 42750, "total": 42750, "description": "Feed", "paidBy": "Shivu" },

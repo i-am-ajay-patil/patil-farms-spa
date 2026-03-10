@@ -27,11 +27,12 @@ const DB = {
 };
 
 // ─── State ────────────────────────────────────────────────────
-let farmConfig    = DB.get('farmConfig', { arrivalDate: '', initialBirdCount: 0 });
+// Loaded initially from localStorage; re-seeded from data.json on version mismatch.
+let farmConfig     = DB.get('farmConfig',     { arrivalDate: '', initialBirdCount: 0 });
 let productionData = DB.get('productionData', []);
-let eggSales      = DB.get('eggSales', []);
-let otherSales    = DB.get('otherSales', []);
-let expenses      = DB.get('expenses', []);
+let eggSales       = DB.get('eggSales',       []);
+let otherSales     = DB.get('otherSales',     []);
+let expenses       = DB.get('expenses',       []);
 
 function save() {
   DB.set('farmConfig', farmConfig);
@@ -1409,7 +1410,8 @@ function saveFarmConfig() {
 
 function exportData() {
   const data = {
-    exportedAt: new Date().toISOString(),
+    dataVersion:   DB.get('dataVersion', ''),
+    exportedAt:    new Date().toISOString(),
     farmConfig,
     productionData,
     eggSales,
@@ -1471,12 +1473,56 @@ function confirmClearData() {
 }
 
 // ═══════════════════════════════════════════════════════════════
-// INIT
+// INIT — Versioned seed from data.json
 // ═══════════════════════════════════════════════════════════════
-window.addEventListener('DOMContentLoaded', () => {
+
+/*
+  Seeding strategy:
+  - data.json must contain a top-level "dataVersion" string (e.g. "2025-06-01.1").
+  - localStorage stores the last-seeded version under key 'dataVersion'.
+  - On every page load we fetch data.json and compare versions.
+  - If versions match  → use existing localStorage (user's local edits preserved).
+  - If versions differ → wipe localStorage and re-seed from data.json, then render.
+  - On fetch failure   → fall back to whatever is already in localStorage and render.
+*/
+async function initApp() {
   if (!window.location.hash) window.location.hash = '#/home';
+
+  try {
+    // Cache-busting via timestamp so GitHub Pages CDN doesn't serve stale JSON
+    const res  = await fetch(`./data.json?v=${Date.now()}`);
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const data = await res.json();
+
+    const remoteVersion = data.dataVersion || '';
+    const localVersion  = DB.get('dataVersion', '');
+
+    if (remoteVersion && remoteVersion !== localVersion) {
+      // ── Version mismatch: wipe and re-seed ──────────────────
+      console.info(`[Patil Farms] Data version changed (${localVersion || 'none'} → ${remoteVersion}). Re-seeding.`);
+
+      farmConfig     = data.farmConfig     || { arrivalDate: '', initialBirdCount: 0 };
+      productionData = data.productionData || [];
+      eggSales       = data.eggSales       || [];
+      otherSales     = data.otherSales     || [];
+      expenses       = data.expenses       || [];
+
+      // Persist seeded data and record the version we just loaded
+      save();
+      DB.set('dataVersion', remoteVersion);
+
+      toast(`Data updated to version ${remoteVersion}`, 'info');
+    }
+    // ── Version matches: nothing to do, localStorage is current ─
+  } catch (err) {
+    // Network offline, file missing, or parse error — use existing localStorage silently
+    console.warn('[Patil Farms] Could not fetch data.json, using local data.', err.message);
+  }
+
   render();
-});
+}
+
+window.addEventListener('DOMContentLoaded', initApp);
 
 window.onresize = () => {
   if (getCurrentRoute() === '#/home') drawProductionChart();

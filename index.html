@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <title>Patil Farms — Layer Poultry</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cream: '#F9F4EC',
+            parchment: '#EDE4D3',
+            earth: '#8B6340',
+            bark: '#5C3D1E',
+            grove: '#2D6A4F',
+            leaf: '#40916C',
+            sprout: '#74C69D',
+            yolk: '#F4A261',
+            rust: '#C85B2E',
+            ink: '#1B2415',
+          },
+          fontFamily: {
+            display: ['"Playfair Display"', 'serif'],
+            body: ['"DM Sans"', 'sans-serif'],
+            mono: ['"DM Mono"', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-cream font-body text-ink min-h-screen pb-20">
+
+  <!-- Header -->
+  <header class="app-header sticky top-0 z-40 px-4 py-3 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="logo-mark">🥚</div>
+      <div>
+        <h1 class="font-display text-lg leading-tight text-bark">Patil Farms</h1>
+        <p class="text-xs text-earth font-mono" id="header-subtitle">Layer Poultry</p>
+      </div>
+    </div>
+    <div class="flex items-center gap-2">
+      <div class="day-badge" id="day-badge">Day —</div>
+    </div>
+  </header>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="toast-container" aria-live="polite"></div>
+
+  <!-- Main Content -->
+  <main id="app-content" class="px-4 pt-4 pb-4 max-w-2xl mx-auto">
+    <!-- Views injected by JS -->
+  </main>
+
+  <!-- Bottom Navigation -->
+  <nav class="bottom-nav fixed bottom-0 left-0 right-0 z-40">
+    <div class="nav-inner max-w-2xl mx-auto flex items-center justify-around py-2 px-2">
+      <button class="nav-btn" data-route="#/home" onclick="navigate('#/home')">
+        <span class="nav-icon">🏠</span>
+        <span class="nav-label">Dashboard</span>
+      </button>
+      <button class="nav-btn" data-route="#/production" onclick="navigate('#/production')">
+        <span class="nav-icon">🥚</span>
+        <span class="nav-label">Production</span>
+      </button>
+      <button class="nav-btn" data-route="#/sales" onclick="navigate('#/sales')">
+        <span class="nav-icon">💰</span>
+        <span class="nav-label">Sales</span>
+      </button>
+      <button class="nav-btn" data-route="#/expenses" onclick="navigate('#/expenses')">
+        <span class="nav-icon">📋</span>
+        <span class="nav-label">Expenses</span>
+      </button>
+      <button class="nav-btn" data-route="#/settings" onclick="navigate('#/settings')">
+        <span class="nav-icon">⚙️</span>
+        <span class="nav-label">Settings</span>
+      </button>
+    </div>
+  </nav>
+
+  <script src="app.js"></script>
+</body>
+</html>

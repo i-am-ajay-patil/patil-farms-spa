@@ -1,8 +1,8 @@
 {
-  "dataVersion": "2026-03-11.1",
+  "dataVersion": "2026-03-11.2",
   "exportedAt": "2026-03-10T16:54:46.284Z",
   "farmConfig": {
-    "arrivalDate": "2025-10-12",
+    "arrivalDate": "2025-10-18",
     "initialBirdCount": 2700
   },
   "productionData": [

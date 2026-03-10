@@ -129,10 +129,11 @@ body {
   opacity: 0.08;
 }
 
-.metric-card.green::before { background: var(--grove); }
-.metric-card.yolk::before { background: var(--yolk); }
-.metric-card.rust::before { background: var(--rust); }
-.metric-card.earth::before { background: var(--earth); }
+.metric-card.green::before  { background: var(--grove); }
+.metric-card.yolk::before   { background: var(--yolk); }
+.metric-card.rust::before   { background: var(--rust); }
+.metric-card.earth::before  { background: var(--earth); }
+.metric-card.sprout::before { background: var(--sprout); }
 
 .metric-icon {
   font-size: 28px;
@@ -701,7 +702,13 @@ body {
   flex-wrap: wrap;
 }
 
-/* --- Responsive --- */
+/* --- 3-column metric grid --- */
+.grid-cols-3-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
 @media (max-width: 360px) {
   .metric-value { font-size: 22px; }
   .nav-label { display: none; }

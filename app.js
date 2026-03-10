@@ -26,7 +26,100 @@ const DB = {
   }
 };
 
-// ─── State ────────────────────────────────────────────────────
+// ─── Authentication ───────────────────────────────────────────
+/*
+  Password is stored as a SHA-256 hex digest — never in plain text.
+  To change the password:
+    1. Run: echo -n "YourNewPassword" | sha256sum
+    2. Replace the PASSWORD_HASH value below with the output.
+  Default password: Patil@1234
+*/
+const PASSWORD_HASH = 'de89a40fe333f906b3d7f2b4c8cd837e8fe166523a11fed5ac83d7ccfa0e9642';
+const AUTH_KEY      = 'pf_authed'; // sessionStorage key — clears on tab/browser close
+
+async function hashPassword(plain) {
+  const buf    = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(plain));
+  return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
+}
+
+function isAuthed() {
+  return sessionStorage.getItem(AUTH_KEY) === 'true';
+}
+
+function lockApp() {
+  sessionStorage.removeItem(AUTH_KEY);
+  renderAuthGate();
+}
+
+function renderAuthGate() {
+  document.getElementById('app-content').innerHTML = '';
+  // Hide bottom nav while locked
+  document.querySelector('.bottom-nav').style.display = 'none';
+
+  const gate = document.getElementById('auth-gate');
+  if (gate) { gate.style.display = 'flex'; return; }
+
+  const el = document.createElement('div');
+  el.id = 'auth-gate';
+  el.innerHTML = `
+    <div class="auth-card">
+      <div class="auth-logo">🥚</div>
+      <h1 class="auth-title">Patil Farms</h1>
+      <p class="auth-subtitle">Layer Poultry Management</p>
+      <div class="field-group" style="margin-bottom:16px;">
+        <label class="field-label">Password</label>
+        <input
+          type="password"
+          id="auth-password"
+          class="field-input"
+          placeholder="Enter password..."
+          onkeydown="if(event.key==='Enter') submitPassword()"
+          autocomplete="current-password"
+        />
+        <div id="auth-error" class="auth-error" style="display:none;">
+          ✕ Incorrect password. Please try again.
+        </div>
+      </div>
+      <button class="btn btn-primary btn-full" onclick="submitPassword()">
+        🔓 Unlock
+      </button>
+    </div>
+  `;
+  document.body.appendChild(el);
+  setTimeout(() => document.getElementById('auth-password')?.focus(), 100);
+}
+
+async function submitPassword() {
+  const input = document.getElementById('auth-password');
+  const error = document.getElementById('auth-error');
+  const btn   = document.querySelector('#auth-gate .btn-primary');
+  if (!input) return;
+
+  const val = input.value;
+  if (!val) { input.focus(); return; }
+
+  // Disable button during hashing to prevent double-submit
+  btn.disabled = true;
+  btn.textContent = 'Checking…';
+
+  const hash = await hashPassword(val);
+
+  if (hash === PASSWORD_HASH) {
+    sessionStorage.setItem(AUTH_KEY, 'true');
+    const gate = document.getElementById('auth-gate');
+    if (gate) gate.style.display = 'none';
+    document.querySelector('.bottom-nav').style.display = '';
+    await initApp();
+  } else {
+    error.style.display = 'block';
+    input.value = '';
+    input.focus();
+    btn.disabled = false;
+    btn.textContent = '🔓 Unlock';
+  }
+}
+
+
 // Loaded initially from localStorage; re-seeded from data.json on version mismatch.
 let farmConfig     = DB.get('farmConfig',     { arrivalDate: '', initialBirdCount: 0 });
 let productionData = DB.get('productionData', []);
@@ -1391,6 +1484,9 @@ function renderSettings() {
         <button class="btn btn-full" style="background:rgba(200,91,46,0.1);color:var(--rust);border:1.5px solid rgba(200,91,46,0.3);" onclick="confirmClearData()">
           🗑️ Clear All Data
         </button>
+        <button class="btn btn-full" style="background:rgba(92,61,30,0.08);color:var(--bark);border:1.5px solid rgba(92,61,30,0.2);" onclick="lockApp()">
+          🔒 Lock App
+        </button>
       </div>
     </div>
   `;
@@ -1523,7 +1619,13 @@ async function initApp() {
   render();
 }
 
-window.addEventListener('DOMContentLoaded', initApp);
+window.addEventListener('DOMContentLoaded', () => {
+  if (isAuthed()) {
+    initApp();
+  } else {
+    renderAuthGate();
+  }
+});
 
 window.onresize = () => {
   if (getCurrentRoute() === '#/home') drawProductionChart();

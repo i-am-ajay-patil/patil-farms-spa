@@ -1,388 +1,2651 @@
 {
-"dataVersion": "2026-03-11.1",
-"exportedAt": "2026-03-10T16:54:46.284Z",
+  "dataVersion": "2026-03-11.1",
+  "exportedAt": "2026-03-10T16:54:46.284Z",
   "farmConfig": {
     "arrivalDate": "2025-10-12",
     "initialBirdCount": 2700
   },
   "productionData": [
-  { "date": "2025-10-18", "goodEggs": 0, "damagedEggs": 0, "liveBirds": 2698, "medicine": "" },
-  { "date": "2025-10-19", "goodEggs": 0, "damagedEggs": 0, "liveBirds": 2698, "medicine": "" },
-  { "date": "2025-10-20", "goodEggs": 0, "damagedEggs": 0, "liveBirds": 2698, "medicine": "" },
-  { "date": "2025-10-21", "goodEggs": 0, "damagedEggs": 0, "liveBirds": 2698, "medicine": "" },
-  { "date": "2025-10-22", "goodEggs": 0, "damagedEggs": 0, "liveBirds": 2698, "medicine": "Ventriplex-M, StressVit-A(B complex) - 500 ml, Vitamin-A - 100 ml" },
-  { "date": "2025-10-23", "goodEggs": 0, "damagedEggs": 0, "liveBirds": 2698, "medicine": "Ventriplex-M, StressVit-A(B complex) - 500 ml, Vitamin-A - 100 ml" },
-  { "date": "2025-10-24", "goodEggs": 0, "damagedEggs": 0, "liveBirds": 2698, "medicine": "" },
-  { "date": "2025-10-25", "goodEggs": 0, "damagedEggs": 0, "liveBirds": 2698, "medicine": "" },
-  { "date": "2025-10-26", "goodEggs": 0, "damagedEggs": 0, "liveBirds": 2698, "medicine": "" },
-  { "date": "2025-10-27", "goodEggs": 0, "damagedEggs": 0, "liveBirds": 2698, "medicine": "Ventriplex-M, StressVit-A(B complex) - 500 ml, Vitamin-A - 100 ml, G-Pro min liquid - 500 ml, Sharkoferrol - 500 ml" },
-  { "date": "2025-10-28", "goodEggs": 0, "damagedEggs": 0, "liveBirds": 2698, "medicine": "Ventriplex-M, StressVit-A(B complex) - 500 ml, Vitamin-A - 100 ml, G-Pro min liquid - 500 ml, Sharkoferrol - 500 ml" },
-  { "date": "2025-10-29", "goodEggs": 0, "damagedEggs": 0, "liveBirds": 2698, "medicine": "" },
-  { "date": "2025-10-30", "goodEggs": 0, "damagedEggs": 0, "liveBirds": 2698, "medicine": "" },
-  { "date": "2025-10-31", "goodEggs": 0, "damagedEggs": 0, "liveBirds": 2698, "medicine": "" },
-  { "date": "2025-11-01", "goodEggs": 0, "damagedEggs": 0, "liveBirds": 2698, "medicine": "" },
-  { "date": "2025-11-02", "goodEggs": 0, "damagedEggs": 0, "liveBirds": 2698, "medicine": "" },
-  { "date": "2025-11-03", "goodEggs": 0, "damagedEggs": 0, "liveBirds": 2698, "medicine": "" },
-  { "date": "2025-11-04", "goodEggs": 0, "damagedEggs": 0, "liveBirds": 2698, "medicine": "" },
-  { "date": "2025-11-05", "goodEggs": 0, "damagedEggs": 0, "liveBirds": 2698, "medicine": "" },
-  { "date": "2025-11-06", "goodEggs": 0, "damagedEggs": 0, "liveBirds": 2698, "medicine": "" },
-  { "date": "2025-11-07", "goodEggs": 0, "damagedEggs": 0, "liveBirds": 2698, "medicine": "G-Pro min liquid - 500 ml, Sharkoferrol - 500 ml" },
-  { "date": "2025-11-08", "goodEggs": 0, "damagedEggs": 0, "liveBirds": 2698, "medicine": "G-Pro min liquid - 500 ml, Sharkoferrol - 500 ml" },
-  { "date": "2025-11-09", "goodEggs": 0, "damagedEggs": 0, "liveBirds": 2698, "medicine": "" },
-  { "date": "2025-11-10", "goodEggs": 0, "damagedEggs": 0, "liveBirds": 2698, "medicine": "" },
-  { "date": "2025-11-11", "goodEggs": 0, "damagedEggs": 0, "liveBirds": 2698, "medicine": "" },
-  { "date": "2025-11-12", "goodEggs": 0, "damagedEggs": 0, "liveBirds": 2698, "medicine": "" },
-  { "date": "2025-11-13", "goodEggs": 0, "damagedEggs": 0, "liveBirds": 2698, "medicine": "" },
-  { "date": "2025-11-14", "goodEggs": 0, "damagedEggs": 0, "liveBirds": 2698, "medicine": "" },
-  { "date": "2025-11-15", "goodEggs": 0, "damagedEggs": 0, "liveBirds": 2698, "medicine": "" },
-  { "date": "2025-11-16", "goodEggs": 0, "damagedEggs": 0, "liveBirds": 2698, "medicine": "" },
-  { "date": "2025-11-17", "goodEggs": 0, "damagedEggs": 0, "liveBirds": 2698, "medicine": "" },
-  { "date": "2025-11-18", "goodEggs": 0, "damagedEggs": 0, "liveBirds": 2698, "medicine": "" },
-  { "date": "2025-11-19", "goodEggs": 0, "damagedEggs": 0, "liveBirds": 2698, "medicine": "" },
-  { "date": "2025-11-20", "goodEggs": 0, "damagedEggs": 0, "liveBirds": 2698, "medicine": "" },
-  { "date": "2025-11-21", "goodEggs": 0, "damagedEggs": 0, "liveBirds": 2698, "medicine": "" },
-  { "date": "2025-11-22", "goodEggs": 0, "damagedEggs": 0, "liveBirds": 2698, "medicine": "Vetpiper - 1.5L" },
-  { "date": "2025-11-23", "goodEggs": 0, "damagedEggs": 0, "liveBirds": 2698, "medicine": "Lasota (IND) - 5000 voil" },
-  { "date": "2025-11-24", "goodEggs": 0, "damagedEggs": 0, "liveBirds": 2698, "medicine": "CAL-D-Plus-DS - 500 ml" },
-  { "date": "2025-11-25", "goodEggs": 0, "damagedEggs": 0, "liveBirds": 2698, "medicine": "CAL-D-Plus-DS - 500 ml" },
-  { "date": "2025-11-26", "goodEggs": 0, "damagedEggs": 0, "liveBirds": 2698, "medicine": "CAL-D-Plus-DS - 500 ml" },
-  { "date": "2025-11-27", "goodEggs": 0, "damagedEggs": 0, "liveBirds": 2698, "medicine": "" },
-  { "date": "2025-11-28", "goodEggs": 0, "damagedEggs": 0, "liveBirds": 2698, "medicine": "" },
-  { "date": "2025-11-29", "goodEggs": 0, "damagedEggs": 0, "liveBirds": 2698, "medicine": "" },
-  { "date": "2025-11-30", "goodEggs": 0, "damagedEggs": 0, "liveBirds": 2698, "medicine": "" },
-  { "date": "2025-12-01", "goodEggs": 0, "damagedEggs": 0, "liveBirds": 2698, "medicine": "" },
-  { "date": "2025-12-02", "goodEggs": 0, "damagedEggs": 0, "liveBirds": 2698, "medicine": "VVND INJECTION 3000 voil" },
-  { "date": "2025-12-03", "goodEggs": 0, "damagedEggs": 0, "liveBirds": 2698, "medicine": "" },
-  { "date": "2025-12-04", "goodEggs": 0, "damagedEggs": 0, "liveBirds": 2698, "medicine": "" },
-  { "date": "2025-12-05", "goodEggs": 0, "damagedEggs": 0, "liveBirds": 2698, "medicine": "" },
-  { "date": "2025-12-06", "goodEggs": 80, "damagedEggs": 0, "liveBirds": 2698, "medicine": "" },
-  { "date": "2025-12-07", "goodEggs": 120, "damagedEggs": 0, "liveBirds": 2698, "medicine": "" },
-  { "date": "2025-12-08", "goodEggs": 161, "damagedEggs": 0, "liveBirds": 2698, "medicine": "" },
-  { "date": "2025-12-09", "goodEggs": 196, "damagedEggs": 0, "liveBirds": 2698, "medicine": "" },
-  { "date": "2025-12-10", "goodEggs": 0, "damagedEggs": 0, "liveBirds": 2698, "medicine": "" },
-  { "date": "2025-12-11", "goodEggs": 296, "damagedEggs": 0, "liveBirds": 2698, "medicine": "" },
-  { "date": "2025-12-12", "goodEggs": 0, "damagedEggs": 0, "liveBirds": 2698, "medicine": "" },
-  { "date": "2025-12-13", "goodEggs": 0, "damagedEggs": 0, "liveBirds": 2698, "medicine": "" },
-  { "date": "2025-12-14", "goodEggs": 0, "damagedEggs": 0, "liveBirds": 2698, "medicine": "Globivac ND plus IB killed injection - 1000 DS (3 units)" },
-  { "date": "2025-12-15", "goodEggs": 0, "damagedEggs": 0, "liveBirds": 2698, "medicine": "" },
-  { "date": "2025-12-16", "goodEggs": 0, "damagedEggs": 0, "liveBirds": 2698, "medicine": "" },
-  { "date": "2025-12-17", "goodEggs": 0, "damagedEggs": 0, "liveBirds": 2698, "medicine": "" },
-  { "date": "2025-12-18", "goodEggs": 0, "damagedEggs": 0, "liveBirds": 2698, "medicine": "" },
-  { "date": "2025-12-19", "goodEggs": 5597, "damagedEggs": 5, "liveBirds": 2698, "medicine": "" },
-  { "date": "2025-12-20", "goodEggs": 1050, "damagedEggs": 5, "liveBirds": 2698, "medicine": "" },
-  { "date": "2025-12-21", "goodEggs": 1170, "damagedEggs": 6, "liveBirds": 2698, "medicine": "" },
-  { "date": "2025-12-22", "goodEggs": 1290, "damagedEggs": 8, "liveBirds": 2698, "medicine": "" },
-  { "date": "2025-12-23", "goodEggs": 1370, "damagedEggs": 10, "liveBirds": 2698, "medicine": "" },
-  { "date": "2025-12-24", "goodEggs": 1500, "damagedEggs": 10, "liveBirds": 2698, "medicine": "" },
-  { "date": "2025-12-25", "goodEggs": 1616, "damagedEggs": 6, "liveBirds": 2698, "medicine": "" },
-  { "date": "2025-12-26", "goodEggs": 1703, "damagedEggs": 2, "liveBirds": 2698, "medicine": "" },
-  { "date": "2025-12-27", "goodEggs": 1798, "damagedEggs": 5, "liveBirds": 2698, "medicine": "" },
-  { "date": "2025-12-28", "goodEggs": 1890, "damagedEggs": 6, "liveBirds": 2698, "medicine": "" },
-  { "date": "2025-12-29", "goodEggs": 1920, "damagedEggs": 4, "liveBirds": 2698, "medicine": "" },
-  { "date": "2025-12-30", "goodEggs": 2010, "damagedEggs": 17, "liveBirds": 2697, "medicine": "" },
-  { "date": "2025-12-31", "goodEggs": 2070, "damagedEggs": 7, "liveBirds": 2697, "medicine": "" },
-  { "date": "2026-01-01", "goodEggs": 2120, "damagedEggs": 4, "liveBirds": 2697, "medicine": "" },
-  { "date": "2026-01-02", "goodEggs": 2180, "damagedEggs": 5, "liveBirds": 2697, "medicine": "" },
-  { "date": "2026-01-03", "goodEggs": 2190, "damagedEggs": 3, "liveBirds": 2697, "medicine": "" },
-  { "date": "2026-01-04", "goodEggs": 2220, "damagedEggs": 9, "liveBirds": 2697, "medicine": "" },
-  { "date": "2026-01-05", "goodEggs": 2250, "damagedEggs": 1, "liveBirds": 2697, "medicine": "" },
-  { "date": "2026-01-06", "goodEggs": 2270, "damagedEggs": 8, "liveBirds": 2696, "medicine": "" },
-  { "date": "2026-01-07", "goodEggs": 2310, "damagedEggs": 9, "liveBirds": 2696, "medicine": "" },
-  { "date": "2026-01-08", "goodEggs": 2310, "damagedEggs": 9, "liveBirds": 2696, "medicine": "" },
-  { "date": "2026-01-09", "goodEggs": 2280, "damagedEggs": 5, "liveBirds": 2696, "medicine": "" },
-  { "date": "2026-01-10", "goodEggs": 2281, "damagedEggs": 4, "liveBirds": 2692, "medicine": "" },
-  { "date": "2026-01-11", "goodEggs": 2370, "damagedEggs": 5, "liveBirds": 2692, "medicine": "" },
-  { "date": "2026-01-12", "goodEggs": 2355, "damagedEggs": 4, "liveBirds": 2692, "medicine": "" },
-  { "date": "2026-01-13", "goodEggs": 2337, "damagedEggs": 14, "liveBirds": 2692, "medicine": "" },
-  { "date": "2026-01-14", "goodEggs": 2340, "damagedEggs": 15, "liveBirds": 2689, "medicine": "" },
-  { "date": "2026-01-15", "goodEggs": 2390, "damagedEggs": 12, "liveBirds": 2689, "medicine": "" },
-  { "date": "2026-01-16", "goodEggs": 2370, "damagedEggs": 6, "liveBirds": 2688, "medicine": "" },
-  { "date": "2026-01-17", "goodEggs": 2388, "damagedEggs": 5, "liveBirds": 2689, "medicine": "" },
-  { "date": "2026-01-18", "goodEggs": 2400, "damagedEggs": 7, "liveBirds": 2689, "medicine": "" },
-  { "date": "2026-01-19", "goodEggs": 2380, "damagedEggs": 5, "liveBirds": 2689, "medicine": "" },
-  { "date": "2026-01-20", "goodEggs": 2415, "damagedEggs": 5, "liveBirds": 2685, "medicine": "" },
-  { "date": "2026-01-21", "goodEggs": 2400, "damagedEggs": 5, "liveBirds": 2685, "medicine": "" },
-  { "date": "2026-01-22", "goodEggs": 2350, "damagedEggs": 2, "liveBirds": 2684, "medicine": "" },
-  { "date": "2026-01-23", "goodEggs": 2440, "damagedEggs": 5, "liveBirds": 2684, "medicine": "" },
-  { "date": "2026-01-24", "goodEggs": 2400, "damagedEggs": 10, "liveBirds": 2683, "medicine": "" },
-  { "date": "2026-01-25", "goodEggs": 2405, "damagedEggs": 1, "liveBirds": 2683, "medicine": "" },
-  { "date": "2026-01-26", "goodEggs": 2380, "damagedEggs": 35, "liveBirds": 2682, "medicine": "" },
-  { "date": "2026-01-27", "goodEggs": 2420, "damagedEggs": 7, "liveBirds": 2683, "medicine": "" },
-  { "date": "2026-01-28", "goodEggs": 2425, "damagedEggs": 10, "liveBirds": 2680, "medicine": "" },
-  { "date": "2026-01-29", "goodEggs": 2440, "damagedEggs": 10, "liveBirds": 2680, "medicine": "" },
-  { "date": "2026-01-30", "goodEggs": 2440, "damagedEggs": 25, "liveBirds": 2680, "medicine": "" },
-  { "date": "2026-01-31", "goodEggs": 2455, "damagedEggs": 8, "liveBirds": 2679, "medicine": "" },
-  { "date": "2026-02-01", "goodEggs": 2480, "damagedEggs": 9, "liveBirds": 2678, "medicine": "" },
-  { "date": "2026-02-02", "goodEggs": 2420, "damagedEggs": 20, "liveBirds": 2677, "medicine": "" },
-  { "date": "2026-02-03", "goodEggs": 2465, "damagedEggs": 20, "liveBirds": 2677, "medicine": "" },
-  { "date": "2026-02-04", "goodEggs": 2415, "damagedEggs": 20, "liveBirds": 2676, "medicine": "" },
-  { "date": "2026-02-05", "goodEggs": 2455, "damagedEggs": 21, "liveBirds": 2676, "medicine": "" },
-  { "date": "2026-02-06", "goodEggs": 2468, "damagedEggs": 12, "liveBirds": 2676, "medicine": "" },
-  { "date": "2026-02-07", "goodEggs": 2470, "damagedEggs": 25, "liveBirds": 2676, "medicine": "" },
-  { "date": "2026-02-08", "goodEggs": 2450, "damagedEggs": 20, "liveBirds": 2676, "medicine": "" },
-  { "date": "2026-02-09", "goodEggs": 2442, "damagedEggs": 20, "liveBirds": 2674, "medicine": "" },
-  { "date": "2026-02-10", "goodEggs": 2430, "damagedEggs": 28, "liveBirds": 2674, "medicine": "" },
-  { "date": "2026-02-11", "goodEggs": 2430, "damagedEggs": 25, "liveBirds": 2674, "medicine": "" },
-  { "date": "2026-02-12", "goodEggs": 2464, "damagedEggs": 4, "liveBirds": 2674, "medicine": "" },
-  { "date": "2026-02-13", "goodEggs": 2465, "damagedEggs": 3, "liveBirds": 2674, "medicine": "" },
-  { "date": "2026-02-14", "goodEggs": 2465, "damagedEggs": 4, "liveBirds": 2674, "medicine": "" },
-  { "date": "2026-02-15", "goodEggs": 2437, "damagedEggs": 8, "liveBirds": 2674, "medicine": "" },
-  { "date": "2026-02-16", "goodEggs": 2425, "damagedEggs": 10, "liveBirds": 2674, "medicine": "" },
-  { "date": "2026-02-17", "goodEggs": 2445, "damagedEggs": 15, "liveBirds": 2674, "medicine": "" },
-  { "date": "2026-02-18", "goodEggs": 2445, "damagedEggs": 5, "liveBirds": 2674, "medicine": "stanmisole vet powder - 300g" },
-  { "date": "2026-02-19", "goodEggs": 2447, "damagedEggs": 13, "liveBirds": 2674, "medicine": "antitox plus - 650 ml" },
-  { "date": "2026-02-20", "goodEggs": 2406, "damagedEggs": 12, "liveBirds": 2672, "medicine": "antitox plus - 650 ml" },
-  { "date": "2026-02-21", "goodEggs": 2463, "damagedEggs": 4, "liveBirds": 2672, "medicine": "antitox plus - 700 ml" },
-  { "date": "2026-02-22", "goodEggs": 2445, "damagedEggs": 5, "liveBirds": 2672, "medicine": "" },
-  { "date": "2026-02-23", "goodEggs": 2444, "damagedEggs": 6, "liveBirds": 2672, "medicine": "Lasota" },
-  { "date": "2026-02-24", "goodEggs": 2475, "damagedEggs": 5, "liveBirds": 2672, "medicine": "" },
-  { "date": "2026-02-25", "goodEggs": 2453, "damagedEggs": 7, "liveBirds": 2672, "medicine": "" },
-  { "date": "2026-02-26", "goodEggs": 2444, "damagedEggs": 6, "liveBirds": 2672, "medicine": "" },
-  { "date": "2026-02-27", "goodEggs": 2425, "damagedEggs": 6, "liveBirds": 2671, "medicine": "" },
-  { "date": "2026-02-28", "goodEggs": 2340, "damagedEggs": 10, "liveBirds": 2671, "medicine": "" },
-  { "date": "2026-03-01", "goodEggs": 2420, "damagedEggs": 7, "liveBirds": 2671, "medicine": "" },
-  { "date": "2026-03-02", "goodEggs": 2375, "damagedEggs": 5, "liveBirds": 2671, "medicine": "" },
-  { "date": "2026-03-03", "goodEggs": 2420, "damagedEggs": 5, "liveBirds": 2671, "medicine": "" },
-  { "date": "2026-03-04", "goodEggs": 2395, "damagedEggs": 2, "liveBirds": 2671, "medicine": "" },
-  { "date": "2026-03-05", "goodEggs": 2397, "damagedEggs": 4, "liveBirds": 2670, "medicine": "" },
-  { "date": "2026-03-06", "goodEggs": 2360, "damagedEggs": 5, "liveBirds": 2669, "medicine": "" },
-  { "date": "2026-03-07", "goodEggs": 2370, "damagedEggs": 5, "liveBirds": 2671, "medicine": "" },
-  { "date": "2026-03-08", "goodEggs": 2365, "damagedEggs": 5, "liveBirds": 2671, "medicine": "" },
-  { "date": "2026-03-09", "goodEggs": 2370, "damagedEggs": 10, "liveBirds": 2671, "medicine": "" },
-  { "date": "2026-03-10", "goodEggs": 2358, "damagedEggs": 5, "liveBirds": 2671, "medicine": "" }
-],
-"expenses": [
-  { "category": "Feed", "date": "2025-10-15", "amount": 92750, "total": 92750, "description": "Feed", "paidBy": "Ajay" },
-  { "category": "Transport", "date": "2025-10-15", "amount": 3500, "total": 3500, "description": "Feed transport", "paidBy": "Shivu" },
-  { "category": "Other", "date": "2025-10-18", "amount": 160000, "total": 160000, "description": "Birds cost (240*2700)", "paidBy": "Ajay" },
-  { "category": "Other", "date": "2025-10-18", "amount": 488000, "total": 488000, "description": "Birds cost (240*2700)", "paidBy": "Shivu" },
-  { "category": "Transport", "date": "2025-10-18", "amount": 17500, "total": 17500, "description": "Birds transport", "paidBy": "Shivu" },
-  { "category": "Medicine", "date": "2025-10-18", "amount": 6250, "total": 6250, "description": "Medicine", "paidBy": "Shivu" },
-  { "category": "Feed", "date": "2025-11-03", "amount": 50000, "total": 50000, "description": "Feed", "paidBy": "Ajay" },
-  { "category": "Feed", "date": "2025-11-03", "amount": 42750, "total": 42750, "description": "Feed", "paidBy": "Shivu" },
-  { "category": "Transport", "date": "2025-11-03", "amount": 3500, "total": 3500, "description": "Feed transport", "paidBy": "Shivu" },
-  { "category": "Medicine", "date": "2025-11-08", "amount": 3000, "total": 3000, "description": "Medicine", "paidBy": "Shivu" },
-  { "category": "Feed", "date": "2025-11-20", "amount": 115750, "total": 115750, "description": "Feed", "paidBy": "Ajay" },
-  { "category": "Transport", "date": "2025-11-20", "amount": 4000, "total": 4000, "description": "Feed transport", "paidBy": "Shivu" },
-  { "category": "Medicine", "date": "2025-11-20", "amount": 15190, "total": 15190, "description": "Medicine", "paidBy": "Shivu" },
-  { "category": "Other", "date": "2025-12-01", "amount": 12500, "total": 12500, "description": "tray purchase", "paidBy": "Ajay" },
-  { "category": "Medicine", "date": "2025-12-01", "amount": 4350, "total": 4350, "description": "Medicine", "paidBy": "Ajay" },
-  { "category": "Feed", "date": "2025-12-06", "amount": 117000, "total": 117000, "description": "Feed", "paidBy": "Ajay" },
-  { "category": "Transport", "date": "2025-12-07", "amount": 4500, "total": 4500, "description": "Feed transport", "paidBy": "Shivu" },
-  { "category": "Medicine", "date": "2025-12-02", "amount": 1500, "total": 1500, "description": "VVND injection", "paidBy": "Shivu" },
-  { "category": "Medicine", "date": "2025-12-14", "amount": 1500, "total": 1500, "description": "ND killed injection", "paidBy": "Shivu" },
-  { "category": "Feed", "date": "2025-12-24", "amount": 80000, "total": 80000, "description": "Feed", "paidBy": "Ajay" },
-  { "category": "Feed", "date": "2025-12-24", "amount": 50000, "total": 50000, "description": "Feed", "paidBy": "Shivu" },
-  { "category": "Transport", "date": "2025-12-24", "amount": 5000, "total": 5000, "description": "Feed transport", "paidBy": "Shivu" },
-  { "category": "Equipment", "date": "2026-01-05", "amount": 399, "total": 399, "description": "weighing machine", "paidBy": "Ajay" },
-  { "category": "Labour", "date": "2026-01-08", "amount": 5000, "total": 5000, "description": "Labour cost Oct", "paidBy": "Shivu" },
-  { "category": "Labour", "date": "2026-01-08", "amount": 10000, "total": 10000, "description": "Labour cost Nov", "paidBy": "Shivu" },
-  { "category": "Labour", "date": "2026-01-08", "amount": 10000, "total": 10000, "description": "Labour cost Dec", "paidBy": "Shivu" },
-  { "category": "Labour", "date": "2026-01-08", "amount": 12000, "total": 12000, "description": "Labour cost Jan", "paidBy": "Sales" },
-  { "category": "Equipment", "date": "2026-01-08", "amount": 6000, "total": 6000, "description": "Fabrication cost - table, water tank", "paidBy": "Shivu" },
-  { "category": "Feed", "date": "2026-01-09", "amount": 130000, "total": 130000, "description": "Feed cost", "paidBy": "Sales" },
-  { "category": "Transport", "date": "2026-01-09", "amount": 4500, "total": 4500, "description": "Feed transport", "paidBy": "Sales" },
-  { "category": "Other", "date": "2026-01-11", "amount": 540, "total": 540, "description": "Paint", "paidBy": "Ajay" },
-  { "category": "Feed", "date": "2026-01-25", "amount": 130000, "total": 130000, "description": "Feed cost", "paidBy": "Sales" },
-  { "category": "Transport", "date": "2026-01-28", "amount": 4500, "total": 4500, "description": "Feed transport", "paidBy": "Sales" },
-  { "category": "Feed", "date": "2026-02-09", "amount": 72875, "total": 72875, "description": "Feed cost", "paidBy": "Sales" },
-  { "category": "Transport", "date": "2026-02-09", "amount": 4350, "total": 4350, "description": "Feed transport", "paidBy": "Sales" },
-  { "category": "Electricity", "date": "2026-02-09", "amount": 16000, "total": 16000, "description": "Electric connection", "paidBy": "Sales" },
-  { "category": "Other", "date": "2026-02-15", "amount": 3312, "total": 3312, "description": "Egg tray - 26.5 per tray for 125", "paidBy": "Sales" },
-  { "category": "Medicine", "date": "2026-02-16", "amount": 6690, "total": 6690, "description": "Medicine", "paidBy": "Sales" },
-  { "category": "Feed", "date": "2026-02-19", "amount": 130000, "total": 130000, "description": "Feed cost", "paidBy": "Sales" },
-  { "category": "Feed", "date": "2026-02-19", "amount": 29000, "total": 29000, "description": "Feed cost", "paidBy": "Sales" },
-  { "category": "Transport", "date": "2026-02-20", "amount": 5400, "total": 5400, "description": "Feed transport", "paidBy": "Sales" },
-  { "category": "Equipment", "date": "2026-02-24", "amount": 2700, "total": 2700, "description": "camera cost", "paidBy": "Sales" },
-  { "category": "Labour", "date": "2026-02-25", "amount": 2850, "total": 2850, "description": "Manure loading", "paidBy": "Sales" },
-  { "category": "Labour", "date": "2026-02-28", "amount": 1500, "total": 1500, "description": "Manure loading", "paidBy": "Sales" },
-  { "category": "Labour", "date": "2026-02-28", "amount": 12000, "total": 12000, "description": "Labour cost", "paidBy": "Sales" },
-  { "category": "Feed", "date": "2026-03-05", "amount": 76800, "total": 76800, "description": "Feed cost", "paidBy": "Sales" },
-  { "category": "Transport", "date": "2026-03-09", "amount": 2700, "total": 2700, "description": "Feed transport", "paidBy": "Sales" }
-],
-"eggSales": [
-  { "id": "mmkzjqnryyt3n", "date": "2025-12-20", "qty": 2820, "pricePerEgg": 5, "buyer": "Retail", "total": 14100 },
-  { "id": "h7n2m9lpxq1rs", "date": "2025-12-20", "qty": 3450, "pricePerEgg": 4.5, "buyer": "Wholesale", "total": 15525 },
-  { "id": "k8v4n1wzbc6dy", "date": "2025-12-21", "qty": 270, "pricePerEgg": 5, "buyer": "Retail", "total": 1350 },
-  { "id": "j3m5k2pqrn8tx", "date": "2025-12-23", "qty": 600, "pricePerEgg": 4.5, "buyer": "Retail", "total": 2700 },
-  { "id": "b9x1v4lyzq2mw", "date": "2025-12-23", "qty": 60, "pricePerEgg": 5, "buyer": "Retail", "total": 300 },
-  { "id": "f5s8n2rtpk4jv", "date": "2025-12-24", "qty": 1260, "pricePerEgg": 5, "buyer": "Retail", "total": 6300 },
-  { "id": "d7g3m1wbxc9nz", "date": "2025-12-25", "qty": 90, "pricePerEgg": 5, "buyer": "Retail", "total": 450 },
-  { "id": "a2k9p4rtvz3ms", "date": "2025-12-26", "qty": 4860, "pricePerEgg": 5, "buyer": "Wholesale", "total": 24300 },
-  { "id": "c6v8n1lqyh5bw", "date": "2025-12-26", "qty": 1200, "pricePerEgg": 5, "buyer": "Wholesale", "total": 6000 },
-  { "id": "e4m2k7pxrn9tz", "date": "2025-12-26", "qty": 600, "pricePerEgg": 5, "buyer": "Retail", "total": 3000 },
-  { "id": "g8s1v4wbxc2ny", "date": "2025-12-27", "qty": 450, "pricePerEgg": 5, "buyer": "Retail", "total": 2250 },
-  { "id": "t3n5m9lpxq7rs", "date": "2025-12-27", "qty": 600, "pricePerEgg": 5.5, "buyer": "Wholesale", "total": 3300 },
-  { "id": "u7v2k1wzbc4dy", "date": "2025-12-28", "qty": 30, "pricePerEgg": 5, "buyer": "Retail", "total": 150 },
-  { "id": "i9x4n2rtpk6jv", "date": "2025-12-28", "qty": 3000, "pricePerEgg": 5, "buyer": "Retail", "total": 15000 },
-  { "id": "p5m8k1wbxc3nz", "date": "2025-12-29", "qty": 1560, "pricePerEgg": 5.5, "buyer": "Retail", "total": 8580 },
-  { "id": "q2k7p4rtvz9ms", "date": "2025-12-30", "qty": 600, "pricePerEgg": 5.5, "buyer": "Retail", "total": 3300 },
-  { "id": "w6v1n2lqyh4bw", "date": "2025-12-30", "qty": 840, "pricePerEgg": 6, "buyer": "Retail", "total": 5040 },
-  { "id": "y4s3m9pxrn2tz", "date": "2025-12-31", "qty": 1050, "pricePerEgg": 5.8, "buyer": "Retail", "total": 6090 },
-  { "id": "z8g1v4wbxc7ny", "date": "2025-12-31", "qty": 180, "pricePerEgg": 5, "buyer": "Reconciliation", "total": 900, "remarks": "Month closure reconciliation" },
-  { "id": "v1n8m3lpxq5rs", "date": "2026-01-01", "qty": 3900, "pricePerEgg": 5.8, "buyer": "Retail", "total": 22620, "remarks": "" },
-  { "id": "z4k2p9rtvz7ms", "date": "2026-01-02", "qty": 390, "pricePerEgg": 5.8, "buyer": "Retail", "total": 2262, "remarks": "" },
-  { "id": "b6v1n5lqyh8bw", "date": "2026-01-02", "qty": 210, "pricePerEgg": 6, "buyer": "Retail", "total": 1260, "remarks": "" },
-  { "id": "d9s4m2pxrn3tz", "date": "2026-01-03", "qty": 180, "pricePerEgg": 5.5, "buyer": "Retail", "total": 990, "remarks": "" },
-  { "id": "f2g7v1wbxc5ny", "date": "2026-01-03", "qty": 30, "pricePerEgg": 5, "buyer": "Retail", "total": 150, "remarks": "" },
-  { "id": "h5n8k3lpxq9rs", "date": "2026-01-03", "qty": 150, "pricePerEgg": 6, "buyer": "Retail", "total": 900, "remarks": "" },
-  { "id": "j1m4p2rtvz6ms", "date": "2026-01-04", "qty": 3750, "pricePerEgg": 5.9, "buyer": "Retail", "total": 22125, "remarks": "" },
-  { "id": "l4v7n1lqyh2bw", "date": "2026-01-04", "qty": 240, "pricePerEgg": 6, "buyer": "Retail", "total": 1440, "remarks": "" },
-  { "id": "n7s1m9pxrn5tz", "date": "2026-01-05", "qty": 120, "pricePerEgg": 6, "buyer": "Retail", "total": 720, "remarks": "" },
-  { "id": "p3g6v4wbxc8ny", "date": "2026-01-05", "qty": 180, "pricePerEgg": 5.8, "buyer": "Retail", "total": 1044, "remarks": "" },
-  { "id": "r9n2k5lpxq1rs", "date": "2026-01-07", "qty": 7620, "pricePerEgg": 5, "buyer": "Retail", "total": 38100, "remarks": "" },
-  { "id": "t5m8p1rtvz4ms", "date": "2026-01-07", "qty": 180, "pricePerEgg": 5.8, "buyer": "Retail", "total": 1044, "remarks": "" },
-  { "id": "v2v5n9lqyh7bw", "date": "2026-01-07", "qty": 600, "pricePerEgg": 6, "buyer": "Retail", "total": 3600, "remarks": "" },
-  { "id": "x8s3m1pxrn9tz", "date": "2026-01-07", "qty": 150, "pricePerEgg": 5.8, "buyer": "Retail", "total": 870, "remarks": "" },
-  { "id": "z1g4v7wbxc2ny", "date": "2026-01-08", "qty": 360, "pricePerEgg": 6, "buyer": "Retail", "total": 2160, "remarks": "" },
-  { "id": "a7n9k2lpxq5rs", "date": "2026-01-09", "qty": 600, "pricePerEgg": 6, "buyer": "Retail", "total": 3600, "remarks": "" },
-  { "id": "c3m6p8rtvz1ms", "date": "2026-01-09", "qty": 600, "pricePerEgg": 5.25, "buyer": "Retail", "total": 3150, "remarks": "" },
-  { "id": "e9v2n4lqyh6bw", "date": "2026-01-10", "qty": 195, "pricePerEgg": 6, "buyer": "Retail", "total": 1170, "remarks": "" },
-  { "id": "g5s8m1pxrn4tz", "date": "2026-01-11", "qty": 420, "pricePerEgg": 6, "buyer": "Retail", "total": 2520, "remarks": "" },
-  { "id": "i1g4v9wbxc7ny", "date": "2026-01-11", "qty": 2970, "pricePerEgg": 5.45, "buyer": "Retail", "total": 16186.5, "remarks": "" },
-  { "id": "k7n3k6lpxq2rs", "date": "2026-01-12", "qty": 30, "pricePerEgg": 6, "buyer": "Retail", "total": 180, "remarks": "" },
-  { "id": "m4m9p2rtvz5ms", "date": "2026-01-14", "qty": 420, "pricePerEgg": 6, "buyer": "Retail", "total": 2520, "remarks": "" },
-  { "id": "o1v6n8lqyh9bw", "date": "2026-01-15", "qty": 12390, "pricePerEgg": 4.9, "buyer": "Retail", "total": 60711, "remarks": "" },
-  { "id": "q8s2m4pxrn1tz", "date": "2026-01-16", "qty": 480, "pricePerEgg": 6, "buyer": "Retail", "total": 2880, "remarks": "" },
-  { "id": "s5g9v3wbxc4ny", "date": "2026-01-17", "qty": 180, "pricePerEgg": 6, "buyer": "Retail", "total": 1080, "remarks": "" },
-  { "id": "u2n7k1lpxq8rs", "date": "2026-01-18", "qty": 30, "pricePerEgg": 5, "buyer": "Retail", "total": 150, "remarks": "" },
-  { "id": "w9m4p7rtvz2ms", "date": "2026-01-18", "qty": 150, "pricePerEgg": 6, "buyer": "Retail", "total": 900, "remarks": "" },
-  { "id": "y6v1n5lqyh4bw", "date": "2026-01-19", "qty": 300, "pricePerEgg": 5.5, "buyer": "Retail", "total": 1650, "remarks": "" },
-  { "id": "a3s7m9pxrn6tz", "date": "2026-01-19", "qty": 60, "pricePerEgg": 5.66, "buyer": "Retail", "total": 339.6, "remarks": "" },
-  { "id": "c1g5v8wbxc9ny", "date": "2026-01-20", "qty": 60, "pricePerEgg": 5.5, "buyer": "Retail", "total": 330, "remarks": "" },
-  { "id": "e7n3k9lpxq4rs", "date": "2026-01-21", "qty": 150, "pricePerEgg": 5.5, "buyer": "Retail", "total": 825, "remarks": "" },
-  { "id": "g4m8p2rtvz1ms", "date": "2026-01-21", "qty": 180, "pricePerEgg": 5.66, "buyer": "Retail", "total": 1018.8, "remarks": "" },
-  { "id": "i9v1n6lqyh5bw", "date": "2026-01-22", "qty": 240, "pricePerEgg": 5.5, "buyer": "Retail", "total": 1320, "remarks": "" },
-  { "id": "k6s4m2pxrn8tz", "date": "2026-01-22", "qty": 3780, "pricePerEgg": 4.7, "buyer": "Retail", "total": 17766, "remarks": "" },
-  { "id": "m1g7v4wbxc2ny", "date": "2026-01-23", "qty": 540, "pricePerEgg": 5.5, "buyer": "Retail", "total": 2970, "remarks": "" },
-  { "id": "o8n2k9lpxq7rs", "date": "2026-01-25", "qty": 15000, "pricePerEgg": 4.6, "buyer": "Retail", "total": 69000, "remarks": "" },
-  { "id": "q5m1p4rtvz3ms", "date": "2026-01-25", "qty": 30, "pricePerEgg": 0, "buyer": "Retail", "total": 0, "remarks": "Damaged eggs due to rodents" },
-  { "id": "s2v6n1lqyh9bw", "date": "2026-01-26", "qty": 12, "pricePerEgg": 0, "buyer": "Retail", "total": 0, "remarks": "Damaged eggs due to rodents" },
-  { "id": "u9s3m7pxrn2tz", "date": "2026-01-26", "qty": 3150, "pricePerEgg": 4.6, "buyer": "Retail", "total": 14490, "remarks": "" },
-  { "id": "w6g1v4wbxc5ny", "date": "2026-01-26", "qty": 1800, "pricePerEgg": 5.05, "buyer": "Retail", "total": 9090, "remarks": "" },
-  { "id": "y3n8k2lpxq1rs", "date": "2026-01-26", "qty": 150, "pricePerEgg": 5.5, "buyer": "Retail", "total": 825, "remarks": "" },
-  { "id": "a1m4p9rtvz6ms", "date": "2026-01-27", "qty": 150, "pricePerEgg": 5.66, "buyer": "Retail", "total": 849, "remarks": "" },
-  { "id": "c8v2n5lqyh4bw", "date": "2026-01-29", "qty": 150, "pricePerEgg": 5.5, "buyer": "Retail", "total": 825, "remarks": "" },
-  { "id": "e5s1m9pxrn7tz", "date": "2026-01-29", "qty": 90, "pricePerEgg": 4, "buyer": "Retail", "total": 360, "remarks": "" },
-  { "id": "g2g6v4wbxc8ny", "date": "2026-01-29", "qty": 7380, "pricePerEgg": 4.75, "buyer": "Retail", "total": 35055, "remarks": "" },
-  { "id": "i7n3k1lpxq2rs", "date": "2026-01-30", "qty": 270, "pricePerEgg": 5.66, "buyer": "Retail", "total": 1528.2, "remarks": "" },
-  { "id": "k4m9p7rtvz5ms", "date": "2026-01-30", "qty": 30, "pricePerEgg": 5.75, "buyer": "Retail", "total": 172.5, "remarks": "" },
-  { "id": "m1v6n2lqyh9bw", "date": "2026-01-30", "qty": 30, "pricePerEgg": 6.66, "buyer": "Retail", "total": 199.8, "remarks": "" },
-  { "id": "o9s2m4pxrn1tz", "date": "2026-01-31", "qty": 120, "pricePerEgg": 5.66, "buyer": "Retail", "total": 679.2, "remarks": "" },
-  { "id": "q5g8v3wbxc4ny", "date": "2026-01-31", "qty": 180, "pricePerEgg": 0, "buyer": "Retail", "total": 0, "remarks": "Month closure reconciliation" },
-  { "id": "m1k9j2nryyt3n", "date": "2026-02-01", "qty": 6300, "pricePerEgg": 4.75, "buyer": "Retail", "total": 29925, "remarks": "" },
-  { "id": "p7n2m5lpxq1rs", "date": "2026-02-01", "qty": 90, "pricePerEgg": 5.66, "buyer": "Retail", "total": 509.4, "remarks": "" },
-  { "id": "k8v4n9wzbc6dy", "date": "2026-02-01", "qty": 30, "pricePerEgg": 4.33, "buyer": "Retail", "total": 129.9, "remarks": "" },
-  { "id": "j3m5k8pqrn8tx", "date": "2026-02-02", "qty": 30, "pricePerEgg": 5.83, "buyer": "Retail", "total": 174.9, "remarks": "" },
-  { "id": "b9x1v7lyzq2mw", "date": "2026-02-03", "qty": 60, "pricePerEgg": 5.5, "buyer": "Retail", "total": 330, "remarks": "" },
-  { "id": "f5s8n9rtpk4jv", "date": "2026-02-03", "qty": 30, "pricePerEgg": 5.66, "buyer": "Retail", "total": 169.8, "remarks": "" },
-  { "id": "d7g3m5wbxc9nz", "date": "2026-02-04", "qty": 420, "pricePerEgg": 5.5, "buyer": "Retail", "total": 2310, "remarks": "" },
-  { "id": "a2k9p7rtvz3ms", "date": "2026-02-04", "qty": 300, "pricePerEgg": 5.33, "buyer": "Retail", "total": 1599, "remarks": "" },
-  { "id": "c6v8n9lqyh5bw", "date": "2026-02-05", "qty": 4500, "pricePerEgg": 4.85, "buyer": "Retail", "total": 21825, "remarks": "" },
-  { "id": "e4m2k9pxrn9tz", "date": "2026-02-05", "qty": 30, "pricePerEgg": 5.5, "buyer": "Retail", "total": 165, "remarks": "" },
-  { "id": "g8s1v7wbxc2ny", "date": "2026-02-05", "qty": 90, "pricePerEgg": 5.5, "buyer": "Retail", "total": 495, "remarks": "" },
-  { "id": "t3n5m2lpxq7rs", "date": "2026-02-05", "qty": 60, "pricePerEgg": 4.5, "buyer": "Retail", "total": 270, "remarks": "" },
-  { "id": "u7v2k9wzbc4dy", "date": "2026-02-06", "qty": 60, "pricePerEgg": 5.5, "buyer": "Retail", "total": 330, "remarks": "" },
-  { "id": "i9x4n7rtpk6jv", "date": "2026-02-07", "qty": 11700, "pricePerEgg": 4.75, "buyer": "Retail", "total": 55575, "remarks": "" },
-  { "id": "p5m8k9wbxc3nz", "date": "2026-02-07", "qty": 180, "pricePerEgg": 5.66, "buyer": "Retail", "total": 1018.8, "remarks": "" },
-  { "id": "q2k7p9rtvz9ms", "date": "2026-02-08", "qty": 30, "pricePerEgg": 6.66, "buyer": "Retail", "total": 199.8, "remarks": "" },
-  { "id": "w6v1n9lqyh4bw", "date": "2026-02-09", "qty": 90, "pricePerEgg": 5.66, "buyer": "Retail", "total": 509.4, "remarks": "" },
-  { "id": "y4s3m2pxrn2tz", "date": "2026-02-09", "qty": 60, "pricePerEgg": 5.5, "buyer": "Retail", "total": 330, "remarks": "" },
-  { "id": "z8g1v7wbxc7ny", "date": "2026-02-10", "qty": 30, "pricePerEgg": 6, "buyer": "Retail", "total": 180, "remarks": "" },
-  { "id": "x1n4k9lpxq2mw", "date": "2026-02-10", "qty": 30, "pricePerEgg": 5.5, "buyer": "Retail", "total": 165, "remarks": "" },
-  { "id": "m5s8p2rtvz6tx", "date": "2026-02-11", "qty": 420, "pricePerEgg": 5.5, "buyer": "Retail", "total": 2310, "remarks": "" },
-  { "id": "o7v2n1lqyh9bw", "date": "2026-02-11", "qty": 120, "pricePerEgg": 5.66, "buyer": "Retail", "total": 679.2, "remarks": "" },
-  { "id": "q9x4m7pxrn1nz", "date": "2026-02-11", "qty": 30, "pricePerEgg": 3.33, "buyer": "Retail", "total": 100, "remarks": "Damaged eggs" },
-  { "id": "s1g9v3wbxc4dy", "date": "2026-02-13", "qty": 30, "pricePerEgg": 5.66, "buyer": "Retail", "total": 169.8, "remarks": "" },
-  { "id": "u4n7k1lpxq8rs", "date": "2026-02-14", "qty": 120, "pricePerEgg": 4.5, "buyer": "Retail", "total": 540, "remarks": "" },
-  { "id": "w2m4p7rtvz2ms", "date": "2026-02-14", "qty": 90, "pricePerEgg": 5.5, "buyer": "Retail", "total": 495, "remarks": "" },
-  { "id": "y9v1n5lqyh4bw", "date": "2026-02-15", "qty": 15300, "pricePerEgg": 4.95, "buyer": "Retail", "total": 75735, "remarks": "" },
-  { "id": "a6s7m9pxrn6tz", "date": "2026-02-16", "qty": 3000, "pricePerEgg": 5.1, "buyer": "Retail", "total": 15300, "remarks": "" },
-  { "id": "c1g5v8wbxc9ny", "date": "2026-02-16", "qty": 30, "pricePerEgg": 6, "buyer": "Retail", "total": 180, "remarks": "" },
-  { "id": "e7n3k9lpxq4rs", "date": "2026-02-16", "qty": 240, "pricePerEgg": 5.5, "buyer": "Retail", "total": 1320, "remarks": "" },
-  { "id": "g4m8p2rtvz1ms", "date": "2026-02-16", "qty": 30, "pricePerEgg": 5.66, "buyer": "Retail", "total": 169.8, "remarks": "" },
-  { "id": "i9v1n6lqyh5bw", "date": "2026-02-17", "qty": 2070, "pricePerEgg": 5.15, "buyer": "Retail", "total": 10660.5, "remarks": "" },
-  { "id": "k6s4m2pxrn8tz", "date": "2026-02-17", "qty": 30, "pricePerEgg": 5.66, "buyer": "Retail", "total": 169.8, "remarks": "" },
-  { "id": "m1g7v4wbxc2ny", "date": "2026-02-17", "qty": 60, "pricePerEgg": 6, "buyer": "Retail", "total": 360, "remarks": "" },
-  { "id": "o8n2k9lpxq7rs", "date": "2026-02-18", "qty": 10, "pricePerEgg": 0, "buyer": "Retail", "total": 0, "remarks": "Manual total override for fractional qty" },
-  { "id": "q5m1p4rtvz3ms", "date": "2026-02-18", "qty": 60, "pricePerEgg": 6, "buyer": "Retail", "total": 360, "remarks": "" },
-  { "id": "s2v6n1lqyh9bw", "date": "2026-02-18", "qty": 30, "pricePerEgg": 7, "buyer": "Retail", "total": 210, "remarks": "" },
-  { "id": "u9s3m7pxrn2tz", "date": "2026-02-18", "qty": 120, "pricePerEgg": 4.5, "buyer": "Retail", "total": 540, "remarks": "" },
-  { "id": "w6g1v4wbxc5ny", "date": "2026-02-20", "qty": 180, "pricePerEgg": 5.66, "buyer": "Retail", "total": 1018.8, "remarks": "" },
-  { "id": "y3n8k2lpxq1rs", "date": "2026-02-20", "qty": 30, "pricePerEgg": 0, "buyer": "Retail", "total": 0, "remarks": "Damaged eggs" },
-  { "id": "a1m4p9rtvz6ms", "date": "2026-02-21", "qty": 30, "pricePerEgg": 6, "buyer": "Retail", "total": 180, "remarks": "" },
-  { "id": "c8v2n5lqyh4bw", "date": "2026-02-21", "qty": 30, "pricePerEgg": 5.66, "buyer": "Retail", "total": 169.8, "remarks": "" },
-  { "id": "e5s1m9pxrn7tz", "date": "2026-02-23", "qty": 60, "pricePerEgg": 5.66, "buyer": "Retail", "total": 339.6, "remarks": "" },
-  { "id": "g2g6v4wbxc8ny", "date": "2026-02-25", "qty": 15120, "pricePerEgg": 4.65, "buyer": "Retail", "total": 70308, "remarks": "" },
-  { "id": "i7n3k1lpxq2rs", "date": "2026-02-25", "qty": 30, "pricePerEgg": 6, "buyer": "Retail", "total": 180, "remarks": "" },
-  { "id": "k4m9p7rtvz5ms", "date": "2026-02-25", "qty": 0, "pricePerEgg": 0, "buyer": "Retail", "total": 0, "remarks": "" },
-  { "id": "m1v6n2lqyh9bw", "date": "2026-02-27", "qty": 30, "pricePerEgg": 5.66, "buyer": "Retail", "total": 169.8, "remarks": "" },
-  { "id": "o9s2m4pxrn1nz", "date": "2026-02-27", "qty": 60, "pricePerEgg": 0, "buyer": "Retail", "total": 0, "remarks": "Damaged/Reconciliation" },
-  { "id": "q5g8v3wbxc4ny", "date": "2026-02-28", "qty": 60, "pricePerEgg": 5.5, "buyer": "Retail", "total": 330, "remarks": "" },
-  { "id": "s8n3k1lpxq2rs", "date": "2026-02-28", "qty": 630, "pricePerEgg": 0, "buyer": "Retail", "total": 0, "remarks": "Month end reconciliation. Change in computation of total production" },
-  { "id": "n1k5j9rnyyt3m", "date": "2026-03-01", "qty": 30, "pricePerEgg": 5, "buyer": "Retail", "total": 150, "remarks": "" },
-  { "id": "p2n8m4lpxq1rs", "date": "2026-03-02", "qty": 270, "pricePerEgg": 5, "buyer": "Retail", "total": 1350, "remarks": "" },
-  { "id": "k1v9n4wzbc6dy", "date": "2026-03-02", "qty": 30, "pricePerEgg": 5.33, "buyer": "Retail", "total": 159.9, "remarks": "" },
-  { "id": "j8m2k5pqrn8tx", "date": "2026-03-03", "qty": 135, "pricePerEgg": 5, "buyer": "Retail", "total": 675, "remarks": "" },
-  { "id": "b3x7v1lyzq2mw", "date": "2026-03-04", "qty": 14100, "pricePerEgg": 3.95, "buyer": "Retail", "total": 55695, "remarks": "" },
-  { "id": "f9s2n8rtpk4jv", "date": "2026-03-04", "qty": 210, "pricePerEgg": 5, "buyer": "Retail", "total": 1050, "remarks": "" },
-  { "id": "d1g8m3wbxc9nz", "date": "2026-03-04", "qty": 30, "pricePerEgg": 5.66, "buyer": "Retail", "total": 169.8, "remarks": "" },
-  { "id": "a5k2p4rtvz3ms", "date": "2026-03-05", "qty": 30, "pricePerEgg": 5, "buyer": "Retail", "total": 150, "remarks": "" },
-  { "id": "c9v1n8lqyh5bw", "date": "2026-03-05", "qty": 30, "pricePerEgg": 5.5, "buyer": "Retail", "total": 165, "remarks": "" },
-  { "id": "e2m7k4pxrn9tz", "date": "2026-03-06", "qty": 120, "pricePerEgg": 5, "buyer": "Retail", "total": 600, "remarks": "" },
-  { "id": "g4s9v1wbxc2ny", "date": "2026-03-08", "qty": 13500, "pricePerEgg": 3.9, "buyer": "Retail", "total": 52650, "remarks": "" },
-  { "id": "t1n8m5lpxq7rs", "date": "2026-03-08", "qty": 30, "pricePerEgg": 5, "buyer": "Retail", "total": 150, "remarks": "" },
-  { "id": "u4v2k1wzbc4dy", "date": "2026-03-08", "qty": 30, "pricePerEgg": 6, "buyer": "Retail", "total": 180, "remarks": "" },
-  { "id": "i7x9n2rtpk6jv", "date": "2026-03-08", "qty": 30, "pricePerEgg": 0, "buyer": "Retail", "total": 0, "remarks": "Damaged eggs" },
-  { "id": "p1m4k8wbxc3nz", "date": "2026-03-09", "qty": 30, "pricePerEgg": 5.33, "buyer": "Retail", "total": 159.9, "remarks": "" },
-  { "id": "q6k2p9rtvz9ms", "date": "2026-03-09", "qty": 20, "pricePerEgg": 0, "buyer": "Retail", "total": 0, "remarks": "Manual override for 0.66 qty fraction" },
-  { "id": "w9v5n1lqyh4bw", "date": "2026-03-10", "qty": 90, "pricePerEgg": 5, "buyer": "Retail", "total": 450, "remarks": "" }
-],
-"otherSales":[
-  {
-    "id": "nmkzjqnryyt3p",
-    "date": "2025-12-15",
-    "description": "Bags",
-    "unitPrice": 8.5,
-    "qty": 163,
-    "total": 1400.17,
-    "remarks": ""
-  },
-  {
-    "id": "h8n3m0lpxq2rs",
-    "date": "2026-02-15",
-    "description": "manure",
-    "unitPrice": 110,
-    "qty": 80,
-    "total": 8800,
-    "remarks": ""
-  },
-  {
-    "id": "k9v5n2wzbc7dy",
-    "date": "2026-02-21",
-    "description": "Feed",
-    "unitPrice": 1380,
-    "qty": 3,
-    "total": 4140,
-    "remarks": ""
-  },
-  {
-    "id": "j4m6k3pqrn9tx",
-    "date": "2026-02-25",
-    "description": "manure",
-    "unitPrice": 127.5,
-    "qty": 120,
-    "total": 15300,
-    "remarks": ""
-  },
-  {
-    "id": "b0x2v5lyzq3mw",
-    "date": "2026-02-28",
-    "description": "manure",
-    "unitPrice": 130,
-    "qty": 150,
-    "total": 19500,
-    "remarks": ""
-  }
-]
+    {
+      "date": "2025-10-18",
+      "goodEggs": 0,
+      "damagedEggs": 0,
+      "liveBirds": 2698,
+      "medicine": ""
+    },
+    {
+      "date": "2025-10-19",
+      "goodEggs": 0,
+      "damagedEggs": 0,
+      "liveBirds": 2698,
+      "medicine": ""
+    },
+    {
+      "date": "2025-10-20",
+      "goodEggs": 0,
+      "damagedEggs": 0,
+      "liveBirds": 2698,
+      "medicine": ""
+    },
+    {
+      "date": "2025-10-21",
+      "goodEggs": 0,
+      "damagedEggs": 0,
+      "liveBirds": 2698,
+      "medicine": ""
+    },
+    {
+      "date": "2025-10-22",
+      "goodEggs": 0,
+      "damagedEggs": 0,
+      "liveBirds": 2698,
+      "medicine": "Ventriplex-M, StressVit-A(B complex) - 500 ml, Vitamin-A - 100 ml"
+    },
+    {
+      "date": "2025-10-23",
+      "goodEggs": 0,
+      "damagedEggs": 0,
+      "liveBirds": 2698,
+      "medicine": "Ventriplex-M, StressVit-A(B complex) - 500 ml, Vitamin-A - 100 ml"
+    },
+    {
+      "date": "2025-10-24",
+      "goodEggs": 0,
+      "damagedEggs": 0,
+      "liveBirds": 2698,
+      "medicine": ""
+    },
+    {
+      "date": "2025-10-25",
+      "goodEggs": 0,
+      "damagedEggs": 0,
+      "liveBirds": 2698,
+      "medicine": ""
+    },
+    {
+      "date": "2025-10-26",
+      "goodEggs": 0,
+      "damagedEggs": 0,
+      "liveBirds": 2698,
+      "medicine": ""
+    },
+    {
+      "date": "2025-10-27",
+      "goodEggs": 0,
+      "damagedEggs": 0,
+      "liveBirds": 2698,
+      "medicine": "Ventriplex-M, StressVit-A(B complex) - 500 ml, Vitamin-A - 100 ml, G-Pro min liquid - 500 ml, Sharkoferrol - 500 ml"
+    },
+    {
+      "date": "2025-10-28",
+      "goodEggs": 0,
+      "damagedEggs": 0,
+      "liveBirds": 2698,
+      "medicine": "Ventriplex-M, StressVit-A(B complex) - 500 ml, Vitamin-A - 100 ml, G-Pro min liquid - 500 ml, Sharkoferrol - 500 ml"
+    },
+    {
+      "date": "2025-10-29",
+      "goodEggs": 0,
+      "damagedEggs": 0,
+      "liveBirds": 2698,
+      "medicine": ""
+    },
+    {
+      "date": "2025-10-30",
+      "goodEggs": 0,
+      "damagedEggs": 0,
+      "liveBirds": 2698,
+      "medicine": ""
+    },
+    {
+      "date": "2025-10-31",
+      "goodEggs": 0,
+      "damagedEggs": 0,
+      "liveBirds": 2698,
+      "medicine": ""
+    },
+    {
+      "date": "2025-11-01",
+      "goodEggs": 0,
+      "damagedEggs": 0,
+      "liveBirds": 2698,
+      "medicine": ""
+    },
+    {
+      "date": "2025-11-02",
+      "goodEggs": 0,
+      "damagedEggs": 0,
+      "liveBirds": 2698,
+      "medicine": ""
+    },
+    {
+      "date": "2025-11-03",
+      "goodEggs": 0,
+      "damagedEggs": 0,
+      "liveBirds": 2698,
+      "medicine": ""
+    },
+    {
+      "date": "2025-11-04",
+      "goodEggs": 0,
+      "damagedEggs": 0,
+      "liveBirds": 2698,
+      "medicine": ""
+    },
+    {
+      "date": "2025-11-05",
+      "goodEggs": 0,
+      "damagedEggs": 0,
+      "liveBirds": 2698,
+      "medicine": ""
+    },
+    {
+      "date": "2025-11-06",
+      "goodEggs": 0,
+      "damagedEggs": 0,
+      "liveBirds": 2698,
+      "medicine": ""
+    },
+    {
+      "date": "2025-11-07",
+      "goodEggs": 0,
+      "damagedEggs": 0,
+      "liveBirds": 2698,
+      "medicine": "G-Pro min liquid - 500 ml, Sharkoferrol - 500 ml"
+    },
+    {
+      "date": "2025-11-08",
+      "goodEggs": 0,
+      "damagedEggs": 0,
+      "liveBirds": 2698,
+      "medicine": "G-Pro min liquid - 500 ml, Sharkoferrol - 500 ml"
+    },
+    {
+      "date": "2025-11-09",
+      "goodEggs": 0,
+      "damagedEggs": 0,
+      "liveBirds": 2698,
+      "medicine": ""
+    },
+    {
+      "date": "2025-11-10",
+      "goodEggs": 0,
+      "damagedEggs": 0,
+      "liveBirds": 2698,
+      "medicine": ""
+    },
+    {
+      "date": "2025-11-11",
+      "goodEggs": 0,
+      "damagedEggs": 0,
+      "liveBirds": 2698,
+      "medicine": ""
+    },
+    {
+      "date": "2025-11-12",
+      "goodEggs": 0,
+      "damagedEggs": 0,
+      "liveBirds": 2698,
+      "medicine": ""
+    },
+    {
+      "date": "2025-11-13",
+      "goodEggs": 0,
+      "damagedEggs": 0,
+      "liveBirds": 2698,
+      "medicine": ""
+    },
+    {
+      "date": "2025-11-14",
+      "goodEggs": 0,
+      "damagedEggs": 0,
+      "liveBirds": 2698,
+      "medicine": ""
+    },
+    {
+      "date": "2025-11-15",
+      "goodEggs": 0,
+      "damagedEggs": 0,
+      "liveBirds": 2698,
+      "medicine": ""
+    },
+    {
+      "date": "2025-11-16",
+      "goodEggs": 0,
+      "damagedEggs": 0,
+      "liveBirds": 2698,
+      "medicine": ""
+    },
+    {
+      "date": "2025-11-17",
+      "goodEggs": 0,
+      "damagedEggs": 0,
+      "liveBirds": 2698,
+      "medicine": ""
+    },
+    {
+      "date": "2025-11-18",
+      "goodEggs": 0,
+      "damagedEggs": 0,
+      "liveBirds": 2698,
+      "medicine": ""
+    },
+    {
+      "date": "2025-11-19",
+      "goodEggs": 0,
+      "damagedEggs": 0,
+      "liveBirds": 2698,
+      "medicine": ""
+    },
+    {
+      "date": "2025-11-20",
+      "goodEggs": 0,
+      "damagedEggs": 0,
+      "liveBirds": 2698,
+      "medicine": ""
+    },
+    {
+      "date": "2025-11-21",
+      "goodEggs": 0,
+      "damagedEggs": 0,
+      "liveBirds": 2698,
+      "medicine": ""
+    },
+    {
+      "date": "2025-11-22",
+      "goodEggs": 0,
+      "damagedEggs": 0,
+      "liveBirds": 2698,
+      "medicine": "Vetpiper - 1.5L"
+    },
+    {
+      "date": "2025-11-23",
+      "goodEggs": 0,
+      "damagedEggs": 0,
+      "liveBirds": 2698,
+      "medicine": "Lasota (IND) - 5000 voil"
+    },
+    {
+      "date": "2025-11-24",
+      "goodEggs": 0,
+      "damagedEggs": 0,
+      "liveBirds": 2698,
+      "medicine": "CAL-D-Plus-DS - 500 ml"
+    },
+    {
+      "date": "2025-11-25",
+      "goodEggs": 0,
+      "damagedEggs": 0,
+      "liveBirds": 2698,
+      "medicine": "CAL-D-Plus-DS - 500 ml"
+    },
+    {
+      "date": "2025-11-26",
+      "goodEggs": 0,
+      "damagedEggs": 0,
+      "liveBirds": 2698,
+      "medicine": "CAL-D-Plus-DS - 500 ml"
+    },
+    {
+      "date": "2025-11-27",
+      "goodEggs": 0,
+      "damagedEggs": 0,
+      "liveBirds": 2698,
+      "medicine": ""
+    },
+    {
+      "date": "2025-11-28",
+      "goodEggs": 0,
+      "damagedEggs": 0,
+      "liveBirds": 2698,
+      "medicine": ""
+    },
+    {
+      "date": "2025-11-29",
+      "goodEggs": 0,
+      "damagedEggs": 0,
+      "liveBirds": 2698,
+      "medicine": ""
+    },
+    {
+      "date": "2025-11-30",
+      "goodEggs": 0,
+      "damagedEggs": 0,
+      "liveBirds": 2698,
+      "medicine": ""
+    },
+    {
+      "date": "2025-12-01",
+      "goodEggs": 0,
+      "damagedEggs": 0,
+      "liveBirds": 2698,
+      "medicine": ""
+    },
+    {
+      "date": "2025-12-02",
+      "goodEggs": 0,
+      "damagedEggs": 0,
+      "liveBirds": 2698,
+      "medicine": "VVND INJECTION 3000 voil"
+    },
+    {
+      "date": "2025-12-03",
+      "goodEggs": 0,
+      "damagedEggs": 0,
+      "liveBirds": 2698,
+      "medicine": ""
+    },
+    {
+      "date": "2025-12-04",
+      "goodEggs": 0,
+      "damagedEggs": 0,
+      "liveBirds": 2698,
+      "medicine": ""
+    },
+    {
+      "date": "2025-12-05",
+      "goodEggs": 0,
+      "damagedEggs": 0,
+      "liveBirds": 2698,
+      "medicine": ""
+    },
+    {
+      "date": "2025-12-06",
+      "goodEggs": 80,
+      "damagedEggs": 0,
+      "liveBirds": 2698,
+      "medicine": ""
+    },
+    {
+      "date": "2025-12-07",
+      "goodEggs": 120,
+      "damagedEggs": 0,
+      "liveBirds": 2698,
+      "medicine": ""
+    },
+    {
+      "date": "2025-12-08",
+      "goodEggs": 161,
+      "damagedEggs": 0,
+      "liveBirds": 2698,
+      "medicine": ""
+    },
+    {
+      "date": "2025-12-09",
+      "goodEggs": 196,
+      "damagedEggs": 0,
+      "liveBirds": 2698,
+      "medicine": ""
+    },
+    {
+      "date": "2025-12-10",
+      "goodEggs": 0,
+      "damagedEggs": 0,
+      "liveBirds": 2698,
+      "medicine": ""
+    },
+    {
+      "date": "2025-12-11",
+      "goodEggs": 296,
+      "damagedEggs": 0,
+      "liveBirds": 2698,
+      "medicine": ""
+    },
+    {
+      "date": "2025-12-12",
+      "goodEggs": 0,
+      "damagedEggs": 0,
+      "liveBirds": 2698,
+      "medicine": ""
+    },
+    {
+      "date": "2025-12-13",
+      "goodEggs": 0,
+      "damagedEggs": 0,
+      "liveBirds": 2698,
+      "medicine": ""
+    },
+    {
+      "date": "2025-12-14",
+      "goodEggs": 0,
+      "damagedEggs": 0,
+      "liveBirds": 2698,
+      "medicine": "Globivac ND plus IB killed injection - 1000 DS (3 units)"
+    },
+    {
+      "date": "2025-12-15",
+      "goodEggs": 0,
+      "damagedEggs": 0,
+      "liveBirds": 2698,
+      "medicine": ""
+    },
+    {
+      "date": "2025-12-16",
+      "goodEggs": 0,
+      "damagedEggs": 0,
+      "liveBirds": 2698,
+      "medicine": ""
+    },
+    {
+      "date": "2025-12-17",
+      "goodEggs": 0,
+      "damagedEggs": 0,
+      "liveBirds": 2698,
+      "medicine": ""
+    },
+    {
+      "date": "2025-12-18",
+      "goodEggs": 0,
+      "damagedEggs": 0,
+      "liveBirds": 2698,
+      "medicine": ""
+    },
+    {
+      "date": "2025-12-19",
+      "goodEggs": 5597,
+      "damagedEggs": 5,
+      "liveBirds": 2698,
+      "medicine": ""
+    },
+    {
+      "date": "2025-12-20",
+      "goodEggs": 1050,
+      "damagedEggs": 5,
+      "liveBirds": 2698,
+      "medicine": ""
+    },
+    {
+      "date": "2025-12-21",
+      "goodEggs": 1170,
+      "damagedEggs": 6,
+      "liveBirds": 2698,
+      "medicine": ""
+    },
+    {
+      "date": "2025-12-22",
+      "goodEggs": 1290,
+      "damagedEggs": 8,
+      "liveBirds": 2698,
+      "medicine": ""
+    },
+    {
+      "date": "2025-12-23",
+      "goodEggs": 1370,
+      "damagedEggs": 10,
+      "liveBirds": 2698,
+      "medicine": ""
+    },
+    {
+      "date": "2025-12-24",
+      "goodEggs": 1500,
+      "damagedEggs": 10,
+      "liveBirds": 2698,
+      "medicine": ""
+    },
+    {
+      "date": "2025-12-25",
+      "goodEggs": 1616,
+      "damagedEggs": 6,
+      "liveBirds": 2698,
+      "medicine": ""
+    },
+    {
+      "date": "2025-12-26",
+      "goodEggs": 1703,
+      "damagedEggs": 2,
+      "liveBirds": 2698,
+      "medicine": ""
+    },
+    {
+      "date": "2025-12-27",
+      "goodEggs": 1798,
+      "damagedEggs": 5,
+      "liveBirds": 2698,
+      "medicine": ""
+    },
+    {
+      "date": "2025-12-28",
+      "goodEggs": 1890,
+      "damagedEggs": 6,
+      "liveBirds": 2698,
+      "medicine": ""
+    },
+    {
+      "date": "2025-12-29",
+      "goodEggs": 1920,
+      "damagedEggs": 4,
+      "liveBirds": 2698,
+      "medicine": ""
+    },
+    {
+      "date": "2025-12-30",
+      "goodEggs": 2010,
+      "damagedEggs": 17,
+      "liveBirds": 2697,
+      "medicine": ""
+    },
+    {
+      "date": "2025-12-31",
+      "goodEggs": 2070,
+      "damagedEggs": 7,
+      "liveBirds": 2697,
+      "medicine": ""
+    },
+    {
+      "date": "2026-01-01",
+      "goodEggs": 2120,
+      "damagedEggs": 4,
+      "liveBirds": 2697,
+      "medicine": ""
+    },
+    {
+      "date": "2026-01-02",
+      "goodEggs": 2180,
+      "damagedEggs": 5,
+      "liveBirds": 2697,
+      "medicine": ""
+    },
+    {
+      "date": "2026-01-03",
+      "goodEggs": 2190,
+      "damagedEggs": 3,
+      "liveBirds": 2697,
+      "medicine": ""
+    },
+    {
+      "date": "2026-01-04",
+      "goodEggs": 2220,
+      "damagedEggs": 9,
+      "liveBirds": 2697,
+      "medicine": ""
+    },
+    {
+      "date": "2026-01-05",
+      "goodEggs": 2250,
+      "damagedEggs": 1,
+      "liveBirds": 2697,
+      "medicine": ""
+    },
+    {
+      "date": "2026-01-06",
+      "goodEggs": 2270,
+      "damagedEggs": 8,
+      "liveBirds": 2696,
+      "medicine": ""
+    },
+    {
+      "date": "2026-01-07",
+      "goodEggs": 2310,
+      "damagedEggs": 9,
+      "liveBirds": 2696,
+      "medicine": ""
+    },
+    {
+      "date": "2026-01-08",
+      "goodEggs": 2310,
+      "damagedEggs": 9,
+      "liveBirds": 2696,
+      "medicine": ""
+    },
+    {
+      "date": "2026-01-09",
+      "goodEggs": 2280,
+      "damagedEggs": 5,
+      "liveBirds": 2696,
+      "medicine": ""
+    },
+    {
+      "date": "2026-01-10",
+      "goodEggs": 2281,
+      "damagedEggs": 4,
+      "liveBirds": 2692,
+      "medicine": ""
+    },
+    {
+      "date": "2026-01-11",
+      "goodEggs": 2370,
+      "damagedEggs": 5,
+      "liveBirds": 2692,
+      "medicine": ""
+    },
+    {
+      "date": "2026-01-12",
+      "goodEggs": 2355,
+      "damagedEggs": 4,
+      "liveBirds": 2692,
+      "medicine": ""
+    },
+    {
+      "date": "2026-01-13",
+      "goodEggs": 2337,
+      "damagedEggs": 14,
+      "liveBirds": 2692,
+      "medicine": ""
+    },
+    {
+      "date": "2026-01-14",
+      "goodEggs": 2340,
+      "damagedEggs": 15,
+      "liveBirds": 2689,
+      "medicine": ""
+    },
+    {
+      "date": "2026-01-15",
+      "goodEggs": 2390,
+      "damagedEggs": 12,
+      "liveBirds": 2689,
+      "medicine": ""
+    },
+    {
+      "date": "2026-01-16",
+      "goodEggs": 2370,
+      "damagedEggs": 6,
+      "liveBirds": 2688,
+      "medicine": ""
+    },
+    {
+      "date": "2026-01-17",
+      "goodEggs": 2388,
+      "damagedEggs": 5,
+      "liveBirds": 2689,
+      "medicine": ""
+    },
+    {
+      "date": "2026-01-18",
+      "goodEggs": 2400,
+      "damagedEggs": 7,
+      "liveBirds": 2689,
+      "medicine": ""
+    },
+    {
+      "date": "2026-01-19",
+      "goodEggs": 2380,
+      "damagedEggs": 5,
+      "liveBirds": 2689,
+      "medicine": ""
+    },
+    {
+      "date": "2026-01-20",
+      "goodEggs": 2415,
+      "damagedEggs": 5,
+      "liveBirds": 2685,
+      "medicine": ""
+    },
+    {
+      "date": "2026-01-21",
+      "goodEggs": 2400,
+      "damagedEggs": 5,
+      "liveBirds": 2685,
+      "medicine": ""
+    },
+    {
+      "date": "2026-01-22",
+      "goodEggs": 2350,
+      "damagedEggs": 2,
+      "liveBirds": 2684,
+      "medicine": ""
+    },
+    {
+      "date": "2026-01-23",
+      "goodEggs": 2440,
+      "damagedEggs": 5,
+      "liveBirds": 2684,
+      "medicine": ""
+    },
+    {
+      "date": "2026-01-24",
+      "goodEggs": 2400,
+      "damagedEggs": 10,
+      "liveBirds": 2683,
+      "medicine": ""
+    },
+    {
+      "date": "2026-01-25",
+      "goodEggs": 2405,
+      "damagedEggs": 1,
+      "liveBirds": 2683,
+      "medicine": ""
+    },
+    {
+      "date": "2026-01-26",
+      "goodEggs": 2380,
+      "damagedEggs": 35,
+      "liveBirds": 2682,
+      "medicine": ""
+    },
+    {
+      "date": "2026-01-27",
+      "goodEggs": 2420,
+      "damagedEggs": 7,
+      "liveBirds": 2683,
+      "medicine": ""
+    },
+    {
+      "date": "2026-01-28",
+      "goodEggs": 2425,
+      "damagedEggs": 10,
+      "liveBirds": 2680,
+      "medicine": ""
+    },
+    {
+      "date": "2026-01-29",
+      "goodEggs": 2440,
+      "damagedEggs": 10,
+      "liveBirds": 2680,
+      "medicine": ""
+    },
+    {
+      "date": "2026-01-30",
+      "goodEggs": 2440,
+      "damagedEggs": 25,
+      "liveBirds": 2680,
+      "medicine": ""
+    },
+    {
+      "date": "2026-01-31",
+      "goodEggs": 2455,
+      "damagedEggs": 8,
+      "liveBirds": 2679,
+      "medicine": ""
+    },
+    {
+      "date": "2026-02-01",
+      "goodEggs": 2480,
+      "damagedEggs": 9,
+      "liveBirds": 2678,
+      "medicine": ""
+    },
+    {
+      "date": "2026-02-02",
+      "goodEggs": 2420,
+      "damagedEggs": 20,
+      "liveBirds": 2677,
+      "medicine": ""
+    },
+    {
+      "date": "2026-02-03",
+      "goodEggs": 2465,
+      "damagedEggs": 20,
+      "liveBirds": 2677,
+      "medicine": ""
+    },
+    {
+      "date": "2026-02-04",
+      "goodEggs": 2415,
+      "damagedEggs": 20,
+      "liveBirds": 2676,
+      "medicine": ""
+    },
+    {
+      "date": "2026-02-05",
+      "goodEggs": 2455,
+      "damagedEggs": 21,
+      "liveBirds": 2676,
+      "medicine": ""
+    },
+    {
+      "date": "2026-02-06",
+      "goodEggs": 2468,
+      "damagedEggs": 12,
+      "liveBirds": 2676,
+      "medicine": ""
+    },
+    {
+      "date": "2026-02-07",
+      "goodEggs": 2470,
+      "damagedEggs": 25,
+      "liveBirds": 2676,
+      "medicine": ""
+    },
+    {
+      "date": "2026-02-08",
+      "goodEggs": 2450,
+      "damagedEggs": 20,
+      "liveBirds": 2676,
+      "medicine": ""
+    },
+    {
+      "date": "2026-02-09",
+      "goodEggs": 2442,
+      "damagedEggs": 20,
+      "liveBirds": 2674,
+      "medicine": ""
+    },
+    {
+      "date": "2026-02-10",
+      "goodEggs": 2430,
+      "damagedEggs": 28,
+      "liveBirds": 2674,
+      "medicine": ""
+    },
+    {
+      "date": "2026-02-11",
+      "goodEggs": 2430,
+      "damagedEggs": 25,
+      "liveBirds": 2674,
+      "medicine": ""
+    },
+    {
+      "date": "2026-02-12",
+      "goodEggs": 2464,
+      "damagedEggs": 4,
+      "liveBirds": 2674,
+      "medicine": ""
+    },
+    {
+      "date": "2026-02-13",
+      "goodEggs": 2465,
+      "damagedEggs": 3,
+      "liveBirds": 2674,
+      "medicine": ""
+    },
+    {
+      "date": "2026-02-14",
+      "goodEggs": 2465,
+      "damagedEggs": 4,
+      "liveBirds": 2674,
+      "medicine": ""
+    },
+    {
+      "date": "2026-02-15",
+      "goodEggs": 2437,
+      "damagedEggs": 8,
+      "liveBirds": 2674,
+      "medicine": ""
+    },
+    {
+      "date": "2026-02-16",
+      "goodEggs": 2425,
+      "damagedEggs": 10,
+      "liveBirds": 2674,
+      "medicine": ""
+    },
+    {
+      "date": "2026-02-17",
+      "goodEggs": 2445,
+      "damagedEggs": 15,
+      "liveBirds": 2674,
+      "medicine": ""
+    },
+    {
+      "date": "2026-02-18",
+      "goodEggs": 2445,
+      "damagedEggs": 5,
+      "liveBirds": 2674,
+      "medicine": "stanmisole vet powder - 300g"
+    },
+    {
+      "date": "2026-02-19",
+      "goodEggs": 2447,
+      "damagedEggs": 13,
+      "liveBirds": 2674,
+      "medicine": "antitox plus - 650 ml"
+    },
+    {
+      "date": "2026-02-20",
+      "goodEggs": 2406,
+      "damagedEggs": 12,
+      "liveBirds": 2672,
+      "medicine": "antitox plus - 650 ml"
+    },
+    {
+      "date": "2026-02-21",
+      "goodEggs": 2463,
+      "damagedEggs": 4,
+      "liveBirds": 2672,
+      "medicine": "antitox plus - 700 ml"
+    },
+    {
+      "date": "2026-02-22",
+      "goodEggs": 2445,
+      "damagedEggs": 5,
+      "liveBirds": 2672,
+      "medicine": ""
+    },
+    {
+      "date": "2026-02-23",
+      "goodEggs": 2444,
+      "damagedEggs": 6,
+      "liveBirds": 2672,
+      "medicine": "Lasota"
+    },
+    {
+      "date": "2026-02-24",
+      "goodEggs": 2475,
+      "damagedEggs": 5,
+      "liveBirds": 2672,
+      "medicine": ""
+    },
+    {
+      "date": "2026-02-25",
+      "goodEggs": 2453,
+      "damagedEggs": 7,
+      "liveBirds": 2672,
+      "medicine": ""
+    },
+    {
+      "date": "2026-02-26",
+      "goodEggs": 2444,
+      "damagedEggs": 6,
+      "liveBirds": 2672,
+      "medicine": ""
+    },
+    {
+      "date": "2026-02-27",
+      "goodEggs": 2425,
+      "damagedEggs": 6,
+      "liveBirds": 2671,
+      "medicine": ""
+    },
+    {
+      "date": "2026-02-28",
+      "goodEggs": 2340,
+      "damagedEggs": 10,
+      "liveBirds": 2671,
+      "medicine": ""
+    },
+    {
+      "date": "2026-03-01",
+      "goodEggs": 2420,
+      "damagedEggs": 7,
+      "liveBirds": 2671,
+      "medicine": ""
+    },
+    {
+      "date": "2026-03-02",
+      "goodEggs": 2375,
+      "damagedEggs": 5,
+      "liveBirds": 2671,
+      "medicine": ""
+    },
+    {
+      "date": "2026-03-03",
+      "goodEggs": 2420,
+      "damagedEggs": 5,
+      "liveBirds": 2671,
+      "medicine": ""
+    },
+    {
+      "date": "2026-03-04",
+      "goodEggs": 2395,
+      "damagedEggs": 2,
+      "liveBirds": 2671,
+      "medicine": ""
+    },
+    {
+      "date": "2026-03-05",
+      "goodEggs": 2397,
+      "damagedEggs": 4,
+      "liveBirds": 2670,
+      "medicine": ""
+    },
+    {
+      "date": "2026-03-06",
+      "goodEggs": 2360,
+      "damagedEggs": 5,
+      "liveBirds": 2669,
+      "medicine": ""
+    },
+    {
+      "date": "2026-03-07",
+      "goodEggs": 2370,
+      "damagedEggs": 5,
+      "liveBirds": 2671,
+      "medicine": ""
+    },
+    {
+      "date": "2026-03-08",
+      "goodEggs": 2365,
+      "damagedEggs": 5,
+      "liveBirds": 2671,
+      "medicine": ""
+    },
+    {
+      "date": "2026-03-09",
+      "goodEggs": 2370,
+      "damagedEggs": 10,
+      "liveBirds": 2671,
+      "medicine": ""
+    },
+    {
+      "date": "2026-03-10",
+      "goodEggs": 2358,
+      "damagedEggs": 5,
+      "liveBirds": 2671,
+      "medicine": ""
+    }
+  ],
+  "expenses": [
+    {
+      "category": "Feed",
+      "date": "2025-10-15",
+      "amount": 92750,
+      "total": 92750,
+      "description": "Feed",
+      "paidBy": "Ajay"
+    },
+    {
+      "category": "Transport",
+      "date": "2025-10-15",
+      "amount": 3500,
+      "total": 3500,
+      "description": "Feed transport",
+      "paidBy": "Shivu"
+    },
+    {
+      "category": "Other",
+      "date": "2025-10-18",
+      "amount": 160000,
+      "total": 160000,
+      "description": "Birds cost (240*2700)",
+      "paidBy": "Ajay"
+    },
+    {
+      "category": "Other",
+      "date": "2025-10-18",
+      "amount": 488000,
+      "total": 488000,
+      "description": "Birds cost (240*2700)",
+      "paidBy": "Shivu"
+    },
+    {
+      "category": "Transport",
+      "date": "2025-10-18",
+      "amount": 17500,
+      "total": 17500,
+      "description": "Birds transport",
+      "paidBy": "Shivu"
+    },
+    {
+      "category": "Medicine",
+      "date": "2025-10-18",
+      "amount": 6250,
+      "total": 6250,
+      "description": "Medicine",
+      "paidBy": "Shivu"
+    },
+    {
+      "category": "Feed",
+      "date": "2025-11-03",
+      "amount": 50000,
+      "total": 50000,
+      "description": "Feed",
+      "paidBy": "Ajay"
+    },
+    {
+      "category": "Feed",
+      "date": "2025-11-03",
+      "amount": 42750,
+      "total": 42750,
+      "description": "Feed",
+      "paidBy": "Shivu"
+    },
+    {
+      "category": "Transport",
+      "date": "2025-11-03",
+      "amount": 3500,
+      "total": 3500,
+      "description": "Feed transport",
+      "paidBy": "Shivu"
+    },
+    {
+      "category": "Medicine",
+      "date": "2025-11-08",
+      "amount": 3000,
+      "total": 3000,
+      "description": "Medicine",
+      "paidBy": "Shivu"
+    },
+    {
+      "category": "Feed",
+      "date": "2025-11-20",
+      "amount": 115750,
+      "total": 115750,
+      "description": "Feed",
+      "paidBy": "Ajay"
+    },
+    {
+      "category": "Transport",
+      "date": "2025-11-20",
+      "amount": 4000,
+      "total": 4000,
+      "description": "Feed transport",
+      "paidBy": "Shivu"
+    },
+    {
+      "category": "Medicine",
+      "date": "2025-11-20",
+      "amount": 15190,
+      "total": 15190,
+      "description": "Medicine",
+      "paidBy": "Shivu"
+    },
+    {
+      "category": "Other",
+      "date": "2025-12-01",
+      "amount": 12500,
+      "total": 12500,
+      "description": "tray purchase",
+      "paidBy": "Ajay"
+    },
+    {
+      "category": "Medicine",
+      "date": "2025-12-01",
+      "amount": 4350,
+      "total": 4350,
+      "description": "Medicine",
+      "paidBy": "Ajay"
+    },
+    {
+      "category": "Feed",
+      "date": "2025-12-06",
+      "amount": 117000,
+      "total": 117000,
+      "description": "Feed",
+      "paidBy": "Ajay"
+    },
+    {
+      "category": "Transport",
+      "date": "2025-12-07",
+      "amount": 4500,
+      "total": 4500,
+      "description": "Feed transport",
+      "paidBy": "Shivu"
+    },
+    {
+      "category": "Medicine",
+      "date": "2025-12-02",
+      "amount": 1500,
+      "total": 1500,
+      "description": "VVND injection",
+      "paidBy": "Shivu"
+    },
+    {
+      "category": "Medicine",
+      "date": "2025-12-14",
+      "amount": 1500,
+      "total": 1500,
+      "description": "ND killed injection",
+      "paidBy": "Shivu"
+    },
+    {
+      "category": "Feed",
+      "date": "2025-12-24",
+      "amount": 80000,
+      "total": 80000,
+      "description": "Feed",
+      "paidBy": "Ajay"
+    },
+    {
+      "category": "Feed",
+      "date": "2025-12-24",
+      "amount": 50000,
+      "total": 50000,
+      "description": "Feed",
+      "paidBy": "Shivu"
+    },
+    {
+      "category": "Transport",
+      "date": "2025-12-24",
+      "amount": 5000,
+      "total": 5000,
+      "description": "Feed transport",
+      "paidBy": "Shivu"
+    },
+    {
+      "category": "Equipment",
+      "date": "2026-01-05",
+      "amount": 399,
+      "total": 399,
+      "description": "weighing machine",
+      "paidBy": "Ajay"
+    },
+    {
+      "category": "Labour",
+      "date": "2026-01-08",
+      "amount": 5000,
+      "total": 5000,
+      "description": "Labour cost Oct",
+      "paidBy": "Shivu"
+    },
+    {
+      "category": "Labour",
+      "date": "2026-01-08",
+      "amount": 10000,
+      "total": 10000,
+      "description": "Labour cost Nov",
+      "paidBy": "Shivu"
+    },
+    {
+      "category": "Labour",
+      "date": "2026-01-08",
+      "amount": 10000,
+      "total": 10000,
+      "description": "Labour cost Dec",
+      "paidBy": "Shivu"
+    },
+    {
+      "category": "Labour",
+      "date": "2026-01-08",
+      "amount": 12000,
+      "total": 12000,
+      "description": "Labour cost Jan",
+      "paidBy": "Sales"
+    },
+    {
+      "category": "Equipment",
+      "date": "2026-01-08",
+      "amount": 6000,
+      "total": 6000,
+      "description": "Fabrication cost - table, water tank",
+      "paidBy": "Shivu"
+    },
+    {
+      "category": "Feed",
+      "date": "2026-01-09",
+      "amount": 130000,
+      "total": 130000,
+      "description": "Feed cost",
+      "paidBy": "Sales"
+    },
+    {
+      "category": "Transport",
+      "date": "2026-01-09",
+      "amount": 4500,
+      "total": 4500,
+      "description": "Feed transport",
+      "paidBy": "Sales"
+    },
+    {
+      "category": "Other",
+      "date": "2026-01-11",
+      "amount": 540,
+      "total": 540,
+      "description": "Paint",
+      "paidBy": "Ajay"
+    },
+    {
+      "category": "Feed",
+      "date": "2026-01-25",
+      "amount": 130000,
+      "total": 130000,
+      "description": "Feed cost",
+      "paidBy": "Sales"
+    },
+    {
+      "category": "Transport",
+      "date": "2026-01-28",
+      "amount": 4500,
+      "total": 4500,
+      "description": "Feed transport",
+      "paidBy": "Sales"
+    },
+    {
+      "category": "Feed",
+      "date": "2026-02-09",
+      "amount": 72875,
+      "total": 72875,
+      "description": "Feed cost",
+      "paidBy": "Sales"
+    },
+    {
+      "category": "Transport",
+      "date": "2026-02-09",
+      "amount": 4350,
+      "total": 4350,
+      "description": "Feed transport",
+      "paidBy": "Sales"
+    },
+    {
+      "category": "Electricity",
+      "date": "2026-02-09",
+      "amount": 16000,
+      "total": 16000,
+      "description": "Electric connection",
+      "paidBy": "Sales"
+    },
+    {
+      "category": "Other",
+      "date": "2026-02-15",
+      "amount": 3312,
+      "total": 3312,
+      "description": "Egg tray - 26.5 per tray for 125",
+      "paidBy": "Sales"
+    },
+    {
+      "category": "Medicine",
+      "date": "2026-02-16",
+      "amount": 6690,
+      "total": 6690,
+      "description": "Medicine",
+      "paidBy": "Sales"
+    },
+    {
+      "category": "Feed",
+      "date": "2026-02-19",
+      "amount": 130000,
+      "total": 130000,
+      "description": "Feed cost",
+      "paidBy": "Sales"
+    },
+    {
+      "category": "Feed",
+      "date": "2026-02-19",
+      "amount": 29000,
+      "total": 29000,
+      "description": "Feed cost",
+      "paidBy": "Sales"
+    },
+    {
+      "category": "Transport",
+      "date": "2026-02-20",
+      "amount": 5400,
+      "total": 5400,
+      "description": "Feed transport",
+      "paidBy": "Sales"
+    },
+    {
+      "category": "Equipment",
+      "date": "2026-02-24",
+      "amount": 2700,
+      "total": 2700,
+      "description": "camera cost",
+      "paidBy": "Sales"
+    },
+    {
+      "category": "Labour",
+      "date": "2026-02-25",
+      "amount": 2850,
+      "total": 2850,
+      "description": "Manure loading",
+      "paidBy": "Sales"
+    },
+    {
+      "category": "Labour",
+      "date": "2026-02-28",
+      "amount": 1500,
+      "total": 1500,
+      "description": "Manure loading",
+      "paidBy": "Sales"
+    },
+    {
+      "category": "Labour",
+      "date": "2026-02-28",
+      "amount": 12000,
+      "total": 12000,
+      "description": "Labour cost",
+      "paidBy": "Sales"
+    },
+    {
+      "category": "Feed",
+      "date": "2026-03-05",
+      "amount": 76800,
+      "total": 76800,
+      "description": "Feed cost",
+      "paidBy": "Sales"
+    },
+    {
+      "category": "Transport",
+      "date": "2026-03-09",
+      "amount": 2700,
+      "total": 2700,
+      "description": "Feed transport",
+      "paidBy": "Sales"
+    }
+  ],
+  "eggSales": [
+    {
+      "id": "mmkzjqnryyt3n",
+      "date": "2025-12-20",
+      "qty": 2820,
+      "pricePerEgg": 5,
+      "buyer": "Retail",
+      "total": 14100
+    },
+    {
+      "id": "h7n2m9lpxq1rs",
+      "date": "2025-12-20",
+      "qty": 3450,
+      "pricePerEgg": 4.5,
+      "buyer": "Wholesale",
+      "total": 15525
+    },
+    {
+      "id": "k8v4n1wzbc6dy",
+      "date": "2025-12-21",
+      "qty": 270,
+      "pricePerEgg": 5,
+      "buyer": "Retail",
+      "total": 1350
+    },
+    {
+      "id": "j3m5k2pqrn8tx",
+      "date": "2025-12-23",
+      "qty": 600,
+      "pricePerEgg": 4.5,
+      "buyer": "Retail",
+      "total": 2700
+    },
+    {
+      "id": "b9x1v4lyzq2mw",
+      "date": "2025-12-23",
+      "qty": 60,
+      "pricePerEgg": 5,
+      "buyer": "Retail",
+      "total": 300
+    },
+    {
+      "id": "f5s8n2rtpk4jv",
+      "date": "2025-12-24",
+      "qty": 1260,
+      "pricePerEgg": 5,
+      "buyer": "Retail",
+      "total": 6300
+    },
+    {
+      "id": "d7g3m1wbxc9nz",
+      "date": "2025-12-25",
+      "qty": 90,
+      "pricePerEgg": 5,
+      "buyer": "Retail",
+      "total": 450
+    },
+    {
+      "id": "a2k9p4rtvz3ms",
+      "date": "2025-12-26",
+      "qty": 4860,
+      "pricePerEgg": 5,
+      "buyer": "Wholesale",
+      "total": 24300
+    },
+    {
+      "id": "c6v8n1lqyh5bw",
+      "date": "2025-12-26",
+      "qty": 1200,
+      "pricePerEgg": 5,
+      "buyer": "Wholesale",
+      "total": 6000
+    },
+    {
+      "id": "e4m2k7pxrn9tz",
+      "date": "2025-12-26",
+      "qty": 600,
+      "pricePerEgg": 5,
+      "buyer": "Retail",
+      "total": 3000
+    },
+    {
+      "id": "g8s1v4wbxc2ny",
+      "date": "2025-12-27",
+      "qty": 450,
+      "pricePerEgg": 5,
+      "buyer": "Retail",
+      "total": 2250
+    },
+    {
+      "id": "t3n5m9lpxq7rs",
+      "date": "2025-12-27",
+      "qty": 600,
+      "pricePerEgg": 5.5,
+      "buyer": "Wholesale",
+      "total": 3300
+    },
+    {
+      "id": "u7v2k1wzbc4dy",
+      "date": "2025-12-28",
+      "qty": 30,
+      "pricePerEgg": 5,
+      "buyer": "Retail",
+      "total": 150
+    },
+    {
+      "id": "i9x4n2rtpk6jv",
+      "date": "2025-12-28",
+      "qty": 3000,
+      "pricePerEgg": 5,
+      "buyer": "Retail",
+      "total": 15000
+    },
+    {
+      "id": "p5m8k1wbxc3nz",
+      "date": "2025-12-29",
+      "qty": 1560,
+      "pricePerEgg": 5.5,
+      "buyer": "Retail",
+      "total": 8580
+    },
+    {
+      "id": "q2k7p4rtvz9ms",
+      "date": "2025-12-30",
+      "qty": 600,
+      "pricePerEgg": 5.5,
+      "buyer": "Retail",
+      "total": 3300
+    },
+    {
+      "id": "w6v1n2lqyh4bw",
+      "date": "2025-12-30",
+      "qty": 840,
+      "pricePerEgg": 6,
+      "buyer": "Retail",
+      "total": 5040
+    },
+    {
+      "id": "y4s3m9pxrn2tz",
+      "date": "2025-12-31",
+      "qty": 1050,
+      "pricePerEgg": 5.8,
+      "buyer": "Retail",
+      "total": 6090
+    },
+    {
+      "id": "z8g1v4wbxc7ny",
+      "date": "2025-12-31",
+      "qty": 180,
+      "pricePerEgg": 5,
+      "buyer": "Reconciliation",
+      "total": 900,
+      "remarks": "Month closure reconciliation"
+    },
+    {
+      "id": "v1n8m3lpxq5rs",
+      "date": "2026-01-01",
+      "qty": 3900,
+      "pricePerEgg": 5.8,
+      "buyer": "Retail",
+      "total": 22620,
+      "remarks": ""
+    },
+    {
+      "id": "z4k2p9rtvz7ms",
+      "date": "2026-01-02",
+      "qty": 390,
+      "pricePerEgg": 5.8,
+      "buyer": "Retail",
+      "total": 2262,
+      "remarks": ""
+    },
+    {
+      "id": "b6v1n5lqyh8bw",
+      "date": "2026-01-02",
+      "qty": 210,
+      "pricePerEgg": 6,
+      "buyer": "Retail",
+      "total": 1260,
+      "remarks": ""
+    },
+    {
+      "id": "d9s4m2pxrn3tz",
+      "date": "2026-01-03",
+      "qty": 180,
+      "pricePerEgg": 5.5,
+      "buyer": "Retail",
+      "total": 990,
+      "remarks": ""
+    },
+    {
+      "id": "f2g7v1wbxc5ny",
+      "date": "2026-01-03",
+      "qty": 30,
+      "pricePerEgg": 5,
+      "buyer": "Retail",
+      "total": 150,
+      "remarks": ""
+    },
+    {
+      "id": "h5n8k3lpxq9rs",
+      "date": "2026-01-03",
+      "qty": 150,
+      "pricePerEgg": 6,
+      "buyer": "Retail",
+      "total": 900,
+      "remarks": ""
+    },
+    {
+      "id": "j1m4p2rtvz6ms",
+      "date": "2026-01-04",
+      "qty": 3750,
+      "pricePerEgg": 5.9,
+      "buyer": "Retail",
+      "total": 22125,
+      "remarks": ""
+    },
+    {
+      "id": "l4v7n1lqyh2bw",
+      "date": "2026-01-04",
+      "qty": 240,
+      "pricePerEgg": 6,
+      "buyer": "Retail",
+      "total": 1440,
+      "remarks": ""
+    },
+    {
+      "id": "n7s1m9pxrn5tz",
+      "date": "2026-01-05",
+      "qty": 120,
+      "pricePerEgg": 6,
+      "buyer": "Retail",
+      "total": 720,
+      "remarks": ""
+    },
+    {
+      "id": "p3g6v4wbxc8ny",
+      "date": "2026-01-05",
+      "qty": 180,
+      "pricePerEgg": 5.8,
+      "buyer": "Retail",
+      "total": 1044,
+      "remarks": ""
+    },
+    {
+      "id": "r9n2k5lpxq1rs",
+      "date": "2026-01-07",
+      "qty": 7620,
+      "pricePerEgg": 5,
+      "buyer": "Retail",
+      "total": 38100,
+      "remarks": ""
+    },
+    {
+      "id": "t5m8p1rtvz4ms",
+      "date": "2026-01-07",
+      "qty": 180,
+      "pricePerEgg": 5.8,
+      "buyer": "Retail",
+      "total": 1044,
+      "remarks": ""
+    },
+    {
+      "id": "v2v5n9lqyh7bw",
+      "date": "2026-01-07",
+      "qty": 600,
+      "pricePerEgg": 6,
+      "buyer": "Retail",
+      "total": 3600,
+      "remarks": ""
+    },
+    {
+      "id": "x8s3m1pxrn9tz",
+      "date": "2026-01-07",
+      "qty": 150,
+      "pricePerEgg": 5.8,
+      "buyer": "Retail",
+      "total": 870,
+      "remarks": ""
+    },
+    {
+      "id": "z1g4v7wbxc2ny",
+      "date": "2026-01-08",
+      "qty": 360,
+      "pricePerEgg": 6,
+      "buyer": "Retail",
+      "total": 2160,
+      "remarks": ""
+    },
+    {
+      "id": "a7n9k2lpxq5rs",
+      "date": "2026-01-09",
+      "qty": 600,
+      "pricePerEgg": 6,
+      "buyer": "Retail",
+      "total": 3600,
+      "remarks": ""
+    },
+    {
+      "id": "c3m6p8rtvz1ms",
+      "date": "2026-01-09",
+      "qty": 600,
+      "pricePerEgg": 5.25,
+      "buyer": "Retail",
+      "total": 3150,
+      "remarks": ""
+    },
+    {
+      "id": "e9v2n4lqyh6bw",
+      "date": "2026-01-10",
+      "qty": 195,
+      "pricePerEgg": 6,
+      "buyer": "Retail",
+      "total": 1170,
+      "remarks": ""
+    },
+    {
+      "id": "g5s8m1pxrn4tz",
+      "date": "2026-01-11",
+      "qty": 420,
+      "pricePerEgg": 6,
+      "buyer": "Retail",
+      "total": 2520,
+      "remarks": ""
+    },
+    {
+      "id": "i1g4v9wbxc7ny",
+      "date": "2026-01-11",
+      "qty": 2970,
+      "pricePerEgg": 5.45,
+      "buyer": "Retail",
+      "total": 16186.5,
+      "remarks": ""
+    },
+    {
+      "id": "k7n3k6lpxq2rs",
+      "date": "2026-01-12",
+      "qty": 30,
+      "pricePerEgg": 6,
+      "buyer": "Retail",
+      "total": 180,
+      "remarks": ""
+    },
+    {
+      "id": "m4m9p2rtvz5ms",
+      "date": "2026-01-14",
+      "qty": 420,
+      "pricePerEgg": 6,
+      "buyer": "Retail",
+      "total": 2520,
+      "remarks": ""
+    },
+    {
+      "id": "o1v6n8lqyh9bw",
+      "date": "2026-01-15",
+      "qty": 12390,
+      "pricePerEgg": 4.9,
+      "buyer": "Retail",
+      "total": 60711,
+      "remarks": ""
+    },
+    {
+      "id": "q8s2m4pxrn1tz",
+      "date": "2026-01-16",
+      "qty": 480,
+      "pricePerEgg": 6,
+      "buyer": "Retail",
+      "total": 2880,
+      "remarks": ""
+    },
+    {
+      "id": "s5g9v3wbxc4ny",
+      "date": "2026-01-17",
+      "qty": 180,
+      "pricePerEgg": 6,
+      "buyer": "Retail",
+      "total": 1080,
+      "remarks": ""
+    },
+    {
+      "id": "u2n7k1lpxq8rs",
+      "date": "2026-01-18",
+      "qty": 30,
+      "pricePerEgg": 5,
+      "buyer": "Retail",
+      "total": 150,
+      "remarks": ""
+    },
+    {
+      "id": "w9m4p7rtvz2ms",
+      "date": "2026-01-18",
+      "qty": 150,
+      "pricePerEgg": 6,
+      "buyer": "Retail",
+      "total": 900,
+      "remarks": ""
+    },
+    {
+      "id": "y6v1n5lqyh4bw",
+      "date": "2026-01-19",
+      "qty": 300,
+      "pricePerEgg": 5.5,
+      "buyer": "Retail",
+      "total": 1650,
+      "remarks": ""
+    },
+    {
+      "id": "a3s7m9pxrn6tz",
+      "date": "2026-01-19",
+      "qty": 60,
+      "pricePerEgg": 5.66,
+      "buyer": "Retail",
+      "total": 339.6,
+      "remarks": ""
+    },
+    {
+      "id": "c1g5v8wbxc9ny",
+      "date": "2026-01-20",
+      "qty": 60,
+      "pricePerEgg": 5.5,
+      "buyer": "Retail",
+      "total": 330,
+      "remarks": ""
+    },
+    {
+      "id": "e7n3k9lpxq4rs",
+      "date": "2026-01-21",
+      "qty": 150,
+      "pricePerEgg": 5.5,
+      "buyer": "Retail",
+      "total": 825,
+      "remarks": ""
+    },
+    {
+      "id": "g4m8p2rtvz1ms",
+      "date": "2026-01-21",
+      "qty": 180,
+      "pricePerEgg": 5.66,
+      "buyer": "Retail",
+      "total": 1018.8,
+      "remarks": ""
+    },
+    {
+      "id": "i9v1n6lqyh5bw",
+      "date": "2026-01-22",
+      "qty": 240,
+      "pricePerEgg": 5.5,
+      "buyer": "Retail",
+      "total": 1320,
+      "remarks": ""
+    },
+    {
+      "id": "k6s4m2pxrn8tz",
+      "date": "2026-01-22",
+      "qty": 3780,
+      "pricePerEgg": 4.7,
+      "buyer": "Retail",
+      "total": 17766,
+      "remarks": ""
+    },
+    {
+      "id": "m1g7v4wbxc2ny",
+      "date": "2026-01-23",
+      "qty": 540,
+      "pricePerEgg": 5.5,
+      "buyer": "Retail",
+      "total": 2970,
+      "remarks": ""
+    },
+    {
+      "id": "o8n2k9lpxq7rs",
+      "date": "2026-01-25",
+      "qty": 15000,
+      "pricePerEgg": 4.6,
+      "buyer": "Retail",
+      "total": 69000,
+      "remarks": ""
+    },
+    {
+      "id": "q5m1p4rtvz3ms",
+      "date": "2026-01-25",
+      "qty": 30,
+      "pricePerEgg": 0,
+      "buyer": "Retail",
+      "total": 0,
+      "remarks": "Damaged eggs due to rodents"
+    },
+    {
+      "id": "s2v6n1lqyh9bw",
+      "date": "2026-01-26",
+      "qty": 12,
+      "pricePerEgg": 0,
+      "buyer": "Retail",
+      "total": 0,
+      "remarks": "Damaged eggs due to rodents"
+    },
+    {
+      "id": "u9s3m7pxrn2tz",
+      "date": "2026-01-26",
+      "qty": 3150,
+      "pricePerEgg": 4.6,
+      "buyer": "Retail",
+      "total": 14490,
+      "remarks": ""
+    },
+    {
+      "id": "w6g1v4wbxc5ny",
+      "date": "2026-01-26",
+      "qty": 1800,
+      "pricePerEgg": 5.05,
+      "buyer": "Retail",
+      "total": 9090,
+      "remarks": ""
+    },
+    {
+      "id": "y3n8k2lpxq1rs",
+      "date": "2026-01-26",
+      "qty": 150,
+      "pricePerEgg": 5.5,
+      "buyer": "Retail",
+      "total": 825,
+      "remarks": ""
+    },
+    {
+      "id": "a1m4p9rtvz6ms",
+      "date": "2026-01-27",
+      "qty": 150,
+      "pricePerEgg": 5.66,
+      "buyer": "Retail",
+      "total": 849,
+      "remarks": ""
+    },
+    {
+      "id": "c8v2n5lqyh4bw",
+      "date": "2026-01-29",
+      "qty": 150,
+      "pricePerEgg": 5.5,
+      "buyer": "Retail",
+      "total": 825,
+      "remarks": ""
+    },
+    {
+      "id": "e5s1m9pxrn7tz",
+      "date": "2026-01-29",
+      "qty": 90,
+      "pricePerEgg": 4,
+      "buyer": "Retail",
+      "total": 360,
+      "remarks": ""
+    },
+    {
+      "id": "g2g6v4wbxc8ny",
+      "date": "2026-01-29",
+      "qty": 7380,
+      "pricePerEgg": 4.75,
+      "buyer": "Retail",
+      "total": 35055,
+      "remarks": ""
+    },
+    {
+      "id": "i7n3k1lpxq2rs",
+      "date": "2026-01-30",
+      "qty": 270,
+      "pricePerEgg": 5.66,
+      "buyer": "Retail",
+      "total": 1528.2,
+      "remarks": ""
+    },
+    {
+      "id": "k4m9p7rtvz5ms",
+      "date": "2026-01-30",
+      "qty": 30,
+      "pricePerEgg": 5.75,
+      "buyer": "Retail",
+      "total": 172.5,
+      "remarks": ""
+    },
+    {
+      "id": "m1v6n2lqyh9bw",
+      "date": "2026-01-30",
+      "qty": 30,
+      "pricePerEgg": 6.66,
+      "buyer": "Retail",
+      "total": 199.8,
+      "remarks": ""
+    },
+    {
+      "id": "o9s2m4pxrn1tz",
+      "date": "2026-01-31",
+      "qty": 120,
+      "pricePerEgg": 5.66,
+      "buyer": "Retail",
+      "total": 679.2,
+      "remarks": ""
+    },
+    {
+      "id": "q5g8v3wbxc4ny",
+      "date": "2026-01-31",
+      "qty": 180,
+      "pricePerEgg": 0,
+      "buyer": "Retail",
+      "total": 0,
+      "remarks": "Month closure reconciliation"
+    },
+    {
+      "id": "m1k9j2nryyt3n",
+      "date": "2026-02-01",
+      "qty": 6300,
+      "pricePerEgg": 4.75,
+      "buyer": "Retail",
+      "total": 29925,
+      "remarks": ""
+    },
+    {
+      "id": "p7n2m5lpxq1rs",
+      "date": "2026-02-01",
+      "qty": 90,
+      "pricePerEgg": 5.66,
+      "buyer": "Retail",
+      "total": 509.4,
+      "remarks": ""
+    },
+    {
+      "id": "k8v4n9wzbc6dy",
+      "date": "2026-02-01",
+      "qty": 30,
+      "pricePerEgg": 4.33,
+      "buyer": "Retail",
+      "total": 129.9,
+      "remarks": ""
+    },
+    {
+      "id": "j3m5k8pqrn8tx",
+      "date": "2026-02-02",
+      "qty": 30,
+      "pricePerEgg": 5.83,
+      "buyer": "Retail",
+      "total": 174.9,
+      "remarks": ""
+    },
+    {
+      "id": "b9x1v7lyzq2mw",
+      "date": "2026-02-03",
+      "qty": 60,
+      "pricePerEgg": 5.5,
+      "buyer": "Retail",
+      "total": 330,
+      "remarks": ""
+    },
+    {
+      "id": "f5s8n9rtpk4jv",
+      "date": "2026-02-03",
+      "qty": 30,
+      "pricePerEgg": 5.66,
+      "buyer": "Retail",
+      "total": 169.8,
+      "remarks": ""
+    },
+    {
+      "id": "d7g3m5wbxc9nz",
+      "date": "2026-02-04",
+      "qty": 420,
+      "pricePerEgg": 5.5,
+      "buyer": "Retail",
+      "total": 2310,
+      "remarks": ""
+    },
+    {
+      "id": "a2k9p7rtvz3ms",
+      "date": "2026-02-04",
+      "qty": 300,
+      "pricePerEgg": 5.33,
+      "buyer": "Retail",
+      "total": 1599,
+      "remarks": ""
+    },
+    {
+      "id": "c6v8n9lqyh5bw",
+      "date": "2026-02-05",
+      "qty": 4500,
+      "pricePerEgg": 4.85,
+      "buyer": "Retail",
+      "total": 21825,
+      "remarks": ""
+    },
+    {
+      "id": "e4m2k9pxrn9tz",
+      "date": "2026-02-05",
+      "qty": 30,
+      "pricePerEgg": 5.5,
+      "buyer": "Retail",
+      "total": 165,
+      "remarks": ""
+    },
+    {
+      "id": "g8s1v7wbxc2ny",
+      "date": "2026-02-05",
+      "qty": 90,
+      "pricePerEgg": 5.5,
+      "buyer": "Retail",
+      "total": 495,
+      "remarks": ""
+    },
+    {
+      "id": "t3n5m2lpxq7rs",
+      "date": "2026-02-05",
+      "qty": 60,
+      "pricePerEgg": 4.5,
+      "buyer": "Retail",
+      "total": 270,
+      "remarks": ""
+    },
+    {
+      "id": "u7v2k9wzbc4dy",
+      "date": "2026-02-06",
+      "qty": 60,
+      "pricePerEgg": 5.5,
+      "buyer": "Retail",
+      "total": 330,
+      "remarks": ""
+    },
+    {
+      "id": "i9x4n7rtpk6jv",
+      "date": "2026-02-07",
+      "qty": 11700,
+      "pricePerEgg": 4.75,
+      "buyer": "Retail",
+      "total": 55575,
+      "remarks": ""
+    },
+    {
+      "id": "p5m8k9wbxc3nz",
+      "date": "2026-02-07",
+      "qty": 180,
+      "pricePerEgg": 5.66,
+      "buyer": "Retail",
+      "total": 1018.8,
+      "remarks": ""
+    },
+    {
+      "id": "q2k7p9rtvz9ms",
+      "date": "2026-02-08",
+      "qty": 30,
+      "pricePerEgg": 6.66,
+      "buyer": "Retail",
+      "total": 199.8,
+      "remarks": ""
+    },
+    {
+      "id": "w6v1n9lqyh4bw",
+      "date": "2026-02-09",
+      "qty": 90,
+      "pricePerEgg": 5.66,
+      "buyer": "Retail",
+      "total": 509.4,
+      "remarks": ""
+    },
+    {
+      "id": "y4s3m2pxrn2tz",
+      "date": "2026-02-09",
+      "qty": 60,
+      "pricePerEgg": 5.5,
+      "buyer": "Retail",
+      "total": 330,
+      "remarks": ""
+    },
+    {
+      "id": "z8g1v7wbxc7ny",
+      "date": "2026-02-10",
+      "qty": 30,
+      "pricePerEgg": 6,
+      "buyer": "Retail",
+      "total": 180,
+      "remarks": ""
+    },
+    {
+      "id": "x1n4k9lpxq2mw",
+      "date": "2026-02-10",
+      "qty": 30,
+      "pricePerEgg": 5.5,
+      "buyer": "Retail",
+      "total": 165,
+      "remarks": ""
+    },
+    {
+      "id": "m5s8p2rtvz6tx",
+      "date": "2026-02-11",
+      "qty": 420,
+      "pricePerEgg": 5.5,
+      "buyer": "Retail",
+      "total": 2310,
+      "remarks": ""
+    },
+    {
+      "id": "o7v2n1lqyh9bw",
+      "date": "2026-02-11",
+      "qty": 120,
+      "pricePerEgg": 5.66,
+      "buyer": "Retail",
+      "total": 679.2,
+      "remarks": ""
+    },
+    {
+      "id": "q9x4m7pxrn1nz",
+      "date": "2026-02-11",
+      "qty": 30,
+      "pricePerEgg": 3.33,
+      "buyer": "Retail",
+      "total": 100,
+      "remarks": "Damaged eggs"
+    },
+    {
+      "id": "s1g9v3wbxc4dy",
+      "date": "2026-02-13",
+      "qty": 30,
+      "pricePerEgg": 5.66,
+      "buyer": "Retail",
+      "total": 169.8,
+      "remarks": ""
+    },
+    {
+      "id": "u4n7k1lpxq8rs",
+      "date": "2026-02-14",
+      "qty": 120,
+      "pricePerEgg": 4.5,
+      "buyer": "Retail",
+      "total": 540,
+      "remarks": ""
+    },
+    {
+      "id": "w2m4p7rtvz2ms",
+      "date": "2026-02-14",
+      "qty": 90,
+      "pricePerEgg": 5.5,
+      "buyer": "Retail",
+      "total": 495,
+      "remarks": ""
+    },
+    {
+      "id": "y9v1n5lqyh4bw",
+      "date": "2026-02-15",
+      "qty": 15300,
+      "pricePerEgg": 4.95,
+      "buyer": "Retail",
+      "total": 75735,
+      "remarks": ""
+    },
+    {
+      "id": "a6s7m9pxrn6tz",
+      "date": "2026-02-16",
+      "qty": 3000,
+      "pricePerEgg": 5.1,
+      "buyer": "Retail",
+      "total": 15300,
+      "remarks": ""
+    },
+    {
+      "id": "c1g5v8wbxc9ny",
+      "date": "2026-02-16",
+      "qty": 30,
+      "pricePerEgg": 6,
+      "buyer": "Retail",
+      "total": 180,
+      "remarks": ""
+    },
+    {
+      "id": "e7n3k9lpxq4rs",
+      "date": "2026-02-16",
+      "qty": 240,
+      "pricePerEgg": 5.5,
+      "buyer": "Retail",
+      "total": 1320,
+      "remarks": ""
+    },
+    {
+      "id": "g4m8p2rtvz1ms",
+      "date": "2026-02-16",
+      "qty": 30,
+      "pricePerEgg": 5.66,
+      "buyer": "Retail",
+      "total": 169.8,
+      "remarks": ""
+    },
+    {
+      "id": "i9v1n6lqyh5bw",
+      "date": "2026-02-17",
+      "qty": 2070,
+      "pricePerEgg": 5.15,
+      "buyer": "Retail",
+      "total": 10660.5,
+      "remarks": ""
+    },
+    {
+      "id": "k6s4m2pxrn8tz",
+      "date": "2026-02-17",
+      "qty": 30,
+      "pricePerEgg": 5.66,
+      "buyer": "Retail",
+      "total": 169.8,
+      "remarks": ""
+    },
+    {
+      "id": "m1g7v4wbxc2ny",
+      "date": "2026-02-17",
+      "qty": 60,
+      "pricePerEgg": 6,
+      "buyer": "Retail",
+      "total": 360,
+      "remarks": ""
+    },
+    {
+      "id": "o8n2k9lpxq7rs",
+      "date": "2026-02-18",
+      "qty": 10,
+      "pricePerEgg": 0,
+      "buyer": "Retail",
+      "total": 0,
+      "remarks": "Manual total override for fractional qty"
+    },
+    {
+      "id": "q5m1p4rtvz3ms",
+      "date": "2026-02-18",
+      "qty": 60,
+      "pricePerEgg": 6,
+      "buyer": "Retail",
+      "total": 360,
+      "remarks": ""
+    },
+    {
+      "id": "s2v6n1lqyh9bw",
+      "date": "2026-02-18",
+      "qty": 30,
+      "pricePerEgg": 7,
+      "buyer": "Retail",
+      "total": 210,
+      "remarks": ""
+    },
+    {
+      "id": "u9s3m7pxrn2tz",
+      "date": "2026-02-18",
+      "qty": 120,
+      "pricePerEgg": 4.5,
+      "buyer": "Retail",
+      "total": 540,
+      "remarks": ""
+    },
+    {
+      "id": "w6g1v4wbxc5ny",
+      "date": "2026-02-20",
+      "qty": 180,
+      "pricePerEgg": 5.66,
+      "buyer": "Retail",
+      "total": 1018.8,
+      "remarks": ""
+    },
+    {
+      "id": "y3n8k2lpxq1rs",
+      "date": "2026-02-20",
+      "qty": 30,
+      "pricePerEgg": 0,
+      "buyer": "Retail",
+      "total": 0,
+      "remarks": "Damaged eggs"
+    },
+    {
+      "id": "a1m4p9rtvz6ms",
+      "date": "2026-02-21",
+      "qty": 30,
+      "pricePerEgg": 6,
+      "buyer": "Retail",
+      "total": 180,
+      "remarks": ""
+    },
+    {
+      "id": "c8v2n5lqyh4bw",
+      "date": "2026-02-21",
+      "qty": 30,
+      "pricePerEgg": 5.66,
+      "buyer": "Retail",
+      "total": 169.8,
+      "remarks": ""
+    },
+    {
+      "id": "e5s1m9pxrn7tz",
+      "date": "2026-02-23",
+      "qty": 60,
+      "pricePerEgg": 5.66,
+      "buyer": "Retail",
+      "total": 339.6,
+      "remarks": ""
+    },
+    {
+      "id": "g2g6v4wbxc8ny",
+      "date": "2026-02-25",
+      "qty": 15120,
+      "pricePerEgg": 4.65,
+      "buyer": "Retail",
+      "total": 70308,
+      "remarks": ""
+    },
+    {
+      "id": "i7n3k1lpxq2rs",
+      "date": "2026-02-25",
+      "qty": 30,
+      "pricePerEgg": 6,
+      "buyer": "Retail",
+      "total": 180,
+      "remarks": ""
+    },
+    {
+      "id": "k4m9p7rtvz5ms",
+      "date": "2026-02-25",
+      "qty": 0,
+      "pricePerEgg": 0,
+      "buyer": "Retail",
+      "total": 0,
+      "remarks": ""
+    },
+    {
+      "id": "m1v6n2lqyh9bw",
+      "date": "2026-02-27",
+      "qty": 30,
+      "pricePerEgg": 5.66,
+      "buyer": "Retail",
+      "total": 169.8,
+      "remarks": ""
+    },
+    {
+      "id": "o9s2m4pxrn1nz",
+      "date": "2026-02-27",
+      "qty": 60,
+      "pricePerEgg": 0,
+      "buyer": "Retail",
+      "total": 0,
+      "remarks": "Damaged/Reconciliation"
+    },
+    {
+      "id": "q5g8v3wbxc4ny",
+      "date": "2026-02-28",
+      "qty": 60,
+      "pricePerEgg": 5.5,
+      "buyer": "Retail",
+      "total": 330,
+      "remarks": ""
+    },
+    {
+      "id": "s8n3k1lpxq2rs",
+      "date": "2026-02-28",
+      "qty": 630,
+      "pricePerEgg": 0,
+      "buyer": "Retail",
+      "total": 0,
+      "remarks": "Month end reconciliation. Change in computation of total production"
+    },
+    {
+      "id": "n1k5j9rnyyt3m",
+      "date": "2026-03-01",
+      "qty": 30,
+      "pricePerEgg": 5,
+      "buyer": "Retail",
+      "total": 150,
+      "remarks": ""
+    },
+    {
+      "id": "p2n8m4lpxq1rs",
+      "date": "2026-03-02",
+      "qty": 270,
+      "pricePerEgg": 5,
+      "buyer": "Retail",
+      "total": 1350,
+      "remarks": ""
+    },
+    {
+      "id": "k1v9n4wzbc6dy",
+      "date": "2026-03-02",
+      "qty": 30,
+      "pricePerEgg": 5.33,
+      "buyer": "Retail",
+      "total": 159.9,
+      "remarks": ""
+    },
+    {
+      "id": "j8m2k5pqrn8tx",
+      "date": "2026-03-03",
+      "qty": 135,
+      "pricePerEgg": 5,
+      "buyer": "Retail",
+      "total": 675,
+      "remarks": ""
+    },
+    {
+      "id": "b3x7v1lyzq2mw",
+      "date": "2026-03-04",
+      "qty": 14100,
+      "pricePerEgg": 3.95,
+      "buyer": "Retail",
+      "total": 55695,
+      "remarks": ""
+    },
+    {
+      "id": "f9s2n8rtpk4jv",
+      "date": "2026-03-04",
+      "qty": 210,
+      "pricePerEgg": 5,
+      "buyer": "Retail",
+      "total": 1050,
+      "remarks": ""
+    },
+    {
+      "id": "d1g8m3wbxc9nz",
+      "date": "2026-03-04",
+      "qty": 30,
+      "pricePerEgg": 5.66,
+      "buyer": "Retail",
+      "total": 169.8,
+      "remarks": ""
+    },
+    {
+      "id": "a5k2p4rtvz3ms",
+      "date": "2026-03-05",
+      "qty": 30,
+      "pricePerEgg": 5,
+      "buyer": "Retail",
+      "total": 150,
+      "remarks": ""
+    },
+    {
+      "id": "c9v1n8lqyh5bw",
+      "date": "2026-03-05",
+      "qty": 30,
+      "pricePerEgg": 5.5,
+      "buyer": "Retail",
+      "total": 165,
+      "remarks": ""
+    },
+    {
+      "id": "e2m7k4pxrn9tz",
+      "date": "2026-03-06",
+      "qty": 120,
+      "pricePerEgg": 5,
+      "buyer": "Retail",
+      "total": 600,
+      "remarks": ""
+    },
+    {
+      "id": "g4s9v1wbxc2ny",
+      "date": "2026-03-08",
+      "qty": 13500,
+      "pricePerEgg": 3.9,
+      "buyer": "Retail",
+      "total": 52650,
+      "remarks": ""
+    },
+    {
+      "id": "t1n8m5lpxq7rs",
+      "date": "2026-03-08",
+      "qty": 30,
+      "pricePerEgg": 5,
+      "buyer": "Retail",
+      "total": 150,
+      "remarks": ""
+    },
+    {
+      "id": "u4v2k1wzbc4dy",
+      "date": "2026-03-08",
+      "qty": 30,
+      "pricePerEgg": 6,
+      "buyer": "Retail",
+      "total": 180,
+      "remarks": ""
+    },
+    {
+      "id": "i7x9n2rtpk6jv",
+      "date": "2026-03-08",
+      "qty": 30,
+      "pricePerEgg": 0,
+      "buyer": "Retail",
+      "total": 0,
+      "remarks": "Damaged eggs"
+    },
+    {
+      "id": "p1m4k8wbxc3nz",
+      "date": "2026-03-09",
+      "qty": 30,
+      "pricePerEgg": 5.33,
+      "buyer": "Retail",
+      "total": 159.9,
+      "remarks": ""
+    },
+    {
+      "id": "q6k2p9rtvz9ms",
+      "date": "2026-03-09",
+      "qty": 20,
+      "pricePerEgg": 0,
+      "buyer": "Retail",
+      "total": 0,
+      "remarks": "Manual override for 0.66 qty fraction"
+    },
+    {
+      "id": "w9v5n1lqyh4bw",
+      "date": "2026-03-10",
+      "qty": 90,
+      "pricePerEgg": 5,
+      "buyer": "Retail",
+      "total": 450,
+      "remarks": ""
+    }
+  ],
+  "otherSales": [
+    {
+      "id": "nmkzjqnryyt3p",
+      "date": "2025-12-15",
+      "description": "Bags",
+      "unitPrice": 8.5,
+      "qty": 163,
+      "total": 1400.17,
+      "remarks": ""
+    },
+    {
+      "id": "h8n3m0lpxq2rs",
+      "date": "2026-02-15",
+      "description": "manure",
+      "unitPrice": 110,
+      "qty": 80,
+      "total": 8800,
+      "remarks": ""
+    },
+    {
+      "id": "k9v5n2wzbc7dy",
+      "date": "2026-02-21",
+      "description": "Feed",
+      "unitPrice": 1380,
+      "qty": 3,
+      "total": 4140,
+      "remarks": ""
+    },
+    {
+      "id": "j4m6k3pqrn9tx",
+      "date": "2026-02-25",
+      "description": "manure",
+      "unitPrice": 127.5,
+      "qty": 120,
+      "total": 15300,
+      "remarks": ""
+    },
+    {
+      "id": "b0x2v5lyzq3mw",
+      "date": "2026-02-28",
+      "description": "manure",
+      "unitPrice": 130,
+      "qty": 150,
+      "total": 19500,
+      "remarks": ""
+    }
+  ]
 }

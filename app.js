@@ -106,15 +106,14 @@ function getMetrics() {
   /* -----------------------------------------------------------
      PER-BIRD MAINTENANCE COST CALCULATION
      -----------------------------------------------------------
-     Formula: Total ALL Expenses (₹) / Current Live Birds
+     Formula: Total Expenses (₹) / (Current Live Birds × Days Since Arrival)
 
-     Rationale: We aggregate EVERY recorded expense since arrival.
-     This gives a running average of how much money has been spent
-     maintaining each bird that is currently alive.
+     This gives a daily per-bird maintenance cost — i.e. how much
+     it costs to maintain one bird for one day, averaged across the
+     entire batch lifetime so far.
 
-     - Numerator: Sum of all expense records (no date filter needed
-       since expenses are only logged after arrivalDate is set)
-     - Denominator: The most recent liveBirds count from production logs
+     - Numerator:   Sum of all recorded expenses
+     - Denominator: currentLiveBirds × daysSince(arrivalDate)
      ----------------------------------------------------------- */
   const currentLiveBirds = (() => {
     if (productionData.length === 0) return parseInt(farmConfig.initialBirdCount) || 0;
@@ -122,8 +121,9 @@ function getMetrics() {
     return parseInt(sorted[0].liveBirds) || parseInt(farmConfig.initialBirdCount) || 0;
   })();
 
-  const costPerBird = currentLiveBirds > 0
-    ? totalExpenses / currentLiveBirds
+  const daysElapsed = farmConfig.arrivalDate ? daysSince(farmConfig.arrivalDate) : 0;
+  const costPerBird = (currentLiveBirds > 0 && daysElapsed > 0)
+    ? totalExpenses / (currentLiveBirds * daysElapsed)
     : 0;
 
   return {
@@ -132,7 +132,8 @@ function getMetrics() {
     cashInHand,
     costPerBird,
     currentLiveBirds,
-    totalExpenses
+    totalExpenses,
+    daysElapsed
   };
 }
 
@@ -250,7 +251,7 @@ function renderHome() {
         <div class="metric-icon">🐔</div>
         <div class="metric-label">Cost / Bird</div>
         <div class="metric-value" style="font-size:20px;">${formatINR(m.costPerBird)}</div>
-        <div class="metric-sub">maintenance avg</div>
+        <div class="metric-sub">per bird per day</div>
       </div>
     </div>
 
@@ -267,9 +268,17 @@ function renderHome() {
         <span>Current Live Birds</span>
         <span style="font-family:'DM Mono',monospace;">${m.currentLiveBirds.toLocaleString()}</span>
       </div>
+      <div style="display:flex;justify-content:space-between;font-size:13px;color:var(--ink);margin-bottom:3px;">
+        <span>Days Since Arrival</span>
+        <span style="font-family:'DM Mono',monospace;">${m.daysElapsed} days</span>
+      </div>
       <div style="height:1px;background:var(--parchment);margin:8px 0;"></div>
+      <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--earth);margin-bottom:6px;">
+        <span>Expenses ÷ (Birds × Days)</span>
+        <span style="font-family:'DM Mono',monospace;">${formatINR(m.totalExpenses)} ÷ (${m.currentLiveBirds} × ${m.daysElapsed})</span>
+      </div>
       <div style="display:flex;justify-content:space-between;font-size:14px;font-weight:700;color:var(--bark);">
-        <span>= Cost Per Bird</span>
+        <span>= Cost / Bird / Day</span>
         <span style="font-family:'DM Mono',monospace;color:var(--grove);">${formatINR(m.costPerBird)}</span>
       </div>
     </div>
@@ -850,7 +859,6 @@ function renderOtherMonthlySummaryTable() {
     return `<div class="empty-state"><div class="empty-state-icon">📦</div><div class="empty-state-text">No other sales recorded yet.</div></div>`;
   }
   const grandSales = rows.reduce((s, r) => s + r.totalSales, 0);
-  const grandQty   = rows.reduce((s, r) => s + r.totalQty,   0);
   const grandTx    = rows.reduce((s, r) => s + r.txCount,    0);
   return `
     <div class="monthly-table-wrapper">
@@ -858,7 +866,6 @@ function renderOtherMonthlySummaryTable() {
         <thead>
           <tr>
             <th>Month</th>
-            <th class="num-col">Qty (Units)</th>
             <th class="num-col">Transactions</th>
             <th class="num-col">Revenue</th>
           </tr>
@@ -867,7 +874,6 @@ function renderOtherMonthlySummaryTable() {
           ${rows.map((r, i) => `
             <tr class="${i % 2 === 0 ? 'row-even' : 'row-odd'}">
               <td class="month-label-cell">${r.label}</td>
-              <td class="num-col good-col">${r.totalQty.toLocaleString('en-IN')}</td>
               <td class="num-col days-col">${r.txCount}</td>
               <td class="num-col" style="color:var(--grove);font-weight:600;">${formatINR(r.totalSales)}</td>
             </tr>`).join('')}
@@ -875,15 +881,11 @@ function renderOtherMonthlySummaryTable() {
         <tfoot>
           <tr class="totals-row">
             <td class="month-label-cell">Grand Total</td>
-            <td class="num-col good-col">${grandQty.toLocaleString('en-IN')}</td>
             <td class="num-col days-col">${grandTx}</td>
             <td class="num-col" style="color:var(--grove);font-weight:700;">${formatINR(grandSales)}</td>
           </tr>
         </tfoot>
       </table>
-    </div>
-    <div class="monthly-table-legend">
-      <span>Qty = sum of units sold across all other sale entries</span>
     </div>
   `;
 }

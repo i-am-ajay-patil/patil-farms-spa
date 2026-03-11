@@ -1,6 +1,6 @@
 {
-  "dataVersion": "2026-03-11.5",
-  "exportedAt": "2026-03-10T16:54:46.284Z",
+  "dataVersion": "2026-03-11.1",
+  "exportedAt": "2026-03-11T16:40:01.270Z",
   "farmConfig": {
     "arrivalDate": "2025-10-18",
     "initialBirdCount": 2700
@@ -1013,431 +1013,13 @@
       "damagedEggs": 5,
       "liveBirds": 2668,
       "medicine": ""
-    }
-  ],
-  "expenses": [
-    {
-      "id": "q9x4m7pxrn1nz",
-      "category": "Feed",
-      "date": "2025-10-15",
-      "amount": 92750,
-      "total": 92750,
-      "description": "Feed",
-      "paidBy": "Ajay"
     },
     {
-      "id": "s1g9v3wbxc4dy",
-      "category": "Transport",
-      "date": "2025-10-15",
-      "amount": 3500,
-      "total": 3500,
-      "description": "Feed transport",
-      "paidBy": "Shivu"
-    },
-    {
-      "id": "u4n7k1lpxq8rs",
-      "category": "Birds",
-      "date": "2025-10-18",
-      "amount": 160000,
-      "total": 160000,
-      "description": "Birds cost (240*2700)",
-      "paidBy": "Ajay"
-    },
-    {
-      "id": "w2m4p7rtvz2ms",
-      "category": "Birds",
-      "date": "2025-10-18",
-      "amount": 488000,
-      "total": 488000,
-      "description": "Birds cost (240*2700)",
-      "paidBy": "Shivu"
-    },
-    {
-      "id": "y9v1n5lqyh4bw",
-      "category": "Birds",
-      "date": "2025-10-18",
-      "amount": 17500,
-      "total": 17500,
-      "description": "Birds transport",
-      "paidBy": "Shivu"
-    },
-    {
-      "id": "a6s7m9pxrn6tz",
-      "category": "Medicine",
-      "date": "2025-10-18",
-      "amount": 6250,
-      "total": 6250,
-      "description": "Medicine",
-      "paidBy": "Shivu"
-    },
-    {
-      "id": "c1g5v8wbxc9ny",
-      "category": "Feed",
-      "date": "2025-11-03",
-      "amount": 50000,
-      "total": 50000,
-      "description": "Feed",
-      "paidBy": "Ajay"
-    },
-    {
-      "id": "e7n3k9lpxq4rs",
-      "category": "Feed",
-      "date": "2025-11-03",
-      "amount": 42750,
-      "total": 42750,
-      "description": "Feed",
-      "paidBy": "Shivu"
-    },
-    {
-      "id": "g4m8p2rtvz1ms",
-      "category": "Transport",
-      "date": "2025-11-03",
-      "amount": 3500,
-      "total": 3500,
-      "description": "Feed transport",
-      "paidBy": "Shivu"
-    },
-    {
-      "id": "i9v1n6lqyh5bw",
-      "category": "Medicine",
-      "date": "2025-11-08",
-      "amount": 3000,
-      "total": 3000,
-      "description": "Medicine",
-      "paidBy": "Shivu"
-    },
-    {
-      "id": "k6s4m2pxrn8tz",
-      "category": "Feed",
-      "date": "2025-11-20",
-      "amount": 115750,
-      "total": 115750,
-      "description": "Feed",
-      "paidBy": "Ajay"
-    },
-    {
-      "id": "m1g7v4wbxc2ny",
-      "category": "Transport",
-      "date": "2025-11-20",
-      "amount": 4000,
-      "total": 4000,
-      "description": "Feed transport",
-      "paidBy": "Shivu"
-    },
-    {
-      "id": "o8n2k9lpxq7rs",
-      "category": "Medicine",
-      "date": "2025-11-20",
-      "amount": 15190,
-      "total": 15190,
-      "description": "Medicine",
-      "paidBy": "Shivu"
-    },
-    {
-      "id": "q5m1p4rtvz3ms",
-      "category": "Other",
-      "date": "2025-12-01",
-      "amount": 12500,
-      "total": 12500,
-      "description": "tray purchase",
-      "paidBy": "Ajay"
-    },
-    {
-      "id": "s2v6n1lqyh9bw",
-      "category": "Medicine",
-      "date": "2025-12-01",
-      "amount": 4350,
-      "total": 4350,
-      "description": "Medicine",
-      "paidBy": "Ajay"
-    },
-    {
-      "id": "u9s3m7pxrn2tz",
-      "category": "Feed",
-      "date": "2025-12-06",
-      "amount": 117000,
-      "total": 117000,
-      "description": "Feed",
-      "paidBy": "Ajay"
-    },
-    {
-      "id": "w6g1v4wbxc5ny",
-      "category": "Transport",
-      "date": "2025-12-07",
-      "amount": 4500,
-      "total": 4500,
-      "description": "Feed transport",
-      "paidBy": "Shivu"
-    },
-    {
-      "id": "y3n8k2lpxq1rs",
-      "category": "Medicine",
-      "date": "2025-12-02",
-      "amount": 1500,
-      "total": 1500,
-      "description": "VVND injection",
-      "paidBy": "Shivu"
-    },
-    {
-      "id": "a1m4p9rtvz6ms",
-      "category": "Medicine",
-      "date": "2025-12-14",
-      "amount": 1500,
-      "total": 1500,
-      "description": "ND killed injection",
-      "paidBy": "Shivu"
-    },
-    {
-      "id": "c8v2n5lqyh4bw",
-      "category": "Feed",
-      "date": "2025-12-24",
-      "amount": 80000,
-      "total": 80000,
-      "description": "Feed",
-      "paidBy": "Ajay"
-    },
-    {
-      "id": "e5s1m9pxrn7tz",
-      "category": "Feed",
-      "date": "2025-12-24",
-      "amount": 50000,
-      "total": 50000,
-      "description": "Feed",
-      "paidBy": "Shivu"
-    },
-    {
-      "id": "g2g6v4wbxc8ny",
-      "category": "Transport",
-      "date": "2025-12-24",
-      "amount": 5000,
-      "total": 5000,
-      "description": "Feed transport",
-      "paidBy": "Shivu"
-    },
-    {
-      "id": "i7n3k1lpxq2rs",
-      "category": "Equipment",
-      "date": "2026-01-05",
-      "amount": 399,
-      "total": 399,
-      "description": "weighing machine",
-      "paidBy": "Ajay"
-    },
-    {
-      "id": "k4m9p7rtvz5ms",
-      "category": "Labour",
-      "date": "2026-01-08",
-      "amount": 5000,
-      "total": 5000,
-      "description": "Labour cost Oct",
-      "paidBy": "Shivu"
-    },
-    {
-      "id": "m1v6n2lqyh9bw",
-      "category": "Labour",
-      "date": "2026-01-08",
-      "amount": 10000,
-      "total": 10000,
-      "description": "Labour cost Nov",
-      "paidBy": "Shivu"
-    },
-    {
-      "id": "o9s2m4pxrn1tz",
-      "category": "Labour",
-      "date": "2026-01-08",
-      "amount": 10000,
-      "total": 10000,
-      "description": "Labour cost Dec",
-      "paidBy": "Shivu"
-    },
-    {
-      "id": "q5g8v3wbxc4ny",
-      "category": "Labour",
-      "date": "2026-01-08",
-      "amount": 12000,
-      "total": 12000,
-      "description": "Labour cost Jan",
-      "paidBy": "Sales"
-    },
-    {
-      "id": "s8n3k1lpxq2rs",
-      "category": "Equipment",
-      "date": "2026-01-08",
-      "amount": 6000,
-      "total": 6000,
-      "description": "Fabrication cost - table, water tank",
-      "paidBy": "Shivu"
-    },
-    {
-      "id": "u1m4p2rtvz6ms",
-      "category": "Feed",
-      "date": "2026-01-09",
-      "amount": 130000,
-      "total": 130000,
-      "description": "Feed cost",
-      "paidBy": "Sales"
-    },
-    {
-      "id": "w4v7n1lqyh2bw",
-      "category": "Transport",
-      "date": "2026-01-09",
-      "amount": 4500,
-      "total": 4500,
-      "description": "Feed transport",
-      "paidBy": "Sales"
-    },
-    {
-      "id": "y7s1m9pxrn5tz",
-      "category": "Other",
-      "date": "2026-01-11",
-      "amount": 540,
-      "total": 540,
-      "description": "Paint",
-      "paidBy": "Ajay"
-    },
-    {
-      "id": "b3g6v4wbxc8ny",
-      "category": "Feed",
-      "date": "2026-01-25",
-      "amount": 130000,
-      "total": 130000,
-      "description": "Feed cost",
-      "paidBy": "Sales"
-    },
-    {
-      "id": "d9n2k5lpxq1rs",
-      "category": "Transport",
-      "date": "2026-01-28",
-      "amount": 4500,
-      "total": 4500,
-      "description": "Feed transport",
-      "paidBy": "Sales"
-    },
-    {
-      "id": "f5m8p1rtvz4ms",
-      "category": "Feed",
-      "date": "2026-02-09",
-      "amount": 72875,
-      "total": 72875,
-      "description": "Feed cost",
-      "paidBy": "Sales"
-    },
-    {
-      "id": "h2v5n9lqyh7bw",
-      "category": "Transport",
-      "date": "2026-02-09",
-      "amount": 4350,
-      "total": 4350,
-      "description": "Feed transport",
-      "paidBy": "Sales"
-    },
-    {
-      "id": "j8s3m1pxrn9tz",
-      "category": "Electricity",
-      "date": "2026-02-09",
-      "amount": 16000,
-      "total": 16000,
-      "description": "Electric connection",
-      "paidBy": "Sales"
-    },
-    {
-      "id": "l1g4v7wbxc2ny",
-      "category": "Other",
-      "date": "2026-02-15",
-      "amount": 3312,
-      "total": 3312,
-      "description": "Egg tray - 26.5 per tray for 125",
-      "paidBy": "Sales"
-    },
-    {
-      "id": "n7n9k2lpxq5rs",
-      "category": "Medicine",
-      "date": "2026-02-16",
-      "amount": 6690,
-      "total": 6690,
-      "description": "Medicine",
-      "paidBy": "Sales"
-    },
-    {
-      "id": "p3m6p8rtvz1ms",
-      "category": "Feed",
-      "date": "2026-02-19",
-      "amount": 130000,
-      "total": 130000,
-      "description": "Feed cost",
-      "paidBy": "Sales"
-    },
-    {
-      "id": "r9v2n4lqyh6bw",
-      "category": "Feed",
-      "date": "2026-02-19",
-      "amount": 29000,
-      "total": 29000,
-      "description": "Feed cost",
-      "paidBy": "Sales"
-    },
-    {
-      "id": "t5s8m1pxrn4tz",
-      "category": "Transport",
-      "date": "2026-02-20",
-      "amount": 5400,
-      "total": 5400,
-      "description": "Feed transport",
-      "paidBy": "Sales"
-    },
-    {
-      "id": "v1g4v9wbxc7ny",
-      "category": "Equipment",
-      "date": "2026-02-24",
-      "amount": 2700,
-      "total": 2700,
-      "description": "camera cost",
-      "paidBy": "Sales"
-    },
-    {
-      "id": "x7n3k6lpxq2rs",
-      "category": "Labour",
-      "date": "2026-02-25",
-      "amount": 2850,
-      "total": 2850,
-      "description": "Manure loading",
-      "paidBy": "Sales"
-    },
-    {
-      "id": "z4m9p2rtvz5ms",
-      "category": "Labour",
-      "date": "2026-02-28",
-      "amount": 1500,
-      "total": 1500,
-      "description": "Manure loading",
-      "paidBy": "Sales"
-    },
-    {
-      "id": "b1v6n8lqyh9bw",
-      "category": "Labour",
-      "date": "2026-02-28",
-      "amount": 12000,
-      "total": 12000,
-      "description": "Labour cost",
-      "paidBy": "Sales"
-    },
-    {
-      "id": "d8s2m4pxrn1tz",
-      "category": "Feed",
-      "date": "2026-03-05",
-      "amount": 76800,
-      "total": 76800,
-      "description": "Feed cost",
-      "paidBy": "Sales"
-    },
-    {
-      "id": "f5g9v3wbxc4ny",
-      "category": "Transport",
-      "date": "2026-03-09",
-      "amount": 2700,
-      "total": 2700,
-      "description": "Feed transport",
-      "paidBy": "Sales"
+      "date": "2026-03-11",
+      "goodEggs": 2320,
+      "damagedEggs": 10,
+      "liveBirds": 2668,
+      "medicine": ""
     }
   ],
   "eggSales": [
@@ -2646,6 +2228,22 @@
       "buyer": "Retail",
       "total": 450,
       "remarks": ""
+    },
+    {
+      "id": "mmm9kmevv91mf",
+      "date": "2026-03-11",
+      "qty": 60,
+      "pricePerEgg": 5.5,
+      "buyer": "",
+      "total": 330
+    },
+    {
+      "id": "mmm9ks7v7fu84",
+      "date": "2026-03-11",
+      "qty": 90,
+      "pricePerEgg": 5,
+      "buyer": "",
+      "total": 450
     }
   ],
   "otherSales": [
@@ -2695,462 +2293,429 @@
       "remarks": ""
     }
   ],
-  "priceHistory": [
+  "expenses": [
     {
+      "id": "q9x4m7pxrn1nz",
+      "category": "Feed",
+      "date": "2025-10-15",
+      "amount": 92750,
+      "total": 92750,
+      "description": "Feed",
+      "paidBy": "Ajay"
+    },
+    {
+      "id": "s1g9v3wbxc4dy",
+      "category": "Transport",
+      "date": "2025-10-15",
+      "amount": 3500,
+      "total": 3500,
+      "description": "Feed transport",
+      "paidBy": "Shivu"
+    },
+    {
+      "id": "u4n7k1lpxq8rs",
+      "category": "Birds",
+      "date": "2025-10-18",
+      "amount": 160000,
+      "total": 160000,
+      "description": "Birds cost (240*2700)",
+      "paidBy": "Ajay"
+    },
+    {
+      "id": "w2m4p7rtvz2ms",
+      "category": "Birds",
+      "date": "2025-10-18",
+      "amount": 488000,
+      "total": 488000,
+      "description": "Birds cost (240*2700)",
+      "paidBy": "Shivu"
+    },
+    {
+      "id": "y9v1n5lqyh4bw",
+      "category": "Birds",
+      "date": "2025-10-18",
+      "amount": 17500,
+      "total": 17500,
+      "description": "Birds transport",
+      "paidBy": "Shivu"
+    },
+    {
+      "id": "a6s7m9pxrn6tz",
+      "category": "Medicine",
+      "date": "2025-10-18",
+      "amount": 6250,
+      "total": 6250,
+      "description": "Medicine",
+      "paidBy": "Shivu"
+    },
+    {
+      "id": "c1g5v8wbxc9ny",
+      "category": "Feed",
+      "date": "2025-11-03",
+      "amount": 50000,
+      "total": 50000,
+      "description": "Feed",
+      "paidBy": "Ajay"
+    },
+    {
+      "id": "e7n3k9lpxq4rs",
+      "category": "Feed",
+      "date": "2025-11-03",
+      "amount": 42750,
+      "total": 42750,
+      "description": "Feed",
+      "paidBy": "Shivu"
+    },
+    {
+      "id": "g4m8p2rtvz1ms",
+      "category": "Transport",
+      "date": "2025-11-03",
+      "amount": 3500,
+      "total": 3500,
+      "description": "Feed transport",
+      "paidBy": "Shivu"
+    },
+    {
+      "id": "i9v1n6lqyh5bw",
+      "category": "Medicine",
+      "date": "2025-11-08",
+      "amount": 3000,
+      "total": 3000,
+      "description": "Medicine",
+      "paidBy": "Shivu"
+    },
+    {
+      "id": "k6s4m2pxrn8tz",
+      "category": "Feed",
+      "date": "2025-11-20",
+      "amount": 115750,
+      "total": 115750,
+      "description": "Feed",
+      "paidBy": "Ajay"
+    },
+    {
+      "id": "m1g7v4wbxc2ny",
+      "category": "Transport",
+      "date": "2025-11-20",
+      "amount": 4000,
+      "total": 4000,
+      "description": "Feed transport",
+      "paidBy": "Shivu"
+    },
+    {
+      "id": "o8n2k9lpxq7rs",
+      "category": "Medicine",
+      "date": "2025-11-20",
+      "amount": 15190,
+      "total": 15190,
+      "description": "Medicine",
+      "paidBy": "Shivu"
+    },
+    {
+      "id": "q5m1p4rtvz3ms",
+      "category": "Other",
+      "date": "2025-12-01",
+      "amount": 12500,
+      "total": 12500,
+      "description": "tray purchase",
+      "paidBy": "Ajay"
+    },
+    {
+      "id": "s2v6n1lqyh9bw",
+      "category": "Medicine",
+      "date": "2025-12-01",
+      "amount": 4350,
+      "total": 4350,
+      "description": "Medicine",
+      "paidBy": "Ajay"
+    },
+    {
+      "id": "u9s3m7pxrn2tz",
+      "category": "Feed",
+      "date": "2025-12-06",
+      "amount": 117000,
+      "total": 117000,
+      "description": "Feed",
+      "paidBy": "Ajay"
+    },
+    {
+      "id": "w6g1v4wbxc5ny",
+      "category": "Transport",
+      "date": "2025-12-07",
+      "amount": 4500,
+      "total": 4500,
+      "description": "Feed transport",
+      "paidBy": "Shivu"
+    },
+    {
+      "id": "y3n8k2lpxq1rs",
+      "category": "Medicine",
+      "date": "2025-12-02",
+      "amount": 1500,
+      "total": 1500,
+      "description": "VVND injection",
+      "paidBy": "Shivu"
+    },
+    {
+      "id": "a1m4p9rtvz6ms",
+      "category": "Medicine",
+      "date": "2025-12-14",
+      "amount": 1500,
+      "total": 1500,
+      "description": "ND killed injection",
+      "paidBy": "Shivu"
+    },
+    {
+      "id": "c8v2n5lqyh4bw",
+      "category": "Feed",
       "date": "2025-12-24",
-      "hospet": 6.45,
-      "bengaluru": 7.05,
-      "mumbai": 7.45
+      "amount": 80000,
+      "total": 80000,
+      "description": "Feed",
+      "paidBy": "Ajay"
     },
     {
-      "date": "2025-12-25",
-      "hospet": 6.45,
-      "bengaluru": 7.05,
-      "mumbai": 7.45
+      "id": "e5s1m9pxrn7tz",
+      "category": "Feed",
+      "date": "2025-12-24",
+      "amount": 50000,
+      "total": 50000,
+      "description": "Feed",
+      "paidBy": "Shivu"
     },
     {
-      "date": "2025-12-26",
-      "hospet": 6.45,
-      "bengaluru": 7.05,
-      "mumbai": 7.35
+      "id": "g2g6v4wbxc8ny",
+      "category": "Transport",
+      "date": "2025-12-24",
+      "amount": 5000,
+      "total": 5000,
+      "description": "Feed transport",
+      "paidBy": "Shivu"
     },
     {
-      "date": "2025-12-27",
-      "hospet": 6.45,
-      "bengaluru": 7.05,
-      "mumbai": 7.25
-    },
-    {
-      "date": "2025-12-28",
-      "hospet": 6.45,
-      "bengaluru": 7.05,
-      "mumbai": 7.1
-    },
-    {
-      "date": "2025-12-29",
-      "hospet": 6.45,
-      "bengaluru": 7.05,
-      "mumbai": 7.1
-    },
-    {
-      "date": "2025-12-30",
-      "hospet": 6.45,
-      "bengaluru": 7.05,
-      "mumbai": 7.1
-    },
-    {
-      "date": "2025-12-31",
-      "hospet": 6.45,
-      "bengaluru": 7.05,
-      "mumbai": 7.1
-    },
-    {
-      "date": "2026-01-01",
-      "hospet": 6.45,
-      "bengaluru": 7.05,
-      "mumbai": 7
-    },
-    {
-      "date": "2026-01-02",
-      "hospet": 6.45,
-      "bengaluru": 7.05,
-      "mumbai": 6.9
-    },
-    {
-      "date": "2026-01-03",
-      "hospet": 6.25,
-      "bengaluru": 6.85,
-      "mumbai": 6.85
-    },
-    {
-      "date": "2026-01-04",
-      "hospet": 6.25,
-      "bengaluru": 6.85,
-      "mumbai": 6.85
-    },
-    {
+      "id": "i7n3k1lpxq2rs",
+      "category": "Equipment",
       "date": "2026-01-05",
-      "hospet": 6.05,
-      "bengaluru": 6.65,
-      "mumbai": 6.7
+      "amount": 399,
+      "total": 399,
+      "description": "weighing machine",
+      "paidBy": "Ajay"
     },
     {
-      "date": "2026-01-06",
-      "hospet": 6.05,
-      "bengaluru": 6.65,
-      "mumbai": 6.6
-    },
-    {
-      "date": "2026-01-07",
-      "hospet": 6.05,
-      "bengaluru": 6.65,
-      "mumbai": 6.45
-    },
-    {
+      "id": "k4m9p7rtvz5ms",
+      "category": "Labour",
       "date": "2026-01-08",
-      "hospet": 5.65,
-      "bengaluru": 6.25,
-      "mumbai": 6.35
+      "amount": 5000,
+      "total": 5000,
+      "description": "Labour cost Oct",
+      "paidBy": "Shivu"
     },
     {
+      "id": "m1v6n2lqyh9bw",
+      "category": "Labour",
+      "date": "2026-01-08",
+      "amount": 10000,
+      "total": 10000,
+      "description": "Labour cost Nov",
+      "paidBy": "Shivu"
+    },
+    {
+      "id": "o9s2m4pxrn1tz",
+      "category": "Labour",
+      "date": "2026-01-08",
+      "amount": 10000,
+      "total": 10000,
+      "description": "Labour cost Dec",
+      "paidBy": "Shivu"
+    },
+    {
+      "id": "q5g8v3wbxc4ny",
+      "category": "Labour",
+      "date": "2026-01-08",
+      "amount": 12000,
+      "total": 12000,
+      "description": "Labour cost Jan",
+      "paidBy": "Sales"
+    },
+    {
+      "id": "s8n3k1lpxq2rs",
+      "category": "Equipment",
+      "date": "2026-01-08",
+      "amount": 6000,
+      "total": 6000,
+      "description": "Fabrication cost - table, water tank",
+      "paidBy": "Shivu"
+    },
+    {
+      "id": "u1m4p2rtvz6ms",
+      "category": "Feed",
       "date": "2026-01-09",
-      "hospet": 5.45,
-      "bengaluru": 6.05,
-      "mumbai": 6.35
+      "amount": 130000,
+      "total": 130000,
+      "description": "Feed cost",
+      "paidBy": "Sales"
     },
     {
-      "date": "2026-01-10",
-      "hospet": 5.45,
-      "bengaluru": 6.05,
-      "mumbai": 6.25
+      "id": "w4v7n1lqyh2bw",
+      "category": "Transport",
+      "date": "2026-01-09",
+      "amount": 4500,
+      "total": 4500,
+      "description": "Feed transport",
+      "paidBy": "Sales"
     },
     {
+      "id": "y7s1m9pxrn5tz",
+      "category": "Other",
       "date": "2026-01-11",
-      "hospet": 5.45,
-      "bengaluru": 6.05,
-      "mumbai": 6.25
+      "amount": 540,
+      "total": 540,
+      "description": "Paint",
+      "paidBy": "Ajay"
     },
     {
-      "date": "2026-01-12",
-      "hospet": 5.45,
-      "bengaluru": 6.05,
-      "mumbai": 6.15
-    },
-    {
-      "date": "2026-01-13",
-      "hospet": 5.45,
-      "bengaluru": 6.05,
-      "mumbai": 6.1
-    },
-    {
-      "date": "2026-01-14",
-      "hospet": 5.45,
-      "bengaluru": 6.05,
-      "mumbai": 6.05
-    },
-    {
-      "date": "2026-01-15",
-      "hospet": 5.45,
-      "bengaluru": 6.05,
-      "mumbai": 6.05
-    },
-    {
-      "date": "2026-01-16",
-      "hospet": 5.45,
-      "bengaluru": 6.05,
-      "mumbai": 6
-    },
-    {
-      "date": "2026-01-17",
-      "hospet": 5.45,
-      "bengaluru": 6.05,
-      "mumbai": 6
-    },
-    {
-      "date": "2026-01-18",
-      "hospet": 5.15,
-      "bengaluru": 5.75,
-      "mumbai": 5.9
-    },
-    {
-      "date": "2026-01-19",
-      "hospet": 4.9,
-      "bengaluru": 5.5,
-      "mumbai": 5.8
-    },
-    {
-      "date": "2026-01-20",
-      "hospet": 4.9,
-      "bengaluru": 5.5,
-      "mumbai": 5.7
-    },
-    {
-      "date": "2026-01-21",
-      "hospet": 4.9,
-      "bengaluru": 5.5,
-      "mumbai": 5.6
-    },
-    {
-      "date": "2026-01-22",
-      "hospet": 4.9,
-      "bengaluru": 5.5,
-      "mumbai": 5.45
-    },
-    {
-      "date": "2026-01-23",
-      "hospet": 4.9,
-      "bengaluru": 5.5,
-      "mumbai": 5.35
-    },
-    {
-      "date": "2026-01-24",
-      "hospet": 4.95,
-      "bengaluru": 5.55,
-      "mumbai": 5.45
-    },
-    {
+      "id": "b3g6v4wbxc8ny",
+      "category": "Feed",
       "date": "2026-01-25",
-      "hospet": 5,
-      "bengaluru": 5.6,
-      "mumbai": 5.45
+      "amount": 130000,
+      "total": 130000,
+      "description": "Feed cost",
+      "paidBy": "Sales"
     },
     {
-      "date": "2026-01-26",
-      "hospet": 5.05,
-      "bengaluru": 5.65,
-      "mumbai": 5.55
-    },
-    {
-      "date": "2026-01-27",
-      "hospet": 5.1,
-      "bengaluru": 5.7,
-      "mumbai": 5.65
-    },
-    {
+      "id": "d9n2k5lpxq1rs",
+      "category": "Transport",
       "date": "2026-01-28",
-      "hospet": 5.1,
-      "bengaluru": 5.7,
-      "mumbai": 5.75
+      "amount": 4500,
+      "total": 4500,
+      "description": "Feed transport",
+      "paidBy": "Sales"
     },
     {
-      "date": "2026-01-29",
-      "hospet": 5.15,
-      "bengaluru": 5.75,
-      "mumbai": 5.8
-    },
-    {
-      "date": "2026-01-30",
-      "hospet": 5.15,
-      "bengaluru": 5.75,
-      "mumbai": 5.8
-    },
-    {
-      "date": "2026-01-31",
-      "hospet": 5.15,
-      "bengaluru": 5.75,
-      "mumbai": 5.8
-    },
-    {
-      "date": "2026-02-01",
-      "hospet": 5.15,
-      "bengaluru": 5.75,
-      "mumbai": 5.7
-    },
-    {
-      "date": "2026-02-02",
-      "hospet": 5,
-      "bengaluru": 5.6,
-      "mumbai": 5.6
-    },
-    {
-      "date": "2026-02-03",
-      "hospet": 5,
-      "bengaluru": 5.6,
-      "mumbai": 5.5
-    },
-    {
-      "date": "2026-02-04",
-      "hospet": 5,
-      "bengaluru": 5.6,
-      "mumbai": 5.5
-    },
-    {
-      "date": "2026-02-05",
-      "hospet": 5,
-      "bengaluru": 5.6,
-      "mumbai": 5.55
-    },
-    {
-      "date": "2026-02-06",
-      "hospet": 5,
-      "bengaluru": 5.6,
-      "mumbai": 5.6
-    },
-    {
-      "date": "2026-02-07",
-      "hospet": 5,
-      "bengaluru": 5.6,
-      "mumbai": 5.65
-    },
-    {
-      "date": "2026-02-08",
-      "hospet": 5,
-      "bengaluru": 5.6,
-      "mumbai": 5.7
-    },
-    {
+      "id": "f5m8p1rtvz4ms",
+      "category": "Feed",
       "date": "2026-02-09",
-      "hospet": 5,
-      "bengaluru": 5.6,
-      "mumbai": 5.7
+      "amount": 72875,
+      "total": 72875,
+      "description": "Feed cost",
+      "paidBy": "Sales"
     },
     {
-      "date": "2026-02-10",
-      "hospet": 5,
-      "bengaluru": 5.6,
-      "mumbai": 5.7
+      "id": "h2v5n9lqyh7bw",
+      "category": "Transport",
+      "date": "2026-02-09",
+      "amount": 4350,
+      "total": 4350,
+      "description": "Feed transport",
+      "paidBy": "Sales"
     },
     {
-      "date": "2026-02-11",
-      "hospet": 5,
-      "bengaluru": 5.6,
-      "mumbai": 5.6
+      "id": "j8s3m1pxrn9tz",
+      "category": "Electricity",
+      "date": "2026-02-09",
+      "amount": 16000,
+      "total": 16000,
+      "description": "Electric connection",
+      "paidBy": "Sales"
     },
     {
-      "date": "2026-02-12",
-      "hospet": 5,
-      "bengaluru": 5.6,
-      "mumbai": 5.5
-    },
-    {
-      "date": "2026-02-13",
-      "hospet": 5.1,
-      "bengaluru": 5.7,
-      "mumbai": 5.6
-    },
-    {
-      "date": "2026-02-14",
-      "hospet": 5.1,
-      "bengaluru": 5.7,
-      "mumbai": 5.7
-    },
-    {
+      "id": "l1g4v7wbxc2ny",
+      "category": "Other",
       "date": "2026-02-15",
-      "hospet": 5.2,
-      "bengaluru": 5.8,
-      "mumbai": 5.8
+      "amount": 3312,
+      "total": 3312,
+      "description": "Egg tray - 26.5 per tray for 125",
+      "paidBy": "Sales"
     },
     {
+      "id": "n7n9k2lpxq5rs",
+      "category": "Medicine",
       "date": "2026-02-16",
-      "hospet": 5.25,
-      "bengaluru": 5.85,
-      "mumbai": 5.85
+      "amount": 6690,
+      "total": 6690,
+      "description": "Medicine",
+      "paidBy": "Sales"
     },
     {
-      "date": "2026-02-17",
-      "hospet": 5.3,
-      "bengaluru": 5.9,
-      "mumbai": 5.85
-    },
-    {
-      "date": "2026-02-18",
-      "hospet": 5.3,
-      "bengaluru": 5.9,
-      "mumbai": 5.85
-    },
-    {
+      "id": "p3m6p8rtvz1ms",
+      "category": "Feed",
       "date": "2026-02-19",
-      "hospet": 5.3,
-      "bengaluru": 5.9,
-      "mumbai": 5.85
+      "amount": 130000,
+      "total": 130000,
+      "description": "Feed cost",
+      "paidBy": "Sales"
     },
     {
+      "id": "r9v2n4lqyh6bw",
+      "category": "Feed",
+      "date": "2026-02-19",
+      "amount": 29000,
+      "total": 29000,
+      "description": "Feed cost",
+      "paidBy": "Sales"
+    },
+    {
+      "id": "t5s8m1pxrn4tz",
+      "category": "Transport",
       "date": "2026-02-20",
-      "hospet": 5.3,
-      "bengaluru": 5.9,
-      "mumbai": 5.7
+      "amount": 5400,
+      "total": 5400,
+      "description": "Feed transport",
+      "paidBy": "Sales"
     },
     {
-      "date": "2026-02-21",
-      "hospet": 5.1,
-      "bengaluru": 5.7,
-      "mumbai": 5.65
-    },
-    {
-      "date": "2026-02-22",
-      "hospet": 5.1,
-      "bengaluru": 5.7,
-      "mumbai": 5.55
-    },
-    {
-      "date": "2026-02-23",
-      "hospet": 4.9,
-      "bengaluru": 5.5,
-      "mumbai": 5.45
-    },
-    {
+      "id": "v1g4v9wbxc7ny",
+      "category": "Equipment",
       "date": "2026-02-24",
-      "hospet": 4.9,
-      "bengaluru": 5.5,
-      "mumbai": 5.4
+      "amount": 2700,
+      "total": 2700,
+      "description": "camera cost",
+      "paidBy": "Sales"
     },
     {
+      "id": "x7n3k6lpxq2rs",
+      "category": "Labour",
       "date": "2026-02-25",
-      "hospet": 4.9,
-      "bengaluru": 5.5,
-      "mumbai": 5.4
+      "amount": 2850,
+      "total": 2850,
+      "description": "Manure loading",
+      "paidBy": "Sales"
     },
     {
-      "date": "2026-02-26",
-      "hospet": 4.9,
-      "bengaluru": 5.5,
-      "mumbai": 5.45
-    },
-    {
-      "date": "2026-02-27",
-      "hospet": 4.9,
-      "bengaluru": 5.5,
-      "mumbai": 5.45
-    },
-    {
+      "id": "z4m9p2rtvz5ms",
+      "category": "Labour",
       "date": "2026-02-28",
-      "hospet": 4.7,
-      "bengaluru": 5.3,
-      "mumbai": 5.45
+      "amount": 1500,
+      "total": 1500,
+      "description": "Manure loading",
+      "paidBy": "Sales"
     },
     {
-      "date": "2026-03-01",
-      "hospet": 4.7,
-      "bengaluru": 5.3,
-      "mumbai": 5.35
+      "id": "b1v6n8lqyh9bw",
+      "category": "Labour",
+      "date": "2026-02-28",
+      "amount": 12000,
+      "total": 12000,
+      "description": "Labour cost",
+      "paidBy": "Sales"
     },
     {
-      "date": "2026-03-02",
-      "hospet": 4.5,
-      "bengaluru": 5.1,
-      "mumbai": 5.25
-    },
-    {
-      "date": "2026-03-03",
-      "hospet": 4.5,
-      "bengaluru": 5.1,
-      "mumbai": 5.1
-    },
-    {
-      "date": "2026-03-04",
-      "hospet": 4.2,
-      "bengaluru": 4.8,
-      "mumbai": 5
-    },
-    {
+      "id": "d8s2m4pxrn1tz",
+      "category": "Feed",
       "date": "2026-03-05",
-      "hospet": 4.2,
-      "bengaluru": 4.8,
-      "mumbai": 4.9
+      "amount": 76800,
+      "total": 76800,
+      "description": "Feed cost",
+      "paidBy": "Sales"
     },
     {
-      "date": "2026-03-06",
-      "hospet": 4.2,
-      "bengaluru": 4.8,
-      "mumbai": 4.8
-    },
-    {
-      "date": "2026-03-07",
-      "hospet": 4.2,
-      "bengaluru": 4.8,
-      "mumbai": 4.65
-    },
-    {
-      "date": "2026-03-08",
-      "hospet": 4.2,
-      "bengaluru": 4.8,
-      "mumbai": 4.65
-    },
-    {
+      "id": "f5g9v3wbxc4ny",
+      "category": "Transport",
       "date": "2026-03-09",
-      "hospet": 4.2,
-      "bengaluru": 4.8,
-      "mumbai": 4.5
+      "amount": 2700,
+      "total": 2700,
+      "description": "Feed transport",
+      "paidBy": "Sales"
     }
   ]
 }

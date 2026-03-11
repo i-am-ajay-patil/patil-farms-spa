@@ -126,6 +126,8 @@ let productionData = DB.get('productionData', []);
 let eggSales       = DB.get('eggSales',       []);
 let otherSales     = DB.get('otherSales',     []);
 let expenses       = DB.get('expenses',       []);
+// priceHistory is read-only from data.json — never written to localStorage
+let priceHistory   = DB.get('priceHistory',   []);
 
 function save() {
   DB.set('farmConfig', farmConfig);
@@ -133,6 +135,7 @@ function save() {
   DB.set('eggSales', eggSales);
   DB.set('otherSales', otherSales);
   DB.set('expenses', expenses);
+  DB.set('priceHistory', priceHistory);
 }
 
 // ─── Utilities ────────────────────────────────────────────────
@@ -194,8 +197,16 @@ function getMetrics() {
   // Total Expenses
   const totalExpenses = expenses.reduce((s, e) => s + (parseFloat(e.total) || 0), 0);
 
-  // Cash In Hand = Total Revenue - Total Expenses
-  const cashInHand = totalSalesRevenue - totalExpenses;
+  // Expenses paid via 'Sales' payer — deducted directly from sales revenue
+  const expensesExclBirds = expenses
+    .filter(e => (e.paidBy || '') === 'Sales')
+    .reduce((s, e) => s + (parseFloat(e.total) || 0), 0);
+
+  // Cash in Hand = Total Sales - Expenses paid by Sales payer
+  const cashInHand = totalSalesRevenue - expensesExclBirds;
+
+  // Balance Sheet = Total Sales - ALL Expenses (including Birds)
+  const balanceSheet = totalSalesRevenue - totalExpenses;
 
   /* -----------------------------------------------------------
      PER-BIRD MAINTENANCE COST CALCULATION
@@ -227,9 +238,11 @@ function getMetrics() {
     currentEggInventory,
     totalSalesRevenue,
     cashInHand,
+    balanceSheet,
     costPerBird,
     currentLiveBirds,
     totalExpenses,
+    expensesExclBirds,
     daysElapsed,
     avgEggRate,
     totalEggsSold
@@ -292,7 +305,10 @@ function render() {
 }
 
 function afterRender(route) {
-  if (route === '#/home') drawProductionChart();
+  if (route === '#/home') {
+    drawProductionChart();
+    drawPriceChart();
+  }
 }
 
 // ═══════════════════════════════════════════════════════════════
@@ -321,26 +337,38 @@ function renderHome() {
         : 'Configure your farm to begin tracking'}
     </p>
 
-    <!-- Metrics Row 1: Total Sales + Cash in Hand -->
-    <div class="grid grid-cols-2 gap-3 mb-3">
+    <!-- Metrics Row 1: Total Sales (full width) -->
+    <div class="mb-3">
       <div class="metric-card yolk">
         <div class="metric-icon">💰</div>
         <div class="metric-label">Total Sales</div>
-        <div class="metric-value" style="font-size:20px;">${formatINR(m.totalSalesRevenue)}</div>
-        <div class="metric-sub">all time revenue</div>
-      </div>
-
-      <div class="metric-card rust">
-        <div class="metric-icon">🏦</div>
-        <div class="metric-label">Cash in Hand</div>
-        <div class="metric-value" style="font-size:20px;color:${m.cashInHand >= 0 ? 'var(--grove)' : 'var(--rust)'}">
-          ${formatINR(m.cashInHand)}
-        </div>
-        <div class="metric-sub">revenue – expenses</div>
+        <div class="metric-value" style="font-size:22px;">${formatINR(m.totalSalesRevenue)}</div>
+        <div class="metric-sub">egg sales + other sales</div>
       </div>
     </div>
 
-    <!-- Metrics Row 2: Egg Inventory + Avg Egg Rate + Cost/Bird/Day -->
+    <!-- Metrics Row 2: Cash in Hand + Balance Sheet -->
+    <div class="grid grid-cols-2 gap-3 mb-3">
+      <div class="metric-card green">
+        <div class="metric-icon">🏦</div>
+        <div class="metric-label">Cash in Hand</div>
+        <div class="metric-value" style="font-size:18px;color:${m.cashInHand >= 0 ? 'var(--grove)' : 'var(--rust)'}">
+          ${formatINR(m.cashInHand)}
+        </div>
+        <div class="metric-sub">sales – paid by Sales</div>
+      </div>
+
+      <div class="metric-card rust">
+        <div class="metric-icon">📒</div>
+        <div class="metric-label">Balance Sheet</div>
+        <div class="metric-value" style="font-size:18px;color:${m.balanceSheet >= 0 ? 'var(--grove)' : 'var(--rust)'}">
+          ${formatINR(m.balanceSheet)}
+        </div>
+        <div class="metric-sub">sales – all expenses</div>
+      </div>
+    </div>
+
+    <!-- Metrics Row 3: Egg Inventory + Avg/Egg + Cost/Bird/Day -->
     <div class="grid grid-cols-3 gap-3 mb-4">
       <div class="metric-card green" style="padding:14px 12px;">
         <div class="metric-icon" style="font-size:22px;">🥚</div>
@@ -392,7 +420,24 @@ function renderHome() {
       </div>
     </div>
 
-    <!-- 7-Day Chart -->
+    <!-- Market Price Trend -->
+    <div class="chart-container mb-4">
+      <div class="chart-title">🏪 Market Price Trend (₹/Egg)</div>
+      <canvas id="priceChart"></canvas>
+      <div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:10px;font-size:11px;color:var(--earth);">
+        <span style="display:flex;align-items:center;gap:5px;">
+          <span style="width:12px;height:3px;background:#D4A017;border-radius:2px;display:inline-block;"></span> Hospet
+        </span>
+        <span style="display:flex;align-items:center;gap:5px;">
+          <span style="width:12px;height:3px;background:#40916C;border-radius:2px;display:inline-block;"></span> Bengaluru
+        </span>
+        <span style="display:flex;align-items:center;gap:5px;">
+          <span style="width:12px;height:3px;background:#C85B2E;border-radius:2px;display:inline-block;"></span> Mumbai
+        </span>
+      </div>
+    </div>
+
+    <!-- 7-Day Production Chart -->
     <div class="chart-container mb-4">
       <div class="chart-title">📈 7-Day Production Trend</div>
       <canvas id="productionChart"></canvas>
@@ -545,8 +590,131 @@ function drawProductionChart() {
   });
 }
 
+// ─── Canvas 2D Market Price Chart ────────────────────────────
+function drawPriceChart() {
+  const canvas = document.getElementById('priceChart');
+  if (!canvas) return;
+
+  const dpr = window.devicePixelRatio || 1;
+  const w   = canvas.offsetWidth;
+  const h   = 170;
+  canvas.width  = w * dpr;
+  canvas.height = h * dpr;
+  canvas.style.width  = w + 'px';
+  canvas.style.height = h + 'px';
+
+  const ctx = canvas.getContext('2d');
+  ctx.scale(dpr, dpr);
+
+  const sorted = [...priceHistory].sort((a, b) => a.date.localeCompare(b.date));
+  const pts    = sorted.slice(-30); // show last 30 data points
+
+  if (pts.length === 0) {
+    ctx.fillStyle = '#8B6340';
+    ctx.font = '13px DM Sans, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('No price data available', w / 2, h / 2);
+    return;
+  }
+
+  const CITIES = [
+    { key: 'hospet',    color: '#D4A017', fill: 'rgba(212,160,23,0.08)'  },
+    { key: 'bengaluru', color: '#40916C', fill: 'rgba(64,145,108,0.08)'  },
+    { key: 'mumbai',    color: '#C85B2E', fill: 'rgba(200,91,46,0.07)'   },
+  ];
+
+  const allVals = pts.flatMap(d => CITIES.map(c => parseFloat(d[c.key]) || 0)).filter(v => v > 0);
+  if (allVals.length === 0) {
+    ctx.fillStyle = '#8B6340';
+    ctx.font = '13px DM Sans, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('No price values in data', w / 2, h / 2);
+    return;
+  }
+
+  const minVal  = Math.min(...allVals);
+  const maxVal  = Math.max(...allVals);
+  const valRange = maxVal - minVal || 1;
+
+  const padTop = 20, padBot = 28, padLeft = 36, padRight = 10;
+  const chartW = w - padLeft - padRight;
+  const chartH = h - padTop - padBot;
+  const stepX  = chartW / Math.max(pts.length - 1, 1);
+
+  // Y-axis grid lines + labels
+  const yTicks = 4;
+  ctx.strokeStyle = 'rgba(237,228,211,0.7)';
+  ctx.lineWidth   = 1;
+  ctx.fillStyle   = '#8B6340';
+  ctx.font        = '9px DM Mono, monospace';
+  ctx.textAlign   = 'right';
+
+  for (let i = 0; i <= yTicks; i++) {
+    const val = minVal + (valRange / yTicks) * (yTicks - i);
+    const y   = padTop + (chartH / yTicks) * i;
+    ctx.beginPath();
+    ctx.moveTo(padLeft, y);
+    ctx.lineTo(w - padRight, y);
+    ctx.stroke();
+    ctx.fillText('₹' + val.toFixed(2), padLeft - 4, y + 3);
+  }
+
+  // Draw each city line
+  function drawCityLine(city) {
+    const coords = pts.map((d, i) => ({
+      x: padLeft + i * stepX,
+      y: padTop + chartH - ((parseFloat(d[city.key]) || minVal) - minVal) / valRange * chartH
+    }));
+
+    // Area fill
+    ctx.beginPath();
+    ctx.moveTo(coords[0].x, padTop + chartH);
+    coords.forEach(p => ctx.lineTo(p.x, p.y));
+    ctx.lineTo(coords[coords.length - 1].x, padTop + chartH);
+    ctx.closePath();
+    ctx.fillStyle = city.fill;
+    ctx.fill();
+
+    // Bezier line
+    ctx.beginPath();
+    ctx.moveTo(coords[0].x, coords[0].y);
+    for (let i = 1; i < coords.length; i++) {
+      const prev = coords[i - 1], curr = coords[i];
+      const cpx  = (prev.x + curr.x) / 2;
+      ctx.bezierCurveTo(cpx, prev.y, cpx, curr.y, curr.x, curr.y);
+    }
+    ctx.strokeStyle = city.color;
+    ctx.lineWidth   = 2;
+    ctx.lineJoin    = 'round';
+    ctx.stroke();
+
+    // Endpoint dot (latest value only — avoids clutter)
+    const last = coords[coords.length - 1];
+    ctx.beginPath();
+    ctx.arc(last.x, last.y, 3.5, 0, Math.PI * 2);
+    ctx.fillStyle   = city.color;
+    ctx.fill();
+    ctx.strokeStyle = 'white';
+    ctx.lineWidth   = 1.5;
+    ctx.stroke();
+  }
+
+  CITIES.forEach(drawCityLine);
+
+  // X-axis date labels — show first, middle, last only to avoid crowding
+  const labelIdxs = [0, Math.floor((pts.length - 1) / 2), pts.length - 1];
+  ctx.fillStyle  = '#8B6340';
+  ctx.font       = '9px DM Mono, monospace';
+  ctx.textAlign  = 'center';
+  labelIdxs.forEach(i => {
+    const x  = padLeft + i * stepX;
+    const dt = new Date(pts[i].date + 'T00:00:00');
+    const lbl = dt.toLocaleDateString('en-IN', { day: 'numeric', month: 'short' });
+    ctx.fillText(lbl, x, h - 6);
+  });
+}
+
 // ═══════════════════════════════════════════════════════════════
-// MONTHLY AGGREGATION ENGINE
 // ═══════════════════════════════════════════════════════════════
 /*
   getMonthlyProductionSummary()
@@ -1239,7 +1407,7 @@ function renderOtherSalesRecordsList() {
 // ═══════════════════════════════════════════════════════════════
 // VIEW: EXPENSES
 // ═══════════════════════════════════════════════════════════════
-const EXPENSE_CATEGORIES = ['Feed', 'Medicine', 'Labour', 'Electricity', 'Transport', 'Equipment', 'Veterinary', 'Other'];
+const EXPENSE_CATEGORIES = ['Feed', 'Medicine', 'Labour', 'Electricity', 'Transport', 'Equipment', 'Veterinary', 'Birds', 'Other'];
 const EXPENSE_PAYERS     = ['Sales', 'Ajay', 'Shivu'];
 
 function renderExpenses() {
@@ -1558,6 +1726,7 @@ function importData() {
         if (data.eggSales)       eggSales       = data.eggSales;
         if (data.otherSales)     otherSales     = data.otherSales;
         if (data.expenses)       expenses       = data.expenses;
+        if (Array.isArray(data.priceHistory)) priceHistory = data.priceHistory;
         save();
         toast('Data imported successfully!', 'success');
         render();
@@ -1609,6 +1778,11 @@ async function initApp() {
     const remoteVersion = data.dataVersion || '';
     const localVersion  = DB.get('dataVersion', '');
 
+    // priceHistory is always refreshed from remote — it's read-only reference data
+    if (Array.isArray(data.priceHistory)) {
+      priceHistory = data.priceHistory;
+    }
+
     if (remoteVersion && remoteVersion !== localVersion) {
       // ── Version mismatch: wipe and re-seed ──────────────────
       console.info(`[Patil Farms] Data version changed (${localVersion || 'none'} → ${remoteVersion}). Re-seeding.`);
@@ -1643,5 +1817,8 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 
 window.onresize = () => {
-  if (getCurrentRoute() === '#/home') drawProductionChart();
+  if (getCurrentRoute() === '#/home') {
+    drawProductionChart();
+    drawPriceChart();
+  }
 };

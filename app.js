@@ -34,7 +34,7 @@ const DB = {
     2. Replace the PASSWORD_HASH value below with the output.
   Default password: Patil@1234
 */
-const PASSWORD_HASH = 'de89a40fe333f906b3d7f2b4c8cd837e8fe166523a11fed5ac83d7ccfa0e9642';
+const PASSWORD_HASH = '634e98354df262b82c28346e34002c16775fc28a3f0d1473fced2103e1be1304';
 const AUTH_KEY      = 'pf_authed'; // sessionStorage key — clears on tab/browser close
 
 async function hashPassword(plain) {

@@ -1,5 +1,5 @@
 {
-  "dataVersion": "2026-03-11.2",
+  "dataVersion": "2026-03-11.3",
   "exportedAt": "2026-03-10T16:54:46.284Z",
   "farmConfig": {
     "arrivalDate": "2025-10-18",
@@ -2199,9 +2199,9 @@
       "id": "q9x4m7pxrn1nz",
       "date": "2026-02-11",
       "qty": 30,
-      "pricePerEgg": 3.33,
+      "pricePerEgg": 0,
       "buyer": "Retail",
-      "total": 100,
+      "total": 0,
       "remarks": "Damaged eggs"
     },
     {

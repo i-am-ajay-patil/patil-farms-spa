@@ -437,9 +437,9 @@ function renderHome() {
       </div>
     </div>
 
-    <!-- 7-Day Production Chart -->
+    <!-- 15-Day Production Chart -->
     <div class="chart-container mb-4">
-      <div class="chart-title">📈 7-Day Production Trend</div>
+      <div class="chart-title">📈 15-Day Production Trend</div>
       <canvas id="productionChart"></canvas>
       <div style="display:flex;gap:16px;margin-top:10px;font-size:11px;color:var(--earth);">
         <span style="display:flex;align-items:center;gap:5px;">
@@ -472,14 +472,19 @@ function renderHome() {
   `;
 }
 
+// ─── Canvas 2D Chart Shared State ────────────────────────────
+const _prodChart  = { goodPts: [], damagedPts: [], labels: [], params: {}, data: { good: [], damaged: [] } };
+const _priceChart = { cityCoords: [], dataPts: [], params: {} };
+
 // ─── Canvas 2D Production Chart ───────────────────────────────
 function drawProductionChart() {
   const canvas = document.getElementById('productionChart');
   if (!canvas) return;
-
   const dpr = window.devicePixelRatio || 1;
-  const w = canvas.offsetWidth;
-  const h = 160;
+  const w   = canvas.offsetWidth;
+  const h   = 160;
+  if (w === 0) return;
+
   canvas.width  = w * dpr;
   canvas.height = h * dpr;
   canvas.style.width  = w + 'px';
@@ -488,116 +493,157 @@ function drawProductionChart() {
   const ctx = canvas.getContext('2d');
   ctx.scale(dpr, dpr);
 
-  // Get last 7 days of data
   const sorted = [...productionData].sort((a, b) => a.date.localeCompare(b.date));
-  const last7  = sorted.slice(-7);
+  const last7  = sorted.slice(-15);
 
   if (last7.length === 0) {
-    ctx.fillStyle = '#8B6340';
-    ctx.font = '13px DM Sans, sans-serif';
+    ctx.fillStyle = '#8B6340'; ctx.font = '13px DM Sans, sans-serif';
     ctx.textAlign = 'center';
     ctx.fillText('No production data to display', w / 2, h / 2);
     return;
   }
 
-  const good    = last7.map(d => parseInt(d.goodEggs) || 0);
+  const good    = last7.map(d => parseInt(d.goodEggs)    || 0);
   const damaged = last7.map(d => parseInt(d.damagedEggs) || 0);
-  const labels  = last7.map(d => {
-    const dt = new Date(d.date + 'T00:00:00');
-    return dt.toLocaleDateString('en-IN', { day: 'numeric', month: 'short' });
-  });
-
+  const labels  = last7.map(d =>
+    new Date(d.date + 'T00:00:00').toLocaleDateString('en-IN', { day: 'numeric', month: 'short' })
+  );
   const maxVal = Math.max(...good, ...damaged, 1);
   const padTop = 20, padBot = 30, padLeft = 10, padRight = 10;
   const chartW = w - padLeft - padRight;
   const chartH = h - padTop - padBot;
   const step   = chartW / Math.max(last7.length - 1, 1);
+  const params = { padTop, padBot, padLeft, padRight, chartW, chartH, step, maxVal, w, h };
 
-  // Draw grid lines
-  ctx.strokeStyle = 'rgba(237,228,211,0.6)';
-  ctx.lineWidth = 1;
+  const goodPts    = good.map((v, i)    => ({ x: padLeft + i * step, y: padTop + chartH - (v / maxVal) * chartH }));
+  const damagedPts = damaged.map((v, i) => ({ x: padLeft + i * step, y: padTop + chartH - (v / maxVal) * chartH }));
+
+  _prodChart.params = params; _prodChart.labels = labels;
+  _prodChart.data = { good, damaged };
+  _prodChart.goodPts = goodPts; _prodChart.damagedPts = damagedPts;
+
+  attachProductionCursor(canvas);
+}
+
+function _drawProductionStatic(ctx, p, goodPts, damagedPts, labels) {
+  ctx.clearRect(0, 0, p.w, p.h);
+
+  ctx.strokeStyle = 'rgba(237,228,211,0.6)'; ctx.lineWidth = 1;
   for (let i = 0; i <= 4; i++) {
-    const y = padTop + (chartH / 4) * i;
-    ctx.beginPath();
-    ctx.moveTo(padLeft, y);
-    ctx.lineTo(w - padRight, y);
-    ctx.stroke();
+    const y = p.padTop + (p.chartH / 4) * i;
+    ctx.beginPath(); ctx.moveTo(p.padLeft, y); ctx.lineTo(p.w - p.padRight, y); ctx.stroke();
   }
 
-  // Draw area + line helper
-  function drawLine(data, color, fillColor) {
-    if (data.length < 2) {
-      // single point dot
-      const x = padLeft;
-      const y = padTop + chartH - (data[0] / maxVal) * chartH;
-      ctx.beginPath();
-      ctx.arc(x, y, 4, 0, Math.PI * 2);
-      ctx.fillStyle = color;
-      ctx.fill();
-      return;
+  function drawSeries(pts, color, fillColor) {
+    if (pts.length === 0) return;
+    if (pts.length === 1) {
+      ctx.beginPath(); ctx.arc(pts[0].x, pts[0].y, 4, 0, Math.PI * 2);
+      ctx.fillStyle = color; ctx.fill(); return;
     }
-
-    const pts = data.map((v, i) => ({
-      x: padLeft + i * step,
-      y: padTop + chartH - (v / maxVal) * chartH
-    }));
-
-    // Filled area
     ctx.beginPath();
-    ctx.moveTo(pts[0].x, padTop + chartH);
-    pts.forEach(p => ctx.lineTo(p.x, p.y));
-    ctx.lineTo(pts[pts.length - 1].x, padTop + chartH);
-    ctx.closePath();
-    ctx.fillStyle = fillColor;
-    ctx.fill();
-
-    // Line
-    ctx.beginPath();
-    ctx.moveTo(pts[0].x, pts[0].y);
+    ctx.moveTo(pts[0].x, p.padTop + p.chartH);
+    pts.forEach(pt => ctx.lineTo(pt.x, pt.y));
+    ctx.lineTo(pts[pts.length-1].x, p.padTop + p.chartH);
+    ctx.closePath(); ctx.fillStyle = fillColor; ctx.fill();
+    ctx.beginPath(); ctx.moveTo(pts[0].x, pts[0].y);
     for (let i = 1; i < pts.length; i++) {
-      const prev = pts[i - 1];
-      const curr = pts[i];
-      const cpx  = (prev.x + curr.x) / 2;
+      const prev = pts[i-1], curr = pts[i], cpx = (prev.x + curr.x) / 2;
       ctx.bezierCurveTo(cpx, prev.y, cpx, curr.y, curr.x, curr.y);
     }
-    ctx.strokeStyle = color;
-    ctx.lineWidth   = 2.5;
-    ctx.lineJoin    = 'round';
-    ctx.stroke();
-
-    // Dots
-    pts.forEach(p => {
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, 3.5, 0, Math.PI * 2);
-      ctx.fillStyle = color;
-      ctx.fill();
-      ctx.strokeStyle = 'white';
-      ctx.lineWidth   = 1.5;
-      ctx.stroke();
+    ctx.strokeStyle = color; ctx.lineWidth = 2.5; ctx.lineJoin = 'round'; ctx.stroke();
+    pts.forEach(pt => {
+      ctx.beginPath(); ctx.arc(pt.x, pt.y, 3.5, 0, Math.PI * 2);
+      ctx.fillStyle = color; ctx.fill();
+      ctx.strokeStyle = 'white'; ctx.lineWidth = 1.5; ctx.stroke();
     });
   }
 
-  drawLine(good,    '#40916C', 'rgba(64,145,108,0.10)');
-  drawLine(damaged, '#C85B2E', 'rgba(200,91,46,0.08)');
+  drawSeries(goodPts,    '#40916C', 'rgba(64,145,108,0.10)');
+  drawSeries(damagedPts, '#C85B2E', 'rgba(200,91,46,0.08)');
 
-  // X-axis labels
-  ctx.fillStyle = '#8B6340';
-  ctx.font      = '10px DM Mono, monospace';
-  ctx.textAlign = 'center';
-  const pts = last7.map((_, i) => padLeft + i * step);
-  pts.forEach((x, i) => {
-    ctx.fillText(labels[i], x, h - 6);
-  });
+  ctx.fillStyle = '#8B6340'; ctx.font = '10px DM Mono, monospace'; ctx.textAlign = 'center';
+  goodPts.forEach((pt, i) => ctx.fillText(labels[i], pt.x, p.h - 6));
+}
+
+function attachProductionCursor(canvas) {
+  const fresh = canvas.cloneNode(true);
+  canvas.parentNode.replaceChild(fresh, canvas);
+
+  // Draw initial static chart on the fresh canvas
+  const p0  = _prodChart.params;
+  const dpr0 = window.devicePixelRatio || 1;
+  const ctx0 = fresh.getContext('2d');
+  ctx0.setTransform(dpr0, 0, 0, dpr0, 0, 0);
+  _drawProductionStatic(ctx0, p0, _prodChart.goodPts, _prodChart.damagedPts, _prodChart.labels);
+
+  function onMove(e) {
+    const rect    = fresh.getBoundingClientRect();
+    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+    const mx      = clientX - rect.left;
+    const p       = _prodChart.params;
+    if (!p.w) return;
+    const dpr = window.devicePixelRatio || 1;
+    const ctx = fresh.getContext('2d');
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    _drawProductionStatic(ctx, p, _prodChart.goodPts, _prodChart.damagedPts, _prodChart.labels);
+
+    const idx = Math.min(Math.max(Math.round((mx - p.padLeft) / p.step), 0), _prodChart.goodPts.length - 1);
+    if (idx < 0) return;
+    const x        = _prodChart.goodPts[idx].x;
+    const goodY    = _prodChart.goodPts[idx].y;
+    const damagedY = _prodChart.damagedPts[idx].y;
+
+    ctx.save();
+    ctx.strokeStyle = 'rgba(92,61,30,0.25)'; ctx.lineWidth = 1; ctx.setLineDash([4, 3]);
+    ctx.beginPath(); ctx.moveTo(x, p.padTop); ctx.lineTo(x, p.padTop + p.chartH); ctx.stroke();
+    ctx.setLineDash([]); ctx.restore();
+
+    [[goodY, '#40916C'], [damagedY, '#C85B2E']].forEach(([y, color]) => {
+      ctx.beginPath(); ctx.arc(x, y, 5, 0, Math.PI * 2);
+      ctx.fillStyle = color; ctx.fill();
+      ctx.strokeStyle = 'white'; ctx.lineWidth = 2; ctx.stroke();
+    });
+
+    const tw = 104, th = 56, pad = 6;
+    let tx = x + 10;
+    if (tx + tw > p.w - p.padRight) tx = x - tw - 10;
+    const ty = Math.max(p.padTop, goodY - th - 4);
+
+    ctx.fillStyle = 'rgba(255,255,255,0.96)'; ctx.strokeStyle = 'rgba(237,228,211,0.9)'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.roundRect(tx, ty, tw, th, 6); ctx.fill(); ctx.stroke();
+
+    ctx.textAlign = 'left';
+    ctx.fillStyle = '#5C3D1E'; ctx.font = 'bold 10px DM Mono, monospace';
+    ctx.fillText(_prodChart.labels[idx], tx + pad, ty + pad + 10);
+    ctx.fillStyle = '#40916C'; ctx.font = '10px DM Mono, monospace';
+    ctx.fillText('Good:    ' + _prodChart.data.good[idx],    tx + pad, ty + pad + 26);
+    ctx.fillStyle = '#C85B2E';
+    ctx.fillText('Damaged: ' + _prodChart.data.damaged[idx], tx + pad, ty + pad + 42);
+  }
+
+  function onLeave() {
+    const p = _prodChart.params; if (!p.w) return;
+    const dpr = window.devicePixelRatio || 1;
+    const ctx = fresh.getContext('2d');
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    _drawProductionStatic(ctx, p, _prodChart.goodPts, _prodChart.damagedPts, _prodChart.labels);
+  }
+
+  fresh.addEventListener('mousemove',  onMove);
+  fresh.addEventListener('touchmove',  onMove, { passive: true });
+  fresh.addEventListener('mouseleave', onLeave);
+  fresh.addEventListener('touchend',   onLeave);
 }
 
 // ─── Canvas 2D Market Price Chart ────────────────────────────
 function drawPriceChart() {
   const canvas = document.getElementById('priceChart');
   if (!canvas) return;
-
   const dpr = window.devicePixelRatio || 1;
   const w   = canvas.offsetWidth;
   const h   = 170;
+  if (w === 0) return;
+
   canvas.width  = w * dpr;
   canvas.height = h * dpr;
   canvas.style.width  = w + 'px';
@@ -606,12 +652,11 @@ function drawPriceChart() {
   const ctx = canvas.getContext('2d');
   ctx.scale(dpr, dpr);
 
-  const sorted = [...priceHistory].sort((a, b) => a.date.localeCompare(b.date));
-  const pts    = sorted.slice(-30); // show last 30 data points
+  const sorted  = [...priceHistory].sort((a, b) => a.date.localeCompare(b.date));
+  const dataPts = sorted.slice(-30);
 
-  if (pts.length === 0) {
-    ctx.fillStyle = '#8B6340';
-    ctx.font = '13px DM Sans, sans-serif';
+  if (dataPts.length === 0) {
+    ctx.fillStyle = '#8B6340'; ctx.font = '13px DM Sans, sans-serif';
     ctx.textAlign = 'center';
     ctx.fillText('No price data available', w / 2, h / 2);
     return;
@@ -623,95 +668,156 @@ function drawPriceChart() {
     { key: 'mumbai',    color: '#C85B2E', fill: 'rgba(200,91,46,0.07)'   },
   ];
 
-  const allVals = pts.flatMap(d => CITIES.map(c => parseFloat(d[c.key]) || 0)).filter(v => v > 0);
+  const allVals  = dataPts.flatMap(d => CITIES.map(c => parseFloat(d[c.key]) || 0)).filter(v => v > 0);
   if (allVals.length === 0) {
-    ctx.fillStyle = '#8B6340';
-    ctx.font = '13px DM Sans, sans-serif';
+    ctx.fillStyle = '#8B6340'; ctx.font = '13px DM Sans, sans-serif';
     ctx.textAlign = 'center';
     ctx.fillText('No price values in data', w / 2, h / 2);
     return;
   }
 
-  const minVal  = Math.min(...allVals);
-  const maxVal  = Math.max(...allVals);
+  const minVal   = Math.min(...allVals);
+  const maxVal   = Math.max(...allVals);
   const valRange = maxVal - minVal || 1;
+  const padTop   = 20, padBot = 28, padLeft = 36, padRight = 10;
+  const chartW   = w - padLeft - padRight;
+  const chartH   = h - padTop - padBot;
+  const stepX    = chartW / Math.max(dataPts.length - 1, 1);
+  const params   = { padTop, padBot, padLeft, padRight, chartW, chartH, stepX, minVal, valRange, w, h };
 
-  const padTop = 20, padBot = 28, padLeft = 36, padRight = 10;
-  const chartW = w - padLeft - padRight;
-  const chartH = h - padTop - padBot;
-  const stepX  = chartW / Math.max(pts.length - 1, 1);
-
-  // Y-axis grid lines + labels
-  const yTicks = 4;
-  ctx.strokeStyle = 'rgba(237,228,211,0.7)';
-  ctx.lineWidth   = 1;
-  ctx.fillStyle   = '#8B6340';
-  ctx.font        = '9px DM Mono, monospace';
-  ctx.textAlign   = 'right';
-
-  for (let i = 0; i <= yTicks; i++) {
-    const val = minVal + (valRange / yTicks) * (yTicks - i);
-    const y   = padTop + (chartH / yTicks) * i;
-    ctx.beginPath();
-    ctx.moveTo(padLeft, y);
-    ctx.lineTo(w - padRight, y);
-    ctx.stroke();
-    ctx.fillText('₹' + val.toFixed(2), padLeft - 4, y + 3);
-  }
-
-  // Draw each city line
-  function drawCityLine(city) {
-    const coords = pts.map((d, i) => ({
+  const cityCoords = CITIES.map(city => ({
+    ...city,
+    coords: dataPts.map((d, i) => ({
       x: padLeft + i * stepX,
       y: padTop + chartH - ((parseFloat(d[city.key]) || minVal) - minVal) / valRange * chartH
-    }));
+    }))
+  }));
 
-    // Area fill
-    ctx.beginPath();
-    ctx.moveTo(coords[0].x, padTop + chartH);
-    coords.forEach(p => ctx.lineTo(p.x, p.y));
-    ctx.lineTo(coords[coords.length - 1].x, padTop + chartH);
-    ctx.closePath();
-    ctx.fillStyle = city.fill;
-    ctx.fill();
+  _priceChart.params     = params;
+  _priceChart.dataPts    = dataPts;
+  _priceChart.cityCoords = cityCoords;
 
-    // Bezier line
-    ctx.beginPath();
-    ctx.moveTo(coords[0].x, coords[0].y);
-    for (let i = 1; i < coords.length; i++) {
-      const prev = coords[i - 1], curr = coords[i];
-      const cpx  = (prev.x + curr.x) / 2;
-      ctx.bezierCurveTo(cpx, prev.y, cpx, curr.y, curr.x, curr.y);
-    }
-    ctx.strokeStyle = city.color;
-    ctx.lineWidth   = 2;
-    ctx.lineJoin    = 'round';
-    ctx.stroke();
+  attachPriceCursor(canvas);
+}
 
-    // Endpoint dot (latest value only — avoids clutter)
-    const last = coords[coords.length - 1];
-    ctx.beginPath();
-    ctx.arc(last.x, last.y, 3.5, 0, Math.PI * 2);
-    ctx.fillStyle   = city.color;
-    ctx.fill();
-    ctx.strokeStyle = 'white';
-    ctx.lineWidth   = 1.5;
-    ctx.stroke();
+function _drawPriceStatic(ctx, p, cityCoords, dataPts) {
+  ctx.clearRect(0, 0, p.w, p.h);
+
+  const yTicks = 4;
+  ctx.strokeStyle = 'rgba(237,228,211,0.7)'; ctx.lineWidth = 1;
+  ctx.fillStyle = '#8B6340'; ctx.font = '9px DM Mono, monospace'; ctx.textAlign = 'right';
+  for (let i = 0; i <= yTicks; i++) {
+    const val = p.minVal + (p.valRange / yTicks) * (yTicks - i);
+    const y   = p.padTop + (p.chartH / yTicks) * i;
+    ctx.beginPath(); ctx.moveTo(p.padLeft, y); ctx.lineTo(p.w - p.padRight, y); ctx.stroke();
+    ctx.fillText('₹' + val.toFixed(2), p.padLeft - 4, y + 3);
   }
 
-  CITIES.forEach(drawCityLine);
+  cityCoords.forEach(city => {
+    const coords = city.coords;
+    ctx.beginPath();
+    ctx.moveTo(coords[0].x, p.padTop + p.chartH);
+    coords.forEach(pt => ctx.lineTo(pt.x, pt.y));
+    ctx.lineTo(coords[coords.length-1].x, p.padTop + p.chartH);
+    ctx.closePath(); ctx.fillStyle = city.fill; ctx.fill();
 
-  // X-axis date labels — show first, middle, last only to avoid crowding
-  const labelIdxs = [0, Math.floor((pts.length - 1) / 2), pts.length - 1];
-  ctx.fillStyle  = '#8B6340';
-  ctx.font       = '9px DM Mono, monospace';
-  ctx.textAlign  = 'center';
-  labelIdxs.forEach(i => {
-    const x  = padLeft + i * stepX;
-    const dt = new Date(pts[i].date + 'T00:00:00');
-    const lbl = dt.toLocaleDateString('en-IN', { day: 'numeric', month: 'short' });
-    ctx.fillText(lbl, x, h - 6);
+    ctx.beginPath(); ctx.moveTo(coords[0].x, coords[0].y);
+    for (let i = 1; i < coords.length; i++) {
+      const prev = coords[i-1], curr = coords[i], cpx = (prev.x + curr.x) / 2;
+      ctx.bezierCurveTo(cpx, prev.y, cpx, curr.y, curr.x, curr.y);
+    }
+    ctx.strokeStyle = city.color; ctx.lineWidth = 2; ctx.lineJoin = 'round'; ctx.stroke();
+
+    const last = coords[coords.length - 1];
+    ctx.beginPath(); ctx.arc(last.x, last.y, 3.5, 0, Math.PI * 2);
+    ctx.fillStyle = city.color; ctx.fill();
+    ctx.strokeStyle = 'white'; ctx.lineWidth = 1.5; ctx.stroke();
   });
+
+  const n = dataPts.length;
+  [0, Math.floor((n-1)/2), n-1].forEach(i => {
+    const x  = p.padLeft + i * p.stepX;
+    const dt = new Date(dataPts[i].date + 'T00:00:00');
+    ctx.fillStyle = '#8B6340'; ctx.font = '9px DM Mono, monospace'; ctx.textAlign = 'center';
+    ctx.fillText(dt.toLocaleDateString('en-IN', { day: 'numeric', month: 'short' }), x, p.h - 6);
+  });
+}
+
+function attachPriceCursor(canvas) {
+  const fresh = canvas.cloneNode(true);
+  canvas.parentNode.replaceChild(fresh, canvas);
+
+  // Draw initial static chart on the fresh canvas
+  const p0   = _priceChart.params;
+  const dpr0 = window.devicePixelRatio || 1;
+  const ctx0 = fresh.getContext('2d');
+  ctx0.setTransform(dpr0, 0, 0, dpr0, 0, 0);
+  _drawPriceStatic(ctx0, p0, _priceChart.cityCoords, _priceChart.dataPts);
+
+  function onMove(e) {
+    const rect    = fresh.getBoundingClientRect();
+    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+    const mx      = clientX - rect.left;
+    const p       = _priceChart.params;
+    if (!p.w) return;
+    const dpr = window.devicePixelRatio || 1;
+    const ctx = fresh.getContext('2d');
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    _drawPriceStatic(ctx, p, _priceChart.cityCoords, _priceChart.dataPts);
+
+    const idx = Math.min(Math.max(Math.round((mx - p.padLeft) / p.stepX), 0), _priceChart.dataPts.length - 1);
+    if (idx < 0) return;
+    const x   = p.padLeft + idx * p.stepX;
+    const row = _priceChart.dataPts[idx];
+
+    ctx.save();
+    ctx.strokeStyle = 'rgba(92,61,30,0.25)'; ctx.lineWidth = 1; ctx.setLineDash([4, 3]);
+    ctx.beginPath(); ctx.moveTo(x, p.padTop); ctx.lineTo(x, p.padTop + p.chartH); ctx.stroke();
+    ctx.setLineDash([]); ctx.restore();
+
+    _priceChart.cityCoords.forEach(city => {
+      const pt = city.coords[idx];
+      ctx.beginPath(); ctx.arc(pt.x, pt.y, 5, 0, Math.PI * 2);
+      ctx.fillStyle = city.color; ctx.fill();
+      ctx.strokeStyle = 'white'; ctx.lineWidth = 2; ctx.stroke();
+    });
+
+    const dt    = new Date(row.date + 'T00:00:00').toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: '2-digit' });
+    const lines = [
+      dt,
+      'Hospet:  ₹' + parseFloat(row.hospet    || 0).toFixed(2),
+      'Blr:     ₹' + parseFloat(row.bengaluru || 0).toFixed(2),
+      'Mumbai:  ₹' + parseFloat(row.mumbai    || 0).toFixed(2),
+    ];
+    const COLORS = ['#5C3D1E', '#D4A017', '#40916C', '#C85B2E'];
+    const tw = 118, th = 76, pad = 6;
+    let tx = x + 12;
+    if (tx + tw > p.w - p.padRight) tx = x - tw - 12;
+    const ty = Math.max(p.padTop, Math.min(p.padTop + p.chartH - th, p.padTop + 4));
+
+    ctx.fillStyle = 'rgba(255,255,255,0.96)'; ctx.strokeStyle = 'rgba(237,228,211,0.9)'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.roundRect(tx, ty, tw, th, 6); ctx.fill(); ctx.stroke();
+
+    lines.forEach((line, i) => {
+      ctx.fillStyle = COLORS[i];
+      ctx.font      = i === 0 ? 'bold 10px DM Mono, monospace' : '10px DM Mono, monospace';
+      ctx.textAlign = 'left';
+      ctx.fillText(line, tx + pad, ty + pad + 11 + i * 17);
+    });
+  }
+
+  function onLeave() {
+    const p = _priceChart.params; if (!p.w) return;
+    const dpr = window.devicePixelRatio || 1;
+    const ctx = fresh.getContext('2d');
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    _drawPriceStatic(ctx, p, _priceChart.cityCoords, _priceChart.dataPts);
+  }
+
+  fresh.addEventListener('mousemove',  onMove);
+  fresh.addEventListener('touchmove',  onMove, { passive: true });
+  fresh.addEventListener('mouseleave', onLeave);
+  fresh.addEventListener('touchend',   onLeave);
 }
 
 // ═══════════════════════════════════════════════════════════════
@@ -833,9 +939,11 @@ function renderMonthlyTable() {
 // ═══════════════════════════════════════════════════════════════
 function renderProduction() {
   const sorted = [...productionData].sort((a, b) => b.date.localeCompare(a.date));
-  const todayStr = today();
+  const todayStr  = today();
   const todayEntry = productionData.find(d => d.date === todayStr);
-  const activeTab = window._prodTab || 'monthly';
+  const activeTab  = window._prodTab || 'monthly';
+  // Default live birds to the most recent logged count, fallback to initial bird count
+  const lastBirds  = sorted.length > 0 ? (parseInt(sorted[0].liveBirds) || farmConfig.initialBirdCount || 0) : (farmConfig.initialBirdCount || 0);
 
   return `
     <h2 class="section-title">Production Log</h2>
@@ -857,7 +965,7 @@ function renderProduction() {
         </div>
         <div class="field-group">
           <label class="field-label">Live Birds</label>
-          <input type="number" id="prod-birds" class="field-input" placeholder="${farmConfig.initialBirdCount || 0}" min="0" />
+          <input type="number" id="prod-birds" class="field-input" value="${lastBirds}" min="0" />
         </div>
         <div class="field-group">
           <label class="field-label">Good Eggs</label>

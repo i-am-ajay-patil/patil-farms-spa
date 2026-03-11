@@ -328,6 +328,12 @@ body {
   display: block;
 }
 
+#priceChart {
+  width: 100% !important;
+  height: 170px !important;
+  display: block;
+}
+
 /* --- Toast --- */
 .toast-container {
   position: fixed;

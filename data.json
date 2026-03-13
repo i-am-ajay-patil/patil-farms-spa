@@ -1,6 +1,6 @@
 {
-  "dataVersion": "2026-03-11.2",
-  "exportedAt": "2026-03-11T16:40:01.270Z",
+  "dataVersion": "2026-03-13.2",
+  "exportedAt": "2026-03-13T19:12:30.420Z",
   "farmConfig": {
     "arrivalDate": "2025-10-18",
     "initialBirdCount": 2700
@@ -1018,6 +1018,20 @@
       "date": "2026-03-11",
       "goodEggs": 2320,
       "damagedEggs": 10,
+      "liveBirds": 2668,
+      "medicine": ""
+    },
+    {
+      "date": "2026-03-12",
+      "goodEggs": 2330,
+      "damagedEggs": 7,
+      "liveBirds": 2668,
+      "medicine": ""
+    },
+    {
+      "date": "2026-03-13",
+      "goodEggs": 2330,
+      "damagedEggs": 7,
       "liveBirds": 2668,
       "medicine": ""
     }
@@ -2244,6 +2258,22 @@
       "pricePerEgg": 5,
       "buyer": "",
       "total": 450
+    },
+    {
+      "id": "mmp9ubgyv6nml",
+      "date": "2026-03-12",
+      "qty": 180,
+      "pricePerEgg": 5,
+      "buyer": "",
+      "total": 900
+    },
+    {
+      "id": "mmp9ulfhhnsm5",
+      "date": "2026-03-13",
+      "qty": 30,
+      "pricePerEgg": 5.5,
+      "buyer": "",
+      "total": 165
     }
   ],
   "otherSales": [
